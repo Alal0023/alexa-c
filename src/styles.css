@@ -142,3 +142,70 @@
     color: var(--color-foreground);
   }
 }
+
+/* ============================================================
+   Aurora brand tokens (Alexa C. landing page)
+   Decorative gradient only — body text always uses --ink on
+   cream/aurora surfaces (WCAG AA on every gradient stop).
+   ============================================================ */
+:root {
+  --ink: #0C0A18;
+  --ink-soft: #2A2640;
+  --cream: #FAF9F5;
+  --cream-2: #F2EFE6;
+  --surface: #15122A;
+  --aurora-1: #FF6FD8;
+  --aurora-2: #9B5CFF;
+  --aurora-3: #36E0C8;
+  --aurora-4: #FFC24B;
+  --red-mandated: #D8342F;
+  --gradient-aurora: linear-gradient(
+    110deg,
+    #FF6FD8 0%,
+    #9B5CFF 32%,
+    #36E0C8 66%,
+    #FFC24B 100%
+  );
+  --gradient-aurora-soft: linear-gradient(
+    110deg,
+    rgba(255, 111, 216, 0.85),
+    rgba(155, 92, 255, 0.85),
+    rgba(54, 224, 200, 0.9),
+    rgba(255, 194, 75, 0.95)
+  );
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
+.font-mono-eyebrow { font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px; }
+
+.aurora-bg { background-image: var(--gradient-aurora); }
+.aurora-text-block {
+  background-image: var(--gradient-aurora);
+  color: var(--ink);
+  padding: 0.05em 0.35em;
+  border-radius: 0.15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.marquee-track {
+  animation: aurora-marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes aurora-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
