@@ -1,20 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, useReducedMotion } from "framer-motion";
 import studioAsset from "../assets/alexa-studio.png.asset.json";
 import wideAsset from "../assets/alexa-wide.png.asset.json";
 
 const DESCRIPTION =
-  "Senior Design Lead with 15 years shipping accessible, EAA & WCAG-compliant product design. No agency. No delays. Fixed price. Shipped.";
+  "Senior product design without the agency price tag. Compliant, conversion-ready design — built in code. EAA & WCAG audits, AI-native UX, design systems.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alexa C. — Senior Design Lead. Accessible product design, shipped." },
+      { title: "Alexa C. — Compliant, conversion-ready design, built in code." },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: "Alexa C. — Senior Design Lead" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
       { property: "og:image", content: studioAsset.url },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Alexa C. — Senior Design Lead" },
@@ -22,710 +20,337 @@ export const Route = createFileRoute("/")({
       { name: "twitter:image", content: studioAsset.url },
     ],
     links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Alexa C.",
-          jobTitle: "Senior Design Lead",
-          description: DESCRIPTION,
-          image: studioAsset.url,
-          email: "mailto:hello@alexac.studio",
-          knowsAbout: [
-            "Accessibility",
-            "EAA Compliance",
-            "WCAG 2.2",
-            "Design Systems",
-            "Product Design",
-          ],
-        }),
-      },
-    ],
   }),
   component: AuroraLanding,
 });
 
-/* ---------- shared atoms ---------- */
+const CSS = `
+.aurora-root{
+  --bg:#0C0A18; --surface:#15122A; --surface-2:#120F24; --ink:#F3EEFF; --muted:#A99FC4;
+  --line:#271F44; --line-soft:#1E1838; --radius:22px;
+  --grad:linear-gradient(100deg,#FF6FD8,#9B5CFF 38%,#36E0C8 70%,#FFC24B);
+  --jakarta:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'Space Mono',monospace;
+  --shadow:0 30px 70px -34px rgba(0,0,0,.7); --glow:0 0 70px rgba(155,92,255,.28);
+  background:var(--bg); color:var(--ink); font-family:var(--jakarta);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden;
+  min-height:100vh;
+}
+.aurora-root *,.aurora-root *::before,.aurora-root *::after{ box-sizing:border-box; }
+.aurora-root a{ color:inherit; text-decoration:none; }
+.aurora-root .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.aurora-root .wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
+.aurora-root .eyebrow{ font-family:var(--mono); font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+.aurora-root .aura{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.34; z-index:0; pointer-events:none; }
 
-const Eyebrow = ({ children }: { children: React.ReactNode }) => (
-  <span className="font-mono-eyebrow" style={{ color: "var(--ink-soft)" }}>
-    {children}
-  </span>
-);
+.aurora-root nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(12,10,24,.72); border-bottom:1px solid var(--line); }
+.aurora-root nav .row{ display:flex; align-items:center; justify-content:space-between; height:78px; }
+.aurora-root nav .logo{ font-weight:800; font-size:24px; letter-spacing:-.02em; }
+.aurora-root nav .menu{ display:flex; gap:36px; font-size:16px; color:var(--muted); font-weight:600; }
+.aurora-root nav .menu a:hover{ color:var(--ink); }
+.aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad); color:#0C0A18; box-shadow:var(--shadow); }
 
-const PrimaryCTA = ({
-  children,
-  href = "mailto:hello@alexac.studio",
-}: {
-  children: React.ReactNode;
-  href?: string;
-}) => (
-  <a
-    href={href}
-    className="focus-ring inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold transition-transform hover:-translate-y-0.5"
-    style={{
-      backgroundImage: "var(--gradient-aurora)",
-      color: "var(--ink)",
-      boxShadow: "0 10px 30px -12px rgba(155,92,255,0.55)",
-    }}
-  >
-    {children}
-    <span aria-hidden>→</span>
-  </a>
-);
+.aurora-root .hero{ position:relative; overflow:hidden; padding:90px 0 70px; }
+.aurora-root .hero .aura.a1{ width:620px; height:620px; background:#7D5CFF; top:-200px; left:-160px; }
+.aurora-root .hero .aura.a2{ width:540px; height:540px; background:#FF6FD8; top:-160px; right:-140px; }
+.aurora-root .hero .aura.a3{ width:520px; height:520px; background:#36E0C8; bottom:-260px; left:24%; opacity:.22; }
+.aurora-root .hero .grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.08fr .92fr; gap:60px; align-items:center; }
+.aurora-root .hero .pill{ display:inline-flex; align-items:center; gap:10px; padding:11px 22px; border-radius:100px;
+  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
+  font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
+.aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad); }
+.aurora-root .hero h1{ font-weight:800; font-size:88px; line-height:.95; letter-spacing:-.04em; margin:26px 0 0; }
+.aurora-root .hero p.lede{ font-size:24px; line-height:1.5; color:var(--muted); max-width:600px; margin:26px 0 0; font-weight:500; }
+.aurora-root .hero p.lede b{ color:var(--ink); font-weight:800; }
+.aurora-root .hero .btns{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
+.aurora-root .btn{ font-weight:800; font-size:19px; padding:17px 34px; border-radius:100px; display:inline-flex; align-items:center; gap:10px; cursor:pointer; transition:transform .2s ease; }
+.aurora-root .btn:hover{ transform:translateY(-2px); }
+.aurora-root .btn.grad{ background:var(--grad); color:#0C0A18; box-shadow:var(--shadow); }
+.aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
+.aurora-root .hero .vis{ position:relative; display:flex; align-items:center; justify-content:center; min-height:480px; }
+.aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1px solid rgba(155,92,255,.25); }
+.aurora-root .hero .portrait{ width:400px; height:400px; border-radius:50%; object-fit:cover; object-position:center 18%;
+  position:relative; z-index:2; box-shadow:var(--shadow), var(--glow); border:2px solid rgba(155,92,255,.35); }
+.aurora-root .hero .badge{ position:absolute; z-index:3; background:var(--surface); border:1px solid var(--line); border-radius:16px;
+  padding:14px 18px; box-shadow:var(--shadow); }
+.aurora-root .hero .badge .v{ font-weight:800; font-size:26px; }
+.aurora-root .hero .badge .l{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin-top:2px; }
 
-const QuietLink = ({
-  children,
-  href,
-}: {
-  children: React.ReactNode;
-  href: string;
-}) => (
-  <a
-    href={href}
-    className="focus-ring inline-flex items-center gap-1.5 text-[14px] underline underline-offset-4 decoration-1 hover:opacity-70"
-    style={{ color: "var(--cream)" }}
-  >
-    {children}
-  </a>
-);
+.aurora-root .trust{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2); }
+.aurora-root .trust .row{ display:flex; align-items:center; justify-content:space-between; gap:30px; padding:26px 0; flex-wrap:wrap; }
+.aurora-root .trust .item{ font-family:var(--mono); font-size:15px; letter-spacing:.04em; color:var(--muted); display:flex; align-items:center; gap:10px; }
+.aurora-root .trust .item b{ color:var(--ink); }
+.aurora-root .trust .item .d{ width:7px; height:7px; border-radius:50%; background:var(--grad); }
 
-/* ---------- page ---------- */
+.aurora-root section.block{ position:relative; padding:104px 0; overflow:hidden; }
+.aurora-root .shead{ max-width:760px; margin-bottom:54px; }
+.aurora-root .shead h2{ font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-.03em; margin:14px 0 0; }
+.aurora-root .shead p{ font-size:21px; line-height:1.5; color:var(--muted); margin:16px 0 0; font-weight:500; }
+
+.aurora-root .svc-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; position:relative; z-index:2; }
+.aurora-root .svc{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:38px;
+  display:flex; flex-direction:column; gap:14px; transition:transform .25s ease, border-color .25s ease; }
+.aurora-root .svc:hover{ transform:translateY(-6px); border-color:#3a2e63; }
+.aurora-root .svc .no{ font-family:var(--mono); font-size:14px; letter-spacing:.1em; }
+.aurora-root .svc h3{ font-weight:800; font-size:32px; margin:0; letter-spacing:-.01em; }
+.aurora-root .svc p{ font-size:18px; line-height:1.5; color:var(--muted); margin:0; font-weight:500; }
+.aurora-root .svc .meta{ display:flex; gap:22px; margin-top:8px; padding-top:18px; border-top:1px solid var(--line); }
+.aurora-root .svc .meta .m .mv{ font-weight:800; font-size:18px; }
+.aurora-root .svc .meta .m .ml{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin-top:3px; }
+.aurora-root .svc .hot{ margin-top:auto; font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
+
+.aurora-root .about .aura.a1{ width:540px; height:540px; background:#9B5CFF; top:-120px; right:-160px; opacity:.22; }
+.aurora-root .about .grid{ position:relative; z-index:2; display:grid; grid-template-columns:.82fr 1.18fr; gap:62px; align-items:center; }
+.aurora-root .about .portrait{ border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); aspect-ratio:4/5; }
+.aurora-root .about .portrait img{ width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block; }
+.aurora-root .about ul{ list-style:none; padding:0; margin:28px 0 0; display:flex; flex-direction:column; gap:20px; }
+.aurora-root .about li{ display:grid; grid-template-columns:62px 1fr; gap:18px; align-items:start; }
+.aurora-root .about li .n{ font-family:var(--mono); font-size:13px; color:#0C0A18; background:var(--grad); border-radius:8px; padding:7px 0; text-align:center; letter-spacing:.04em; font-weight:700; }
+.aurora-root .about li .t{ font-size:21px; line-height:1.45; }
+.aurora-root .about li .t b{ font-weight:700; }
+.aurora-root .about li .t span{ color:var(--muted); }
+
+.aurora-root .proc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; position:relative; z-index:2; }
+.aurora-root .proc{ background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:30px; }
+.aurora-root .proc .pn{ font-weight:800; font-size:40px; line-height:1; }
+.aurora-root .proc h4{ font-weight:700; font-size:22px; margin:18px 0 8px; letter-spacing:-.01em; }
+.aurora-root .proc p{ font-size:16px; line-height:1.45; color:var(--muted); margin:0; font-weight:500; }
+
+.aurora-root .proof{ background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.aurora-root .proof .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; position:relative; z-index:2; }
+.aurora-root .quote{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:34px; display:flex; flex-direction:column; gap:20px; }
+.aurora-root .quote .stars{ font-size:18px; letter-spacing:3px; }
+.aurora-root .quote .q{ font-size:21px; line-height:1.45; font-weight:600; }
+.aurora-root .quote .q em{ font-style:normal; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.aurora-root .quote .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+.aurora-root .quote .who img{ width:46px; height:46px; border-radius:50%; object-fit:cover; }
+.aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
+.aurora-root .quote .who .nm span{ display:block; font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.04em; margin-top:2px; }
+
+.aurora-root .stats{ padding:84px 0; position:relative; overflow:hidden; }
+.aurora-root .stats .aura.a1{ width:600px; height:600px; background:#36E0C8; bottom:-300px; left:10%; opacity:.16; }
+.aurora-root .stats .aura.a2{ width:520px; height:520px; background:#FF6FD8; top:-280px; right:6%; opacity:.18; }
+.aurora-root .stats .grid{ position:relative; z-index:2; display:grid; grid-template-columns:repeat(4,1fr); gap:30px; text-align:center; }
+.aurora-root .stats .s .v{ font-weight:800; font-size:74px; line-height:1; letter-spacing:-.03em; }
+.aurora-root .stats .s .l{ font-size:17px; color:var(--muted); margin-top:10px; font-weight:600; }
+
+.aurora-root .cta-final{ position:relative; overflow:hidden; padding:120px 0; }
+.aurora-root .cta-final .aura.a1{ width:720px; height:720px; background:#7D5CFF; top:-260px; left:50%; transform:translateX(-50%); opacity:.3; }
+.aurora-root .cta-card{ position:relative; z-index:2; background:linear-gradient(160deg,#1B1533,#120F24); border:1px solid var(--line);
+  border-radius:34px; padding:74px 70px; text-align:center; box-shadow:var(--shadow), var(--glow); }
+.aurora-root .cta-card h2{ font-weight:800; font-size:66px; line-height:1.0; letter-spacing:-.035em; margin:14px 0 0; }
+.aurora-root .cta-card p{ font-size:22px; color:var(--muted); margin:22px auto 0; max-width:620px; line-height:1.5; font-weight:500; }
+.aurora-root .cta-card .btns{ display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap; }
+
+.aurora-root footer{ border-top:1px solid var(--line); padding:52px 0; }
+.aurora-root footer .row{ display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+.aurora-root footer .logo{ font-weight:800; font-size:22px; }
+.aurora-root footer .links{ display:flex; gap:28px; font-size:15px; color:var(--muted); font-weight:600; }
+.aurora-root footer .links a:hover{ color:var(--ink); }
+.aurora-root footer .fine{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em; }
+
+@media (max-width:980px){
+  .aurora-root .wrap{ padding:0 28px; }
+  .aurora-root .hero .grid,.aurora-root .about .grid{ grid-template-columns:1fr; }
+  .aurora-root .hero .vis{ order:-1; }
+  .aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid{ grid-template-columns:1fr 1fr; }
+  .aurora-root .hero h1{ font-size:64px; }
+  .aurora-root .shead h2{ font-size:44px; }
+  .aurora-root .cta-card{ padding:54px 28px; }
+  .aurora-root .cta-card h2{ font-size:44px; }
+}
+@media (max-width:620px){
+  .aurora-root nav .menu{ display:none; }
+  .aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid{ grid-template-columns:1fr; }
+  .aurora-root .hero h1{ font-size:52px; }
+  .aurora-root .hero .portrait{ width:300px; height:300px; }
+}
+`;
 
 function AuroraLanding() {
-  const reduce = useReducedMotion();
-  const fadeUp = reduce
-    ? {}
-    : {
-        initial: { opacity: 0, y: 18 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-      };
-
   return (
-    <div
-      style={{
-        backgroundColor: "var(--cream)",
-        color: "var(--ink)",
-        fontFamily: "var(--font-sans)",
-      }}
-      className="min-h-dvh antialiased"
-    >
-      <Nav />
-      <main>
-        <Hero fadeUp={fadeUp} />
-        <TrustTicker />
-        <WhoIAm fadeUp={fadeUp} />
-        <Services fadeUp={fadeUp} />
-        <HowItWorks fadeUp={fadeUp} />
-        <Proof fadeUp={fadeUp} />
-        <Numbers fadeUp={fadeUp} />
-        <FinalCTA fadeUp={fadeUp} />
-      </main>
-      <Footer />
+    <div className="aurora-root">
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+
+      <nav>
+        <div className="wrap row">
+          <div className="logo">Alexa <span className="grad">C.</span></div>
+          <div className="menu">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#proof">Work</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <a href="#contact" className="cta">Book a call →</a>
+        </div>
+      </nav>
+
+      <header className="hero">
+        <div className="aura a1"></div><div className="aura a2"></div><div className="aura a3"></div>
+        <div className="wrap grid">
+          <div>
+            <span className="pill"><span className="dot"></span> Design systems · Accessibility · AI UX</span>
+            <h1>Compliant, conversion-ready design, <span className="grad">built in code.</span></h1>
+            <p className="lede">Senior product design without the agency price tag. I turn brand rules into <b>production-ready, accessible systems</b> — and ship working AI apps while others are still in Figma.</p>
+            <div className="btns">
+              <a href="#contact" className="btn grad">Start a project →</a>
+              <a href="#services" className="btn ghost">View the gigs</a>
+            </div>
+          </div>
+          <div className="vis">
+            <div className="ring" style={{ width: 440, height: 440 }}></div>
+            <div className="ring" style={{ width: 560, height: 560 }}></div>
+            <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
+            <div className="badge" style={{ top: "8%", right: "2%" }}><div className="v grad">95%</div><div className="l">A11y coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad">15 yrs</div><div className="l">Ex-Amazon lead</div></div>
+          </div>
+        </div>
+      </header>
+
+      <div className="trust">
+        <div className="wrap row">
+          <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
+          <div className="item"><span className="d"></span> WCAG 2.1 AA &amp; <b>EAA</b> audits</div>
+          <div className="item"><span className="d"></span> <b>Lovable</b> · Figma · Framer</div>
+          <div className="item"><span className="d"></span> <b>4.9★</b> across projects</div>
+        </div>
+      </div>
+
+      <section className="block" id="services">
+        <div className="wrap">
+          <div className="shead">
+            <span className="eyebrow">What sells in 2026</span>
+            <h2>Four gigs, <span className="grad">one specialist.</span></h2>
+            <p>Each offer is scoped, fixed-price and shipped with accessibility built in — not bolted on at the end.</p>
+          </div>
+          <div className="svc-grid">
+            <div className="svc">
+              <div className="no grad">GIG A</div>
+              <h3>Lovable &amp; AI app builds</h3>
+              <p>A working full-stack MVP with a real backend in days — not a clickable mockup. Vibe-coded, then hardened by a senior eye.</p>
+              <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
+              <div className="hot grad">▲ excellent demand</div>
+            </div>
+            <div className="svc">
+              <div className="no grad">GIG B</div>
+              <h3>EAA &amp; WCAG audits</h3>
+              <p>Manual, legal-grade accessibility audits with a prioritised fix list. The European Accessibility Act is now enforced — this is the 2026 goldmine.</p>
+              <div className="meta"><div className="m"><div className="mv grad">AA / AAA</div><div className="ml">WCAG 2.1</div></div><div className="m"><div className="mv grad">5 days</div><div className="ml">Turnaround</div></div></div>
+              <div className="hot grad">▲ legally mandated</div>
+            </div>
+            <div className="svc">
+              <div className="no grad">GIG C</div>
+              <h3>AI-native product UX</h3>
+              <p>Interfaces for agents and AI products — making automation feel controllable and trustworthy. The fastest-rising design niche of the year.</p>
+              <div className="meta"><div className="m"><div className="mv grad">Agents</div><div className="ml">Specialism</div></div><div className="m"><div className="mv grad">Prototype</div><div className="ml">+ handoff</div></div></div>
+              <div className="hot grad">▲ fastest-rising</div>
+            </div>
+            <div className="svc">
+              <div className="no grad">GIG D</div>
+              <h3>Design systems in code</h3>
+              <p>Tokenised Figma → Framer / Webflow systems with accessibility built into every component, and docs your developers will actually use.</p>
+              <div className="meta"><div className="m"><div className="mv grad">Tokens</div><div className="ml">Figma → code</div></div><div className="m"><div className="mv grad">Docs</div><div className="ml">Dev-ready</div></div></div>
+              <div className="hot grad">▲ compounding value</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="block about" id="about">
+        <div className="aura a1"></div>
+        <div className="wrap grid">
+          <div className="portrait"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
+          <div>
+            <span className="eyebrow">Who I am</span>
+            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships <span className="grad">systems,</span> not screenshots.</h2>
+            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design maturity and accessibility across global teams at Amazon. I turn brand rules into production-ready, compliant, interactive systems.</p>
+            <ul>
+              <li><span className="n">A11Y</span><span className="t"><b>Raised accessibility coverage 80% → 95%</b> <span>across a multi-brand creative org.</span></span></li>
+              <li><span className="n">EAA</span><span className="t"><b>Manual WCAG 2.1 AA &amp; EAA audits</b> <span>— not automated widgets that fail in court.</span></span></li>
+              <li><span className="n">AI</span><span className="t"><b>AI-native prototyping &amp; code handoff</b> <span>via Lovable, Figma and Framer.</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="block" id="process" style={{ background: "var(--surface-2)", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
+        <div className="wrap">
+          <div className="shead">
+            <span className="eyebrow">How it works</span>
+            <h2>From brief to <span className="grad">shipped.</span></h2>
+            <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
+          </div>
+          <div className="proc-grid">
+            <div className="proc"><div className="pn grad">01</div><h4>Discover</h4><p>A short call to scope the goal, audience and success metric. You get a fixed quote and timeline.</p></div>
+            <div className="proc"><div className="pn grad">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components — reviewed against a clear quality bar.</p></div>
+            <div className="proc"><div className="pn grad">03</div><h4>Build</h4><p>Production-ready code or a hardened Lovable app, with accessibility verified before handoff.</p></div>
+            <div className="proc"><div className="pn grad">04</div><h4>Handoff</h4><p>Docs, a fix list and a walkthrough so your team can run with it long after I'm gone.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="block proof" id="proof">
+        <div className="wrap">
+          <div className="shead">
+            <span className="eyebrow">Proof</span>
+            <h2>Buyers come back <span className="grad">for the rigour.</span></h2>
+          </div>
+          <div className="grid">
+            <div className="quote">
+              <div className="stars grad">★★★★★</div>
+              <div className="q">“She resolved our EAA risk <em>and</em> sped up the build. We shipped compliant in a fortnight.”</div>
+              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Product Lead<span>// SaaS · UK</span></div></div>
+            </div>
+            <div className="quote">
+              <div className="stars grad">★★★★★</div>
+              <div className="q">“The design system <em>actually compiled.</em> Our devs used it day one with zero back-and-forth.”</div>
+              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Founder<span>// AI startup</span></div></div>
+            </div>
+            <div className="quote">
+              <div className="stars grad">★★★★★</div>
+              <div className="q">“Turned a vague idea into a <em>working AI app</em> in ten days. Genuinely senior work.”</div>
+              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Operator<span>// Fintech</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="stats">
+        <div className="aura a1"></div><div className="aura a2"></div>
+        <div className="wrap grid">
+          <div className="s"><div className="v grad">15</div><div className="l">Years in design</div></div>
+          <div className="s"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s"><div className="v grad">4.9★</div><div className="l">Average rating</div></div>
+          <div className="s"><div className="v grad">10d</div><div className="l">From brief to MVP</div></div>
+        </div>
+      </section>
+
+      <section className="cta-final" id="contact">
+        <div className="aura a1"></div>
+        <div className="wrap">
+          <div className="cta-card">
+            <span className="eyebrow">Open for Q3</span>
+            <h2>Let's build something <span className="grad">that ships.</span></h2>
+            <p>Tell me what you're making. I'll come back with a fixed price, a timeline, and a plan to make it accessible and fast.</p>
+            <div className="btns">
+              <a href="mailto:hello@alexac.studio" className="btn grad">hello@alexac.studio</a>
+              <a href="#" className="btn ghost">See Fiverr profile →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div className="wrap row">
+          <div className="logo">Alexa <span className="grad">C.</span></div>
+          <div className="links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#proof">Work</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div className="fine">© 2026 · Design Systems Studio · Remote</div>
+        </div>
+      </footer>
     </div>
-  );
-}
-
-/* ---------- nav ---------- */
-
-function Wordmark({ onDark = false }: { onDark?: boolean }) {
-  return (
-    <a
-      href="#top"
-      className="focus-ring inline-flex items-baseline gap-0.5 font-display text-2xl leading-none"
-      style={{ color: onDark ? "var(--cream)" : "var(--ink)" }}
-    >
-      ac
-      <span style={{ color: "var(--aurora-1)" }}>.</span>
-    </a>
-  );
-}
-
-function Nav() {
-  return (
-    <header
-      id="top"
-      className="sticky top-0 z-40 backdrop-blur-md"
-      style={{
-        backgroundColor: "color-mix(in oklab, var(--cream) 80%, transparent)",
-        borderBottom: "1px solid color-mix(in oklab, var(--ink) 8%, transparent)",
-      }}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Wordmark />
-        <nav className="hidden items-center gap-8 text-sm md:flex" aria-label="Primary">
-          <a href="#work" className="focus-ring hover:opacity-60">Work</a>
-          <a href="#about" className="focus-ring hover:opacity-60">About</a>
-          <a href="#process" className="focus-ring hover:opacity-60">Process</a>
-        </nav>
-        <a
-          href="mailto:hello@alexac.studio"
-          className="focus-ring rounded-full px-4 py-2 text-sm font-semibold"
-          style={{
-            backgroundImage: "var(--gradient-aurora)",
-            color: "var(--ink)",
-          }}
-        >
-          Start a project
-        </a>
-      </div>
-    </header>
-  );
-}
-
-/* ---------- hero ---------- */
-
-function Hero({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section
-      className="relative overflow-hidden"
-      style={{ backgroundColor: "var(--surface)", color: "var(--cream)" }}
-    >
-      {/* aurora glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 -right-32 h-[620px] w-[620px] rounded-full opacity-50 blur-3xl"
-        style={{ backgroundImage: "var(--gradient-aurora)" }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-24 h-[460px] w-[460px] rounded-full opacity-30 blur-3xl"
-        style={{ backgroundImage: "var(--gradient-aurora)" }}
-      />
-
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pb-24 pt-20 md:grid-cols-12 md:pb-32 md:pt-28">
-        <motion.div {...fadeUp} className="md:col-span-7">
-          <div className="mb-6 inline-flex items-center gap-2">
-            <span
-              className="font-mono-eyebrow"
-              style={{ color: "var(--aurora-3)" }}
-            >
-              ● Open for Q3 · 2 slots
-            </span>
-          </div>
-          <h1
-            className="font-display text-[clamp(2.6rem,6vw,5.25rem)] leading-[1.02]"
-            style={{ color: "var(--cream)" }}
-          >
-            Ship compliant,{" "}
-            <em className="italic" style={{ color: "var(--aurora-3)" }}>
-              accessible
-            </em>{" "}
-            design.
-            <br />
-            No agency.{" "}
-            <span className="aurora-text-block">No&nbsp;delays.</span>
-          </h1>
-          <p
-            className="mt-7 max-w-xl text-[17px] leading-relaxed"
-            style={{ color: "color-mix(in oklab, var(--cream) 78%, transparent)" }}
-          >
-            Senior Design Lead, 15 years in. I take product teams from
-            inaccessible &amp; off-brand to <strong style={{ color: "var(--cream)" }}>EAA &amp; WCAG 2.2 compliant</strong>—shipped, documented, defensible.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-6">
-            <PrimaryCTA>Start a project</PrimaryCTA>
-            <QuietLink href="#work">See recent gigs</QuietLink>
-          </div>
-        </motion.div>
-
-        <motion.div
-          {...fadeUp}
-          className="md:col-span-5"
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          <div
-            className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
-            style={{
-              boxShadow: "0 30px 80px -30px rgba(0,0,0,0.55)",
-              border: "1px solid color-mix(in oklab, var(--cream) 12%, transparent)",
-            }}
-          >
-            <div
-              aria-hidden
-              className="absolute -inset-1 -z-10 rounded-3xl opacity-70 blur-2xl"
-              style={{ backgroundImage: "var(--gradient-aurora)" }}
-            />
-            <img
-              src={studioAsset.url}
-              alt="Alexa C., Senior Design Lead, in her studio"
-              className="h-full w-full object-cover"
-              loading="eager"
-            />
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- trust ticker ---------- */
-
-const TICKER = [
-  "15 yrs design leadership",
-  "EAA 2025 ready",
-  "WCAG 2.2 AA",
-  "Top-rated on Fiverr",
-  "4.9★ across 47 projects",
-  "Design systems · Figma",
-  "Shipped to 12M+ users",
-  "Audit · Design · Ship",
-];
-
-function TrustTicker() {
-  return (
-    <section
-      aria-label="Credentials"
-      className="marquee overflow-hidden"
-      style={{
-        backgroundColor: "var(--cream-2)",
-        borderBottom: "1px solid color-mix(in oklab, var(--ink) 8%, transparent)",
-      }}
-    >
-      <div className="marquee-track flex w-max gap-12 whitespace-nowrap px-6 py-5">
-        {[...TICKER, ...TICKER].map((item, i) => (
-          <span
-            key={i}
-            className="font-mono-eyebrow inline-flex items-center gap-3"
-            style={{ color: "var(--ink)" }}
-          >
-            <span
-              aria-hidden
-              className="inline-block h-1.5 w-1.5 rounded-full"
-              style={{ backgroundImage: "var(--gradient-aurora)" }}
-            />
-            {item}
-          </span>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ---------- who I am ---------- */
-
-function WhoIAm({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section id="about" className="px-6 py-24 md:py-32">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-12 md:items-center">
-        <motion.div {...fadeUp} className="md:col-span-5">
-          <div
-            className="relative aspect-[5/6] w-full overflow-hidden rounded-2xl"
-            style={{ border: "1px solid color-mix(in oklab, var(--ink) 12%, transparent)" }}
-          >
-            <img
-              src={wideAsset.url}
-              alt="Alexa C. at her workspace"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </motion.div>
-        <motion.div {...fadeUp} className="md:col-span-7">
-          <Eyebrow>Who I am</Eyebrow>
-          <h2 className="font-display mt-3 text-4xl leading-tight md:text-5xl">
-            Senior design leadership, available without the agency markup.
-          </h2>
-          <div
-            className="mt-6 space-y-5 text-[17px] leading-relaxed"
-            style={{ color: "var(--ink-soft)" }}
-          >
-            <p>
-              I&apos;m Alexa — a Senior Design Lead with 15 years inside
-              product teams shipping work used by millions. I close the gap
-              between strategy and pixels, and between &ldquo;designed&rdquo;
-              and <em>actually accessible</em>.
-            </p>
-            <p>
-              Hire me direct, on Fiverr, for the part of a project that&apos;s
-              usually slow, expensive, or skipped: accessibility audits,
-              design-system overhauls, conversion-critical flows, and the
-              boring-but-legally-required EAA work that hits in 2025.
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- services ---------- */
-
-const SERVICES = [
-  {
-    eyebrow: "Design system audit",
-    title: "Untangle your design system",
-    body: "Tokens, components, governance, and a Figma library your engineers will actually use. Delivered as a working library and a 20-page action report.",
-    deliverable: "Library + audit report",
-    turnaround: "2–3 weeks",
-  },
-  {
-    eyebrow: "Conversion flow redesign",
-    title: "Fix the flow that&apos;s leaking revenue",
-    body: "Onboarding, checkout, paywall. I diagnose, redesign, and hand you a build-ready Figma with copy and accessibility baked in.",
-    deliverable: "Build-ready Figma + Loom walkthrough",
-    turnaround: "10 working days",
-  },
-  {
-    eyebrow: "Senior design, on demand",
-    title: "Embedded senior design — by the sprint",
-    body: "Drop me into your team for a sprint. Reviews, mentoring, hands-on shipping, hiring panels. Same hours, no agency overhead.",
-    deliverable: "2-week sprint, renewable",
-    turnaround: "Start within 7 days",
-  },
-];
-
-function Services({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section
-      id="work"
-      className="px-6 py-24 md:py-32"
-      style={{ backgroundColor: "var(--cream-2)" }}
-    >
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...fadeUp} className="mb-14 max-w-2xl">
-          <Eyebrow>What I do</Eyebrow>
-          <h2 className="font-display mt-3 text-4xl leading-tight md:text-5xl">
-            Four problems. One specialist. Fixed price. Shipped.
-          </h2>
-        </motion.div>
-
-        {/* Featured: EAA & WCAG audit */}
-        <motion.article
-          {...fadeUp}
-          className="relative overflow-hidden rounded-3xl p-8 md:p-12"
-          style={{
-            backgroundImage: "var(--gradient-aurora)",
-            color: "var(--ink)",
-          }}
-        >
-          <div className="grid gap-10 md:grid-cols-12 md:items-end">
-            <div className="md:col-span-8">
-              <span
-                className="font-mono-eyebrow inline-flex items-center gap-2 rounded-full px-3 py-1"
-                style={{
-                  backgroundColor: "var(--ink)",
-                  color: "#fff",
-                }}
-              >
-                <span style={{ color: "var(--red-mandated)" }}>▲</span>
-                Legally mandated · EU EAA · June 2025
-              </span>
-              <h3 className="font-display mt-5 text-3xl leading-tight md:text-5xl">
-                EAA &amp; WCAG 2.2 accessibility audits.
-              </h3>
-              <p className="mt-4 max-w-xl text-[16px] leading-relaxed" style={{ color: "var(--ink)" }}>
-                A pass / fail audit against EN 301 549, a prioritised remediation
-                plan, and the design fixes for the top blockers. Defensible if
-                you get a complaint. Done in 3 weeks.
-              </p>
-            </div>
-            <div className="md:col-span-4">
-              <dl className="space-y-3 text-[14px]" style={{ color: "var(--ink)" }}>
-                <div className="flex justify-between border-b border-black/20 pb-2">
-                  <dt className="font-mono-eyebrow">Deliverable</dt>
-                  <dd className="font-semibold">Audit + fixes</dd>
-                </div>
-                <div className="flex justify-between border-b border-black/20 pb-2">
-                  <dt className="font-mono-eyebrow">Turnaround</dt>
-                  <dd className="font-semibold">3 weeks</dd>
-                </div>
-                <div className="flex justify-between border-b border-black/20 pb-2">
-                  <dt className="font-mono-eyebrow">From</dt>
-                  <dd className="font-semibold">€4,800</dd>
-                </div>
-              </dl>
-              <a
-                href="mailto:hello@alexac.studio?subject=EAA%20audit"
-                className="focus-ring mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
-                style={{ backgroundColor: "var(--ink)", color: "var(--cream)" }}
-              >
-                Book an audit <span aria-hidden>→</span>
-              </a>
-            </div>
-          </div>
-        </motion.article>
-
-        {/* 3 cards */}
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {SERVICES.map((s, i) => (
-            <motion.article
-              key={s.eyebrow}
-              {...fadeUp}
-              transition={{ duration: 0.6, delay: 0.05 * i }}
-              className="flex flex-col rounded-2xl p-7"
-              style={{
-                backgroundColor: "var(--cream)",
-                border: "1px solid color-mix(in oklab, var(--ink) 10%, transparent)",
-              }}
-            >
-              <span
-                className="font-mono-eyebrow inline-block self-start rounded-full px-2.5 py-1"
-                style={{
-                  backgroundColor: "color-mix(in oklab, var(--ink) 6%, transparent)",
-                  color: "var(--ink)",
-                }}
-              >
-                {s.eyebrow}
-              </span>
-              <h3
-                className="font-display mt-4 text-2xl leading-tight"
-                dangerouslySetInnerHTML={{ __html: s.title }}
-              />
-              <p className="mt-3 text-[15px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
-                {s.body}
-              </p>
-              <dl className="mt-6 grid grid-cols-2 gap-3 border-t pt-4 text-[13px]"
-                  style={{ borderColor: "color-mix(in oklab, var(--ink) 10%, transparent)" }}>
-                <div>
-                  <dt className="font-mono-eyebrow opacity-70">Deliverable</dt>
-                  <dd className="mt-1 font-semibold">{s.deliverable}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono-eyebrow opacity-70">Turnaround</dt>
-                  <dd className="mt-1 font-semibold">{s.turnaround}</dd>
-                </div>
-              </dl>
-            </motion.article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- how it works ---------- */
-
-const STEPS = [
-  {
-    n: "01",
-    title: "Scope on a 20-min call",
-    body: "We agree the problem, the deliverable, and the price. Fixed scope, fixed fee.",
-  },
-  {
-    n: "02",
-    title: "I work. You get weekly Looms.",
-    body: "No slack pings, no status meetings. Async updates with the actual file attached.",
-  },
-  {
-    n: "03",
-    title: "Ship. Then a 30-day safety net.",
-    body: "One round of revisions baked in. Anything broken in 30 days, I fix.",
-  },
-];
-
-function HowItWorks({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section id="process" className="px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...fadeUp} className="mb-14 max-w-2xl">
-          <Eyebrow>How it works</Eyebrow>
-          <h2 className="font-display mt-3 text-4xl leading-tight md:text-5xl">
-            Three steps. Zero agency theatre.
-          </h2>
-        </motion.div>
-        <ol className="grid gap-8 md:grid-cols-3">
-          {STEPS.map((s, i) => (
-            <motion.li
-              key={s.n}
-              {...fadeUp}
-              transition={{ duration: 0.6, delay: 0.05 * i }}
-              className="relative"
-            >
-              <div
-                className="font-display text-6xl leading-none"
-                style={{
-                  backgroundImage: "var(--gradient-aurora)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent",
-                }}
-                aria-hidden
-              >
-                {s.n}
-              </div>
-              <h3 className="font-display mt-3 text-2xl">{s.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
-                {s.body}
-              </p>
-            </motion.li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- proof ---------- */
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Alexa rebuilt our checkout in 9 working days. Conversion up 18%, accessibility audit clean. Worth every euro.",
-    name: "Mira Lendell",
-    role: "Head of Product, Nordwind",
-  },
-  {
-    quote:
-      "She found 41 WCAG blockers our last agency missed and shipped fixes for the top 10 inside the same sprint.",
-    name: "Tomás Reis",
-    role: "VP Engineering, Pago",
-  },
-  {
-    quote:
-      "Senior, opinionated, and fast. Our design system finally has owners and a roadmap.",
-    name: "Hannah Okafor",
-    role: "Director of Design, Lumen Health",
-  },
-];
-
-function Proof({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section
-      className="px-6 py-24 md:py-32"
-      style={{ backgroundColor: "var(--cream-2)" }}
-    >
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...fadeUp} className="mb-12 flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-xl">
-            <Eyebrow>Proof</Eyebrow>
-            <h2 className="font-display mt-3 text-4xl leading-tight md:text-5xl">
-              Senior people, after the work shipped.
-            </h2>
-          </div>
-          <p className="font-mono-eyebrow" style={{ color: "var(--ink-soft)" }}>
-            ★ 4.9 avg · 47 completed projects
-          </p>
-        </motion.div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.figure
-              key={t.name}
-              {...fadeUp}
-              transition={{ duration: 0.6, delay: 0.05 * i }}
-              className="flex h-full flex-col rounded-2xl p-7"
-              style={{
-                backgroundColor: "var(--cream)",
-                border: "1px solid color-mix(in oklab, var(--ink) 10%, transparent)",
-              }}
-            >
-              <blockquote className="font-display text-[22px] leading-snug">
-                “{t.quote}”
-              </blockquote>
-              <figcaption className="mt-6 text-sm" style={{ color: "var(--ink-soft)" }}>
-                <div className="font-semibold" style={{ color: "var(--ink)" }}>{t.name}</div>
-                {t.role}
-              </figcaption>
-            </motion.figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- numbers ---------- */
-
-const STATS = [
-  { value: "15 yrs", label: "in design leadership" },
-  { value: "47", label: "shipped engagements" },
-  { value: "4.9★", label: "across 47 reviews" },
-  { value: "12M+", label: "users on shipped work" },
-];
-
-function Numbers({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section
-      aria-label="By the numbers"
-      className="px-6 py-20"
-      style={{ backgroundImage: "var(--gradient-aurora)", color: "var(--ink)" }}
-    >
-      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-4">
-        {STATS.map((s, i) => (
-          <motion.div key={s.label} {...fadeUp} transition={{ duration: 0.6, delay: 0.05 * i }}>
-            <div className="font-display text-5xl md:text-6xl">{s.value}</div>
-            <div className="mt-2 text-sm font-semibold" style={{ color: "var(--ink)" }}>
-              {s.label}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ---------- final CTA ---------- */
-
-function FinalCTA({ fadeUp }: { fadeUp: object }) {
-  return (
-    <section
-      className="relative overflow-hidden px-6 py-28 md:py-36"
-      style={{ backgroundColor: "var(--surface)", color: "var(--cream)" }}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-3xl"
-        style={{ backgroundImage: "var(--gradient-aurora)" }}
-      />
-      <motion.div {...fadeUp} className="relative mx-auto max-w-3xl text-center">
-        <span className="font-mono-eyebrow" style={{ color: "var(--aurora-3)" }}>
-          ● Open for Q3
-        </span>
-        <h2
-          className="font-display mt-5 text-[clamp(2.4rem,5vw,4.5rem)] leading-[1.05]"
-          style={{ color: "var(--cream)" }}
-        >
-          Let&apos;s build something that{" "}
-          <span className="aurora-text-block">ships.</span>
-        </h2>
-        <p
-          className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed"
-          style={{ color: "color-mix(in oklab, var(--cream) 78%, transparent)" }}
-        >
-          Tell me the problem in two sentences. I&apos;ll come back in 24h with
-          a scope, a price, and a date.
-        </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-          <PrimaryCTA href="mailto:hello@alexac.studio">
-            hello@alexac.studio
-          </PrimaryCTA>
-          <QuietLink href="https://www.fiverr.com/">Or browse my gigs on Fiverr</QuietLink>
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
-/* ---------- footer ---------- */
-
-function Footer() {
-  return (
-    <footer
-      className="px-6 py-10"
-      style={{
-        backgroundColor: "var(--ink)",
-        color: "color-mix(in oklab, var(--cream) 70%, transparent)",
-      }}
-    >
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 text-sm">
-        <Wordmark onDark />
-        <div className="flex flex-wrap items-center gap-6">
-          <a className="focus-ring hover:text-[color:var(--cream)]" href="mailto:hello@alexac.studio">
-            hello@alexac.studio
-          </a>
-          <a className="focus-ring hover:text-[color:var(--cream)]" href="https://www.fiverr.com/">
-            Fiverr
-          </a>
-          <a className="focus-ring hover:text-[color:var(--cream)]" href="https://www.linkedin.com/">
-            LinkedIn
-          </a>
-        </div>
-        <div className="font-mono-eyebrow">© {new Date().getFullYear()} Alexa C.</div>
-      </div>
-    </footer>
   );
 }
