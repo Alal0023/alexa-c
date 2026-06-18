@@ -384,7 +384,7 @@ function AuroraLanding() {
       </header>
 
       <div className="trust">
-        <div className="wrap row">
+        <div className="wrap row" data-stagger>
           <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
           <div className="item"><span className="d"></span> WCAG 2.1 AA &amp; <b>EAA</b> audits</div>
           <div className="item"><span className="d"></span> <b>Lovable</b> · Figma · Framer</div>
@@ -394,12 +394,12 @@ function AuroraLanding() {
 
       <section className="block" id="services">
         <div className="wrap">
-          <div className="shead">
+          <div className="shead" data-reveal>
             <span className="eyebrow">What sells in 2026</span>
-            <h2>Four gigs, <span className="grad">one specialist.</span></h2>
+            <h2 className="split-target">Four gigs, one specialist.</h2>
             <p>Each offer is scoped, fixed-price and shipped with accessibility built in — not bolted on at the end.</p>
           </div>
-          <div className="svc-grid">
+          <div className="svc-grid" data-stagger>
             <div className="svc">
               <div className="no grad-t">GIG A</div>
               <h3>Lovable &amp; AI app builds</h3>
@@ -435,12 +435,12 @@ function AuroraLanding() {
       <section className="block about" id="about">
         <div className="aura a1"></div>
         <div className="wrap grid">
-          <div className="portrait"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
-          <div>
+          <div className="portrait" data-reveal="left"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
+          <div data-reveal="right">
             <span className="eyebrow">Who I am</span>
-            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships <span className="grad">systems,</span> not screenshots.</h2>
+            <h2 className="split-target" style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design maturity and accessibility across global teams at Amazon. I turn brand rules into production-ready, compliant, interactive systems.</p>
-            <ul>
+            <ul data-stagger>
               <li><span className="n">A11Y</span><span className="t"><b>Raised accessibility coverage 80% → 95%</b> <span>across a multi-brand creative org.</span></span></li>
               <li><span className="n">EAA</span><span className="t"><b>Manual WCAG 2.1 AA &amp; EAA audits</b> <span>— not automated widgets that fail in court.</span></span></li>
               <li><span className="n">AI</span><span className="t"><b>AI-native prototyping &amp; code handoff</b> <span>via Lovable, Figma and Framer.</span></span></li>
@@ -451,12 +451,12 @@ function AuroraLanding() {
 
       <section className="block" id="process" style={{ background: "var(--surface-2)", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
         <div className="wrap">
-          <div className="shead">
+          <div className="shead" data-reveal>
             <span className="eyebrow">How it works</span>
-            <h2>From brief to <span className="grad">shipped.</span></h2>
+            <h2 className="split-target">From brief to shipped.</h2>
             <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
           </div>
-          <div className="proc-grid">
+          <div className="proc-grid" data-stagger>
             <div className="proc"><div className="pn grad">01</div><h4>Discover</h4><p>A short call to scope the goal, audience and success metric. You get a fixed quote and timeline.</p></div>
             <div className="proc"><div className="pn grad">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components — reviewed against a clear quality bar.</p></div>
             <div className="proc"><div className="pn grad">03</div><h4>Build</h4><p>Production-ready code or a hardened Lovable app, with accessibility verified before handoff.</p></div>
@@ -467,11 +467,11 @@ function AuroraLanding() {
 
       <section className="block proof" id="proof">
         <div className="wrap">
-          <div className="shead">
+          <div className="shead" data-reveal>
             <span className="eyebrow">Proof</span>
-            <h2>Buyers come back <span className="grad">for the rigour.</span></h2>
+            <h2 className="split-target">Buyers come back for the rigour.</h2>
           </div>
-          <div className="grid">
+          <div className="grid" data-stagger>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She resolved our EAA risk <em>and</em> sped up the build. We shipped compliant in a fortnight.”</div>
@@ -493,20 +493,20 @@ function AuroraLanding() {
 
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
-        <div className="wrap grid">
-          <div className="s"><div className="v grad">15</div><div className="l">Years in design</div></div>
-          <div className="s"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
-          <div className="s"><div className="v grad">4.9★</div><div className="l">Average rating</div></div>
-          <div className="s"><div className="v grad">10d</div><div className="l">From brief to MVP</div></div>
+        <div className="wrap grid" data-stagger>
+          <div className="s" data-reveal="count"><div className="v grad">15</div><div className="l">Years in design</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">4.9★</div><div className="l">Average rating</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">10d</div><div className="l">From brief to MVP</div></div>
         </div>
       </section>
 
       <section className="cta-final" id="contact">
         <div className="aura a1"></div>
         <div className="wrap">
-          <div className="cta-card">
+          <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">Open for Q3</span>
-            <h2>Let's build something <span className="grad">that ships.</span></h2>
+            <h2 className="split-target">Let's build something that ships.</h2>
             <p>Tell me what you're making. I'll come back with a fixed price, a timeline, and a plan to make it accessible and fast.</p>
             <div className="btns">
               <a href="mailto:hello@alexac.studio" className="btn grad alt-pa">hello@alexac.studio</a>
