@@ -59,7 +59,7 @@ const CSS = `
 .aurora-root .hero .pill{ display:inline-flex; align-items:center; gap:10px; padding:11px 22px; border-radius:100px;
   background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
   font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
-.aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad); }
+.aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad-tight); }
 .aurora-root .hero h1{ font-weight:800; font-size:88px; line-height:.95; letter-spacing:-.04em; margin:26px 0 0; }
 .aurora-root .hero p.lede{ font-size:24px; line-height:1.5; color:var(--muted); max-width:600px; margin:26px 0 0; font-weight:500; }
 .aurora-root .hero p.lede b{ color:var(--ink); font-weight:800; }
@@ -193,7 +193,7 @@ function AuroraLanding() {
 
       <nav>
         <div className="wrap row">
-          <div className="logo">Alexa <span className="grad">C.</span></div>
+          <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="menu">
             <a href="#services">Services</a>
             <a href="#about">About</a>
@@ -220,8 +220,8 @@ function AuroraLanding() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ top: "8%", right: "2%" }}><div className="v grad">95%</div><div className="l">A11y coverage</div></div>
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad">15 yrs</div><div className="l">Ex-Amazon lead</div></div>
+            <div className="badge" style={{ top: "8%", right: "2%" }}><div className="v grad-t">95%</div><div className="l">A11y coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">15 yrs</div><div className="l">Ex-Amazon lead</div></div>
           </div>
         </div>
       </header>
@@ -244,32 +244,32 @@ function AuroraLanding() {
           </div>
           <div className="svc-grid">
             <div className="svc">
-              <div className="no grad">GIG A</div>
+              <div className="no grad-t">GIG A</div>
               <h3>Lovable &amp; AI app builds</h3>
               <p>A working full-stack MVP with a real backend in days — not a clickable mockup. Vibe-coded, then hardened by a senior eye.</p>
               <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
-              <div className="hot grad">▲ excellent demand</div>
+              <div className="hot grad-t">▲ excellent demand</div>
             </div>
             <div className="svc">
-              <div className="no grad">GIG B</div>
+              <div className="no grad-t">GIG B</div>
               <h3>EAA &amp; WCAG audits</h3>
               <p>Manual, legal-grade accessibility audits with a prioritised fix list. The European Accessibility Act is now enforced — this is the 2026 goldmine.</p>
               <div className="meta"><div className="m"><div className="mv grad">AA / AAA</div><div className="ml">WCAG 2.1</div></div><div className="m"><div className="mv grad">5 days</div><div className="ml">Turnaround</div></div></div>
-              <div className="hot grad">▲ legally mandated</div>
+              <div className="hot grad-t">▲ legally mandated</div>
             </div>
             <div className="svc">
-              <div className="no grad">GIG C</div>
+              <div className="no grad-t">GIG C</div>
               <h3>AI-native product UX</h3>
               <p>Interfaces for agents and AI products — making automation feel controllable and trustworthy. The fastest-rising design niche of the year.</p>
               <div className="meta"><div className="m"><div className="mv grad">Agents</div><div className="ml">Specialism</div></div><div className="m"><div className="mv grad">Prototype</div><div className="ml">+ handoff</div></div></div>
-              <div className="hot grad">▲ fastest-rising</div>
+              <div className="hot grad-t">▲ fastest-rising</div>
             </div>
             <div className="svc">
-              <div className="no grad">GIG D</div>
+              <div className="no grad-t">GIG D</div>
               <h3>Design systems in code</h3>
               <p>Tokenised Figma → Framer / Webflow systems with accessibility built into every component, and docs your developers will actually use.</p>
               <div className="meta"><div className="m"><div className="mv grad">Tokens</div><div className="ml">Figma → code</div></div><div className="m"><div className="mv grad">Docs</div><div className="ml">Dev-ready</div></div></div>
-              <div className="hot grad">▲ compounding value</div>
+              <div className="hot grad-t">▲ compounding value</div>
             </div>
           </div>
         </div>
@@ -361,7 +361,7 @@ function AuroraLanding() {
 
       <footer>
         <div className="wrap row">
-          <div className="logo">Alexa <span className="grad">C.</span></div>
+          <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="links">
             <a href="#services">Services</a>
             <a href="#about">About</a>
