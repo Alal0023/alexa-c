@@ -240,7 +240,12 @@ function AuroraLanding() {
         <div className="wrap grid">
           <div>
             <span className="pill"><span className="dot"></span> Design systems · Accessibility · AI UX</span>
-            <h1>Compliant, conversion-ready design, <span className="grad">built in code.</span></h1>
+            <h1>
+              {"Compliant, conversion-ready design,".split(" ").map((w, i) => (
+                <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.08}s`, marginRight: "0.28em" }}>{w}</span>
+              ))}
+              <span className="grad word" style={{ animationDelay: "0.7s" }}>built in code.</span>
+            </h1>
             <p className="lede">Senior product design without the agency price tag. I turn brand rules into <b>production-ready, accessible systems</b> — and ship working AI apps while others are still in Figma.</p>
             <div className="btns">
               <a href="#contact" className="btn grad">Start a project →</a>
@@ -383,7 +388,7 @@ function AuroraLanding() {
             <h2>Let's build something <span className="grad">that ships.</span></h2>
             <p>Tell me what you're making. I'll come back with a fixed price, a timeline, and a plan to make it accessible and fast.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad">hello@alexac.studio</a>
+              <a href="mailto:hello@alexac.studio" className="btn grad alt-pa">hello@alexac.studio</a>
               <a href="#" className="btn ghost">See Fiverr profile →</a>
             </div>
           </div>
