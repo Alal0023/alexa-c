@@ -29,25 +29,27 @@ const CSS = `
   --bg:#0C0A18; --surface:#15122A; --surface-2:#120F24; --ink:#F3EEFF; --muted:#A99FC4;
   --line:#271F44; --line-soft:#1E1838; --radius:22px;
   --grad:linear-gradient(100deg,#FF6FD8,#9B5CFF 38%,#36E0C8 70%,#FFC24B);
+  --grad-tight:linear-gradient(100deg,#FF6FD8 0%,#C66CEA 50%,#9B5CFF 100%);
   --jakarta:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'Space Mono',monospace;
   --shadow:0 30px 70px -34px rgba(0,0,0,.7); --glow:0 0 70px rgba(155,92,255,.28);
   background:var(--bg); color:var(--ink); font-family:var(--jakarta);
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   min-height:100vh;
 }
 .aurora-root *,.aurora-root *::before,.aurora-root *::after{ box-sizing:border-box; }
 .aurora-root a{ color:inherit; text-decoration:none; }
 .aurora-root .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.aurora-root .grad-t{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
 .aurora-root .eyebrow{ font-family:var(--mono); font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 .aurora-root .aura{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.34; z-index:0; pointer-events:none; }
 
-.aurora-root nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(12,10,24,.72); border-bottom:1px solid var(--line); }
+.aurora-root nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(12,10,24,.85); border-bottom:1px solid var(--line); }
 .aurora-root nav .row{ display:flex; align-items:center; justify-content:space-between; height:78px; }
 .aurora-root nav .logo{ font-weight:800; font-size:24px; letter-spacing:-.02em; }
 .aurora-root nav .menu{ display:flex; gap:36px; font-size:16px; color:var(--muted); font-weight:600; }
 .aurora-root nav .menu a:hover{ color:var(--ink); }
-.aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad); color:#0C0A18; box-shadow:var(--shadow); }
+.aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad-tight); color:#0C0A18; box-shadow:var(--shadow); }
 
 .aurora-root .hero{ position:relative; overflow:hidden; padding:90px 0 70px; }
 .aurora-root .hero .aura.a1{ width:620px; height:620px; background:#7D5CFF; top:-200px; left:-160px; }
@@ -57,19 +59,19 @@ const CSS = `
 .aurora-root .hero .pill{ display:inline-flex; align-items:center; gap:10px; padding:11px 22px; border-radius:100px;
   background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
   font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
-.aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad); }
+.aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad-tight); }
 .aurora-root .hero h1{ font-weight:800; font-size:88px; line-height:.95; letter-spacing:-.04em; margin:26px 0 0; }
 .aurora-root .hero p.lede{ font-size:24px; line-height:1.5; color:var(--muted); max-width:600px; margin:26px 0 0; font-weight:500; }
 .aurora-root .hero p.lede b{ color:var(--ink); font-weight:800; }
 .aurora-root .hero .btns{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
 .aurora-root .btn{ font-weight:800; font-size:19px; padding:17px 34px; border-radius:100px; display:inline-flex; align-items:center; gap:10px; cursor:pointer; transition:transform .2s ease; }
 .aurora-root .btn:hover{ transform:translateY(-2px); }
-.aurora-root .btn.grad{ background:var(--grad); color:#0C0A18; box-shadow:var(--shadow); }
+.aurora-root .btn.grad{ background:var(--grad-tight); color:#0C0A18; box-shadow:var(--shadow); -webkit-background-clip:border-box; background-clip:border-box; }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
 .aurora-root .hero .vis{ position:relative; display:flex; align-items:center; justify-content:center; min-height:480px; }
-.aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1px solid rgba(155,92,255,.25); }
+.aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1px solid #37225C; }
 .aurora-root .hero .portrait{ width:400px; height:400px; border-radius:50%; object-fit:cover; object-position:center 18%;
-  position:relative; z-index:2; box-shadow:var(--shadow), var(--glow); border:2px solid rgba(155,92,255,.35); }
+  position:relative; z-index:2; box-shadow:var(--shadow), var(--glow); border:2px solid #37225C; }
 .aurora-root .hero .badge{ position:absolute; z-index:3; background:var(--surface); border:1px solid var(--line); border-radius:16px;
   padding:14px 18px; box-shadow:var(--shadow); }
 .aurora-root .hero .badge .v{ font-weight:800; font-size:26px; }
@@ -79,7 +81,7 @@ const CSS = `
 .aurora-root .trust .row{ display:flex; align-items:center; justify-content:space-between; gap:30px; padding:26px 0; flex-wrap:wrap; }
 .aurora-root .trust .item{ font-family:var(--mono); font-size:15px; letter-spacing:.04em; color:var(--muted); display:flex; align-items:center; gap:10px; }
 .aurora-root .trust .item b{ color:var(--ink); }
-.aurora-root .trust .item .d{ width:7px; height:7px; border-radius:50%; background:var(--grad); }
+.aurora-root .trust .item .d{ width:7px; height:7px; border-radius:50%; background:var(--grad-tight); }
 
 .aurora-root section.block{ position:relative; padding:104px 0; overflow:hidden; }
 .aurora-root .shead{ max-width:760px; margin-bottom:54px; }
@@ -104,7 +106,7 @@ const CSS = `
 .aurora-root .about .portrait img{ width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block; }
 .aurora-root .about ul{ list-style:none; padding:0; margin:28px 0 0; display:flex; flex-direction:column; gap:20px; }
 .aurora-root .about li{ display:grid; grid-template-columns:62px 1fr; gap:18px; align-items:start; }
-.aurora-root .about li .n{ font-family:var(--mono); font-size:13px; color:#0C0A18; background:var(--grad); border-radius:8px; padding:7px 0; text-align:center; letter-spacing:.04em; font-weight:700; }
+.aurora-root .about li .n{ font-family:var(--mono); font-size:13px; color:#0C0A18; background:var(--grad-tight); border-radius:8px; padding:7px 0; text-align:center; letter-spacing:.04em; font-weight:700; }
 .aurora-root .about li .t{ font-size:21px; line-height:1.45; }
 .aurora-root .about li .t b{ font-weight:700; }
 .aurora-root .about li .t span{ color:var(--muted); }
@@ -148,6 +150,24 @@ const CSS = `
 .aurora-root footer .links a:hover{ color:var(--ink); }
 .aurora-root footer .fine{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em; }
 
+@keyframes auroraFadeUp{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:none;} }
+.aurora-root .hero h1,.aurora-root .hero p.lede,.aurora-root .hero .pill,.aurora-root .hero .btns,.aurora-root .shead h2,.aurora-root .shead p,.aurora-root .cta-card h2,.aurora-root .cta-card p{
+  animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.aurora-root .hero p.lede{ animation-delay:.12s; }
+.aurora-root .hero .btns{ animation-delay:.22s; }
+.aurora-root .shead p{ animation-delay:.1s; }
+.aurora-root .hero .badge{ animation: auroraFadeUp 1s cubic-bezier(.2,.7,.2,1) both; }
+.aurora-root .hero .badge:nth-of-type(1){ animation-delay:.35s; }
+.aurora-root .hero .badge:nth-of-type(2){ animation-delay:.5s; }
+@media (prefers-reduced-motion: reduce){
+  .aurora-root *{ animation:none !important; transition:none !important; }
+}
+
+/* Swiss 12-col baseline grid alignment */
+.aurora-root .wrap{ display:block; }
+.aurora-root .hero .grid,.aurora-root .about .grid,.aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid,.aurora-root .trust .row{ column-gap:32px; }
+
 @media (max-width:980px){
   .aurora-root .wrap{ padding:0 28px; }
   .aurora-root .hero .grid,.aurora-root .about .grid{ grid-template-columns:1fr; }
@@ -173,7 +193,7 @@ function AuroraLanding() {
 
       <nav>
         <div className="wrap row">
-          <div className="logo">Alexa <span className="grad">C.</span></div>
+          <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="menu">
             <a href="#services">Services</a>
             <a href="#about">About</a>
@@ -200,8 +220,8 @@ function AuroraLanding() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ top: "8%", right: "2%" }}><div className="v grad">95%</div><div className="l">A11y coverage</div></div>
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad">15 yrs</div><div className="l">Ex-Amazon lead</div></div>
+            <div className="badge" style={{ top: "8%", right: "2%" }}><div className="v grad-t">95%</div><div className="l">A11y coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">15 yrs</div><div className="l">Ex-Amazon lead</div></div>
           </div>
         </div>
       </header>
@@ -224,32 +244,32 @@ function AuroraLanding() {
           </div>
           <div className="svc-grid">
             <div className="svc">
-              <div className="no grad">GIG A</div>
+              <div className="no grad-t">GIG A</div>
               <h3>Lovable &amp; AI app builds</h3>
               <p>A working full-stack MVP with a real backend in days — not a clickable mockup. Vibe-coded, then hardened by a senior eye.</p>
               <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
-              <div className="hot grad">▲ excellent demand</div>
+              <div className="hot grad-t">▲ excellent demand</div>
             </div>
             <div className="svc">
-              <div className="no grad">GIG B</div>
+              <div className="no grad-t">GIG B</div>
               <h3>EAA &amp; WCAG audits</h3>
               <p>Manual, legal-grade accessibility audits with a prioritised fix list. The European Accessibility Act is now enforced — this is the 2026 goldmine.</p>
               <div className="meta"><div className="m"><div className="mv grad">AA / AAA</div><div className="ml">WCAG 2.1</div></div><div className="m"><div className="mv grad">5 days</div><div className="ml">Turnaround</div></div></div>
-              <div className="hot grad">▲ legally mandated</div>
+              <div className="hot grad-t">▲ legally mandated</div>
             </div>
             <div className="svc">
-              <div className="no grad">GIG C</div>
+              <div className="no grad-t">GIG C</div>
               <h3>AI-native product UX</h3>
               <p>Interfaces for agents and AI products — making automation feel controllable and trustworthy. The fastest-rising design niche of the year.</p>
               <div className="meta"><div className="m"><div className="mv grad">Agents</div><div className="ml">Specialism</div></div><div className="m"><div className="mv grad">Prototype</div><div className="ml">+ handoff</div></div></div>
-              <div className="hot grad">▲ fastest-rising</div>
+              <div className="hot grad-t">▲ fastest-rising</div>
             </div>
             <div className="svc">
-              <div className="no grad">GIG D</div>
+              <div className="no grad-t">GIG D</div>
               <h3>Design systems in code</h3>
               <p>Tokenised Figma → Framer / Webflow systems with accessibility built into every component, and docs your developers will actually use.</p>
               <div className="meta"><div className="m"><div className="mv grad">Tokens</div><div className="ml">Figma → code</div></div><div className="m"><div className="mv grad">Docs</div><div className="ml">Dev-ready</div></div></div>
-              <div className="hot grad">▲ compounding value</div>
+              <div className="hot grad-t">▲ compounding value</div>
             </div>
           </div>
         </div>
@@ -341,7 +361,7 @@ function AuroraLanding() {
 
       <footer>
         <div className="wrap row">
-          <div className="logo">Alexa <span className="grad">C.</span></div>
+          <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="links">
             <a href="#services">Services</a>
             <a href="#about">About</a>
