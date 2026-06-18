@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import studioAsset from "../assets/alexa-studio.png.asset.json";
 import wideAsset from "../assets/alexa-wide.png.asset.json";
 
