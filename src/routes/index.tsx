@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import studioAsset from "../assets/alexa-studio.png.asset.json";
 import wideAsset from "../assets/alexa-wide.png.asset.json";
 
@@ -165,6 +166,15 @@ const CSS = `
 @keyframes auroraWordIn{ from{ opacity:0; transform:translateY(60%); filter:blur(8px);} to{ opacity:1; transform:none; filter:none;} }
 @keyframes auroraGradMove{ 0%,100%{ background-position:0% 50%;} 50%{ background-position:100% 50%;} }
 @keyframes auroraSheen{ 0%{ transform:translateX(-120%) skewX(-20deg);} 60%,100%{ transform:translateX(220%) skewX(-20deg);} }
+@keyframes auroraRiseBlur{ from{ opacity:0; transform:translateY(70px) scale(.96); filter:blur(14px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraSlideL{ from{ opacity:0; transform:translateX(-90px) rotate(-1.5deg);} to{ opacity:1; transform:none;} }
+@keyframes auroraSlideR{ from{ opacity:0; transform:translateX(90px) rotate(1.5deg);} to{ opacity:1; transform:none;} }
+@keyframes auroraZoomIn{ from{ opacity:0; transform:scale(.7) rotate(-4deg); filter:blur(12px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraTiltIn{ from{ opacity:0; transform:perspective(900px) rotateX(28deg) translateY(60px); transform-origin:50% 100%;} to{ opacity:1; transform:none;} }
+@keyframes auroraCharIn{ from{ opacity:0; transform:translateY(110%) rotate(8deg);} to{ opacity:1; transform:none;} }
+@keyframes auroraDrift{ 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(30px,-20px,0) scale(1.06);} }
+@keyframes auroraOrbit{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+@keyframes auroraCount{ from{ opacity:0; transform:translateY(40%) scale(.85);} to{ opacity:1; transform:none;} }
 
 .aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
 .aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
@@ -191,8 +201,55 @@ const CSS = `
 .aurora-root .stats .s .v{ transition: transform .3s ease, text-shadow .3s ease; }
 .aurora-root .stats .s:hover .v{ transform: scale(1.08); text-shadow: 0 0 30px rgba(155,92,255,.45); }
 
+/* --- Theatrical scroll reveals (page-wide) --- */
+.aurora-root [data-reveal]{ opacity:0; will-change:transform,opacity,filter; }
+.aurora-root [data-reveal].in-view{ animation: auroraRiseBlur 1.1s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="left"].in-view{ animation: auroraSlideL 1.05s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="right"].in-view{ animation: auroraSlideR 1.05s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="zoom"].in-view{ animation: auroraZoomIn 1.1s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="tilt"].in-view{ animation: auroraTiltIn 1.15s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="count"].in-view{ animation: auroraCount 1s cubic-bezier(.2,.75,.2,1) both; }
+
+/* Stagger children with data-stagger */
+.aurora-root [data-stagger] > *{ opacity:0; }
+.aurora-root [data-stagger].in-view > *{ animation: auroraRiseBlur .95s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-stagger].in-view > *:nth-child(1){ animation-delay:.05s; }
+.aurora-root [data-stagger].in-view > *:nth-child(2){ animation-delay:.18s; }
+.aurora-root [data-stagger].in-view > *:nth-child(3){ animation-delay:.31s; }
+.aurora-root [data-stagger].in-view > *:nth-child(4){ animation-delay:.44s; }
+.aurora-root [data-stagger].in-view > *:nth-child(5){ animation-delay:.57s; }
+.aurora-root [data-stagger].in-view > *:nth-child(6){ animation-delay:.7s; }
+
+/* Per-character split headlines */
+.aurora-root .split{ display:inline-block; }
+.aurora-root .split .ch{ display:inline-block; opacity:0; will-change:transform,opacity; white-space:pre; }
+.aurora-root .split.in-view .ch{ animation: auroraCharIn .8s cubic-bezier(.2,.75,.2,1) both; }
+
+/* Aurora blobs drift continuously for ambient motion everywhere */
+.aurora-root .aura{ animation: auroraDrift 14s ease-in-out infinite; }
+.aurora-root .aura.a2{ animation-duration:18s; animation-delay:-4s; }
+.aurora-root .aura.a3{ animation-duration:22s; animation-delay:-9s; }
+
+/* Hero rings get an orbital wrapper */
+.aurora-root .hero .vis::before{
+  content:""; position:absolute; width:680px; height:680px; border-radius:50%;
+  border:1px dashed rgba(155,92,255,.18);
+  animation: auroraOrbit 60s linear infinite;
+}
+
+/* Card hover gains a magnetic gradient outline */
+.aurora-root .svc, .aurora-root .proc, .aurora-root .quote{ position:relative; }
+.aurora-root .svc::before, .aurora-root .quote::before{
+  content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+  background:var(--grad); -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity .35s ease;
+  pointer-events:none;
+}
+.aurora-root .svc:hover::before, .aurora-root .quote:hover::before{ opacity:.7; }
+
 @media (prefers-reduced-motion: reduce){
   .aurora-root *{ animation:none !important; transition:none !important; }
+  .aurora-root [data-reveal], .aurora-root [data-stagger] > *, .aurora-root .split .ch{ opacity:1 !important; }
 }
 
 /* Swiss 12-col baseline grid alignment */
@@ -218,8 +275,72 @@ const CSS = `
 `;
 
 function AuroraLanding() {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    // Split headlines tagged with .split-target into per-char spans
+    root.querySelectorAll<HTMLElement>(".split-target").forEach((el) => {
+      if (el.dataset.split === "1") return;
+      el.dataset.split = "1";
+      const walk = (node: ChildNode) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent ?? "";
+          const frag = document.createDocumentFragment();
+          [...text].forEach((c, i) => {
+            const s = document.createElement("span");
+            s.className = "ch";
+            s.style.animationDelay = `${i * 0.025}s`;
+            s.textContent = c;
+            frag.appendChild(s);
+          });
+          node.parentNode?.replaceChild(frag, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          [...node.childNodes].forEach(walk);
+        }
+      };
+      [...el.childNodes].forEach(walk);
+      el.classList.add("split");
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    root
+      .querySelectorAll("[data-reveal], [data-stagger], .split")
+      .forEach((el) => io.observe(el));
+
+    // Parallax on aura blobs
+    const auras = root.querySelectorAll<HTMLElement>(".aura");
+    const onScroll = () => {
+      const y = window.scrollY;
+      auras.forEach((a, i) => {
+        const speed = (i % 3) * 0.06 + 0.04;
+        a.style.translate = `0 ${y * speed * -1}px`;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
-    <div className="aurora-root">
+    <div className="aurora-root" ref={rootRef}>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       <nav>
@@ -263,7 +384,7 @@ function AuroraLanding() {
       </header>
 
       <div className="trust">
-        <div className="wrap row">
+        <div className="wrap row" data-stagger>
           <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
           <div className="item"><span className="d"></span> WCAG 2.1 AA &amp; <b>EAA</b> audits</div>
           <div className="item"><span className="d"></span> <b>Lovable</b> · Figma · Framer</div>
@@ -273,12 +394,12 @@ function AuroraLanding() {
 
       <section className="block" id="services">
         <div className="wrap">
-          <div className="shead">
+          <div className="shead" data-reveal>
             <span className="eyebrow">What sells in 2026</span>
-            <h2>Four gigs, <span className="grad">one specialist.</span></h2>
+            <h2 className="split-target">Four gigs, one specialist.</h2>
             <p>Each offer is scoped, fixed-price and shipped with accessibility built in — not bolted on at the end.</p>
           </div>
-          <div className="svc-grid">
+          <div className="svc-grid" data-stagger>
             <div className="svc">
               <div className="no grad-t">GIG A</div>
               <h3>Lovable &amp; AI app builds</h3>
@@ -314,12 +435,12 @@ function AuroraLanding() {
       <section className="block about" id="about">
         <div className="aura a1"></div>
         <div className="wrap grid">
-          <div className="portrait"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
-          <div>
+          <div className="portrait" data-reveal="left"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
+          <div data-reveal="right">
             <span className="eyebrow">Who I am</span>
-            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships <span className="grad">systems,</span> not screenshots.</h2>
+            <h2 className="split-target" style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design maturity and accessibility across global teams at Amazon. I turn brand rules into production-ready, compliant, interactive systems.</p>
-            <ul>
+            <ul data-stagger>
               <li><span className="n">A11Y</span><span className="t"><b>Raised accessibility coverage 80% → 95%</b> <span>across a multi-brand creative org.</span></span></li>
               <li><span className="n">EAA</span><span className="t"><b>Manual WCAG 2.1 AA &amp; EAA audits</b> <span>— not automated widgets that fail in court.</span></span></li>
               <li><span className="n">AI</span><span className="t"><b>AI-native prototyping &amp; code handoff</b> <span>via Lovable, Figma and Framer.</span></span></li>
@@ -330,12 +451,12 @@ function AuroraLanding() {
 
       <section className="block" id="process" style={{ background: "var(--surface-2)", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
         <div className="wrap">
-          <div className="shead">
+          <div className="shead" data-reveal>
             <span className="eyebrow">How it works</span>
-            <h2>From brief to <span className="grad">shipped.</span></h2>
+            <h2 className="split-target">From brief to shipped.</h2>
             <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
           </div>
-          <div className="proc-grid">
+          <div className="proc-grid" data-stagger>
             <div className="proc"><div className="pn grad">01</div><h4>Discover</h4><p>A short call to scope the goal, audience and success metric. You get a fixed quote and timeline.</p></div>
             <div className="proc"><div className="pn grad">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components — reviewed against a clear quality bar.</p></div>
             <div className="proc"><div className="pn grad">03</div><h4>Build</h4><p>Production-ready code or a hardened Lovable app, with accessibility verified before handoff.</p></div>
@@ -346,11 +467,11 @@ function AuroraLanding() {
 
       <section className="block proof" id="proof">
         <div className="wrap">
-          <div className="shead">
+          <div className="shead" data-reveal>
             <span className="eyebrow">Proof</span>
-            <h2>Buyers come back <span className="grad">for the rigour.</span></h2>
+            <h2 className="split-target">Buyers come back for the rigour.</h2>
           </div>
-          <div className="grid">
+          <div className="grid" data-stagger>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She resolved our EAA risk <em>and</em> sped up the build. We shipped compliant in a fortnight.”</div>
@@ -372,20 +493,20 @@ function AuroraLanding() {
 
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
-        <div className="wrap grid">
-          <div className="s"><div className="v grad">15</div><div className="l">Years in design</div></div>
-          <div className="s"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
-          <div className="s"><div className="v grad">4.9★</div><div className="l">Average rating</div></div>
-          <div className="s"><div className="v grad">10d</div><div className="l">From brief to MVP</div></div>
+        <div className="wrap grid" data-stagger>
+          <div className="s" data-reveal="count"><div className="v grad">15</div><div className="l">Years in design</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">4.9★</div><div className="l">Average rating</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">10d</div><div className="l">From brief to MVP</div></div>
         </div>
       </section>
 
       <section className="cta-final" id="contact">
         <div className="aura a1"></div>
         <div className="wrap">
-          <div className="cta-card">
+          <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">Open for Q3</span>
-            <h2>Let's build something <span className="grad">that ships.</span></h2>
+            <h2 className="split-target">Let's build something that ships.</h2>
             <p>Tell me what you're making. I'll come back with a fixed price, a timeline, and a plan to make it accessible and fast.</p>
             <div className="btns">
               <a href="mailto:hello@alexac.studio" className="btn grad alt-pa">hello@alexac.studio</a>
