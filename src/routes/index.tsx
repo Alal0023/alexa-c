@@ -166,6 +166,15 @@ const CSS = `
 @keyframes auroraWordIn{ from{ opacity:0; transform:translateY(60%); filter:blur(8px);} to{ opacity:1; transform:none; filter:none;} }
 @keyframes auroraGradMove{ 0%,100%{ background-position:0% 50%;} 50%{ background-position:100% 50%;} }
 @keyframes auroraSheen{ 0%{ transform:translateX(-120%) skewX(-20deg);} 60%,100%{ transform:translateX(220%) skewX(-20deg);} }
+@keyframes auroraRiseBlur{ from{ opacity:0; transform:translateY(70px) scale(.96); filter:blur(14px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraSlideL{ from{ opacity:0; transform:translateX(-90px) rotate(-1.5deg);} to{ opacity:1; transform:none;} }
+@keyframes auroraSlideR{ from{ opacity:0; transform:translateX(90px) rotate(1.5deg);} to{ opacity:1; transform:none;} }
+@keyframes auroraZoomIn{ from{ opacity:0; transform:scale(.7) rotate(-4deg); filter:blur(12px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraTiltIn{ from{ opacity:0; transform:perspective(900px) rotateX(28deg) translateY(60px); transform-origin:50% 100%;} to{ opacity:1; transform:none;} }
+@keyframes auroraCharIn{ from{ opacity:0; transform:translateY(110%) rotate(8deg);} to{ opacity:1; transform:none;} }
+@keyframes auroraDrift{ 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(30px,-20px,0) scale(1.06);} }
+@keyframes auroraOrbit{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+@keyframes auroraCount{ from{ opacity:0; transform:translateY(40%) scale(.85);} to{ opacity:1; transform:none;} }
 
 .aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
 .aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
@@ -192,8 +201,55 @@ const CSS = `
 .aurora-root .stats .s .v{ transition: transform .3s ease, text-shadow .3s ease; }
 .aurora-root .stats .s:hover .v{ transform: scale(1.08); text-shadow: 0 0 30px rgba(155,92,255,.45); }
 
+/* --- Theatrical scroll reveals (page-wide) --- */
+.aurora-root [data-reveal]{ opacity:0; will-change:transform,opacity,filter; }
+.aurora-root [data-reveal].in-view{ animation: auroraRiseBlur 1.1s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="left"].in-view{ animation: auroraSlideL 1.05s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="right"].in-view{ animation: auroraSlideR 1.05s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="zoom"].in-view{ animation: auroraZoomIn 1.1s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="tilt"].in-view{ animation: auroraTiltIn 1.15s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-reveal="count"].in-view{ animation: auroraCount 1s cubic-bezier(.2,.75,.2,1) both; }
+
+/* Stagger children with data-stagger */
+.aurora-root [data-stagger] > *{ opacity:0; }
+.aurora-root [data-stagger].in-view > *{ animation: auroraRiseBlur .95s cubic-bezier(.2,.75,.2,1) both; }
+.aurora-root [data-stagger].in-view > *:nth-child(1){ animation-delay:.05s; }
+.aurora-root [data-stagger].in-view > *:nth-child(2){ animation-delay:.18s; }
+.aurora-root [data-stagger].in-view > *:nth-child(3){ animation-delay:.31s; }
+.aurora-root [data-stagger].in-view > *:nth-child(4){ animation-delay:.44s; }
+.aurora-root [data-stagger].in-view > *:nth-child(5){ animation-delay:.57s; }
+.aurora-root [data-stagger].in-view > *:nth-child(6){ animation-delay:.7s; }
+
+/* Per-character split headlines */
+.aurora-root .split{ display:inline-block; }
+.aurora-root .split .ch{ display:inline-block; opacity:0; will-change:transform,opacity; white-space:pre; }
+.aurora-root .split.in-view .ch{ animation: auroraCharIn .8s cubic-bezier(.2,.75,.2,1) both; }
+
+/* Aurora blobs drift continuously for ambient motion everywhere */
+.aurora-root .aura{ animation: auroraDrift 14s ease-in-out infinite; }
+.aurora-root .aura.a2{ animation-duration:18s; animation-delay:-4s; }
+.aurora-root .aura.a3{ animation-duration:22s; animation-delay:-9s; }
+
+/* Hero rings get an orbital wrapper */
+.aurora-root .hero .vis::before{
+  content:""; position:absolute; width:680px; height:680px; border-radius:50%;
+  border:1px dashed rgba(155,92,255,.18);
+  animation: auroraOrbit 60s linear infinite;
+}
+
+/* Card hover gains a magnetic gradient outline */
+.aurora-root .svc, .aurora-root .proc, .aurora-root .quote{ position:relative; }
+.aurora-root .svc::before, .aurora-root .quote::before{
+  content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+  background:var(--grad); -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity .35s ease;
+  pointer-events:none;
+}
+.aurora-root .svc:hover::before, .aurora-root .quote:hover::before{ opacity:.7; }
+
 @media (prefers-reduced-motion: reduce){
   .aurora-root *{ animation:none !important; transition:none !important; }
+  .aurora-root [data-reveal], .aurora-root [data-stagger] > *, .aurora-root .split .ch{ opacity:1 !important; }
 }
 
 /* Swiss 12-col baseline grid alignment */
