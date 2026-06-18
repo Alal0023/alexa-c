@@ -30,6 +30,10 @@ const CSS = `
   --line:#271F44; --line-soft:#1E1838; --radius:22px;
   --grad:linear-gradient(100deg,#FF6FD8,#9B5CFF 38%,#36E0C8 70%,#FFC24B);
   --grad-tight:linear-gradient(100deg,#FF6FD8 0%,#C66CEA 50%,#9B5CFF 100%);
+  --grad-pv:linear-gradient(100deg,#FF6FD8 0%,#9B5CFF 100%);
+  --grad-vt:linear-gradient(100deg,#9B5CFF 0%,#36E0C8 100%);
+  --grad-ta:linear-gradient(100deg,#36E0C8 0%,#FFC24B 100%);
+  --grad-pa:linear-gradient(100deg,#FF6FD8 0%,#FFC24B 100%);
   --jakarta:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'Space Mono',monospace;
   --shadow:0 30px 70px -34px rgba(0,0,0,.7); --glow:0 0 70px rgba(155,92,255,.28);
   background:var(--bg); color:var(--ink); font-family:var(--jakarta);
@@ -49,7 +53,8 @@ const CSS = `
 .aurora-root nav .logo{ font-weight:800; font-size:24px; letter-spacing:-.02em; }
 .aurora-root nav .menu{ display:flex; gap:36px; font-size:16px; color:var(--muted); font-weight:600; }
 .aurora-root nav .menu a:hover{ color:var(--ink); }
-.aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad-tight); color:#0C0A18; box-shadow:var(--shadow); }
+.aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad-vt); color:#0C0A18; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+.aurora-root nav .cta:hover{ transform:translateY(-2px); box-shadow:0 18px 36px -14px rgba(54,224,200,.5); }
 
 .aurora-root .hero{ position:relative; overflow:hidden; padding:90px 0 70px; }
 .aurora-root .hero .aura.a1{ width:620px; height:620px; background:#7D5CFF; top:-200px; left:-160px; }
@@ -66,12 +71,16 @@ const CSS = `
 .aurora-root .hero .btns{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
 .aurora-root .btn{ font-weight:800; font-size:19px; padding:17px 34px; border-radius:100px; display:inline-flex; align-items:center; gap:10px; cursor:pointer; transition:transform .2s ease; }
 .aurora-root .btn:hover{ transform:translateY(-2px); }
-.aurora-root .btn.grad{ background:var(--grad-tight); color:#0C0A18; box-shadow:var(--shadow); -webkit-background-clip:border-box; background-clip:border-box; }
+.aurora-root .btn.grad{ background:var(--grad-pv); color:#0C0A18; box-shadow:var(--shadow); background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root .btn.grad:hover{ background-position:100% 50%; transform:translateY(-3px); }
+.aurora-root .btn.grad.alt-vt{ background-image:var(--grad-vt); }
+.aurora-root .btn.grad.alt-pa{ background-image:var(--grad-pa); }
+.aurora-root .btn.grad.alt-ta{ background-image:var(--grad-ta); }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
 .aurora-root .hero .vis{ position:relative; display:flex; align-items:center; justify-content:center; min-height:480px; }
-.aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1px solid #37225C; }
+.aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1.5px solid #37225C; box-shadow:inset 0 0 0 0 transparent; }
 .aurora-root .hero .portrait{ width:400px; height:400px; border-radius:50%; object-fit:cover; object-position:center 18%;
-  position:relative; z-index:2; box-shadow:var(--shadow), var(--glow); border:2px solid #37225C; }
+  position:relative; z-index:2; box-shadow:var(--shadow); border:2px solid #37225C; }
 .aurora-root .hero .badge{ position:absolute; z-index:3; background:var(--surface); border:1px solid var(--line); border-radius:16px;
   padding:14px 18px; box-shadow:var(--shadow); }
 .aurora-root .hero .badge .v{ font-weight:800; font-size:26px; }
@@ -150,16 +159,38 @@ const CSS = `
 .aurora-root footer .links a:hover{ color:var(--ink); }
 .aurora-root footer .fine{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em; }
 
-@keyframes auroraFadeUp{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:none;} }
-.aurora-root .hero h1,.aurora-root .hero p.lede,.aurora-root .hero .pill,.aurora-root .hero .btns,.aurora-root .shead h2,.aurora-root .shead p,.aurora-root .cta-card h2,.aurora-root .cta-card p{
-  animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both;
-}
-.aurora-root .hero p.lede{ animation-delay:.12s; }
-.aurora-root .hero .btns{ animation-delay:.22s; }
-.aurora-root .shead p{ animation-delay:.1s; }
-.aurora-root .hero .badge{ animation: auroraFadeUp 1s cubic-bezier(.2,.7,.2,1) both; }
-.aurora-root .hero .badge:nth-of-type(1){ animation-delay:.35s; }
-.aurora-root .hero .badge:nth-of-type(2){ animation-delay:.5s; }
+@keyframes auroraFadeUp{ from{ opacity:0; transform:translateY(34px);} to{ opacity:1; transform:none;} }
+@keyframes auroraFloat{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-12px);} }
+@keyframes auroraPulseRing{ 0%,100%{ opacity:.55; transform:scale(1);} 50%{ opacity:1; transform:scale(1.02);} }
+@keyframes auroraWordIn{ from{ opacity:0; transform:translateY(60%); filter:blur(8px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraGradMove{ 0%,100%{ background-position:0% 50%;} 50%{ background-position:100% 50%;} }
+@keyframes auroraSheen{ 0%{ transform:translateX(-120%) skewX(-20deg);} 60%,100%{ transform:translateX(220%) skewX(-20deg);} }
+
+.aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
+.aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
+.aurora-root .hero p.lede{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) .9s both; }
+.aurora-root .hero .btns{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) 1.1s both; }
+.aurora-root .shead h2,.aurora-root .cta-card h2{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
+.aurora-root .shead p,.aurora-root .cta-card p{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) .18s both; }
+
+.aurora-root .hero .ring{ animation: auroraPulseRing 5s ease-in-out infinite; }
+.aurora-root .hero .ring:nth-of-type(2){ animation-delay:1.4s; }
+
+.aurora-root .hero .badge{ animation: auroraFadeUp 1s cubic-bezier(.2,.7,.2,1) 1.3s both, auroraFloat 5.5s ease-in-out 1.5s infinite; }
+.aurora-root .hero .badge:nth-of-type(2){ animation-delay: 1.5s, 1.8s; }
+
+.aurora-root .grad,.aurora-root .grad-t{ background-size:240% 100%; animation: auroraGradMove 7s ease-in-out infinite; }
+
+.aurora-root .btn.grad{ position:relative; overflow:hidden; }
+.aurora-root .btn.grad::after{ content:""; position:absolute; top:0; left:0; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent); transform:translateX(-120%) skewX(-20deg); animation: auroraSheen 3.6s ease-in-out infinite; pointer-events:none; }
+.aurora-root nav .cta{ position:relative; overflow:hidden; }
+.aurora-root nav .cta::after{ content:""; position:absolute; top:0; left:0; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent); transform:translateX(-120%) skewX(-20deg); animation: auroraSheen 4.2s ease-in-out 1s infinite; pointer-events:none; }
+
+.aurora-root .svc,.aurora-root .proc,.aurora-root .quote{ transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s ease, box-shadow .35s ease; }
+.aurora-root .svc:hover,.aurora-root .quote:hover,.aurora-root .proc:hover{ transform: translateY(-8px); box-shadow: 0 30px 60px -28px rgba(155,92,255,.45); border-color:#3a2e63; }
+.aurora-root .stats .s .v{ transition: transform .3s ease, text-shadow .3s ease; }
+.aurora-root .stats .s:hover .v{ transform: scale(1.08); text-shadow: 0 0 30px rgba(155,92,255,.45); }
+
 @media (prefers-reduced-motion: reduce){
   .aurora-root *{ animation:none !important; transition:none !important; }
 }
@@ -209,7 +240,12 @@ function AuroraLanding() {
         <div className="wrap grid">
           <div>
             <span className="pill"><span className="dot"></span> Design systems · Accessibility · AI UX</span>
-            <h1>Compliant, conversion-ready design, <span className="grad">built in code.</span></h1>
+            <h1>
+              {"Compliant, conversion-ready design,".split(" ").map((w, i) => (
+                <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.08}s`, marginRight: "0.28em" }}>{w}</span>
+              ))}
+              <span className="grad word" style={{ animationDelay: "0.7s" }}>built in code.</span>
+            </h1>
             <p className="lede">Senior product design without the agency price tag. I turn brand rules into <b>production-ready, accessible systems</b> — and ship working AI apps while others are still in Figma.</p>
             <div className="btns">
               <a href="#contact" className="btn grad">Start a project →</a>
@@ -352,7 +388,7 @@ function AuroraLanding() {
             <h2>Let's build something <span className="grad">that ships.</span></h2>
             <p>Tell me what you're making. I'll come back with a fixed price, a timeline, and a plan to make it accessible and fast.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad">hello@alexac.studio</a>
+              <a href="mailto:hello@alexac.studio" className="btn grad alt-pa">hello@alexac.studio</a>
               <a href="#" className="btn ghost">See Fiverr profile →</a>
             </div>
           </div>
