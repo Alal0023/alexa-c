@@ -189,17 +189,15 @@ const CSS = `
 .aurora-root .hero .badge{ animation: auroraFadeUp 1s cubic-bezier(.2,.7,.2,1) 1.3s both, auroraFloat 5.5s ease-in-out 1.5s infinite; }
 .aurora-root .hero .badge:nth-of-type(2){ animation-delay: 1.5s, 1.8s; }
 
-.aurora-root .grad,.aurora-root .grad-t{ background-size:240% 100%; animation: auroraGradMove 7s ease-in-out infinite; }
+/* Keep gradient text static so it never overrides word/reveal animations */
+.aurora-root .grad,.aurora-root .grad-t{ background-size:100% 100%; }
+/* Gradient word in hero needs BOTH the reveal animation and visible gradient */
+.aurora-root .word.grad{ animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; }
 
 .aurora-root .btn.grad{ position:relative; overflow:hidden; }
-.aurora-root .btn.grad::after{ content:""; position:absolute; top:0; left:0; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent); transform:translateX(-120%) skewX(-20deg); animation: auroraSheen 3.6s ease-in-out infinite; pointer-events:none; }
-.aurora-root nav .cta{ position:relative; overflow:hidden; }
-.aurora-root nav .cta::after{ content:""; position:absolute; top:0; left:0; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent); transform:translateX(-120%) skewX(-20deg); animation: auroraSheen 4.2s ease-in-out 1s infinite; pointer-events:none; }
 
 .aurora-root .svc,.aurora-root .proc,.aurora-root .quote{ transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s ease, box-shadow .35s ease; }
-.aurora-root .svc:hover,.aurora-root .quote:hover,.aurora-root .proc:hover{ transform: translateY(-8px); box-shadow: 0 30px 60px -28px rgba(155,92,255,.45); border-color:#3a2e63; }
-.aurora-root .stats .s .v{ transition: transform .3s ease, text-shadow .3s ease; }
-.aurora-root .stats .s:hover .v{ transform: scale(1.08); text-shadow: 0 0 30px rgba(155,92,255,.45); }
+.aurora-root .svc:hover,.aurora-root .quote:hover{ transform: translateY(-6px); box-shadow: 0 24px 50px -28px rgba(155,92,255,.35); border-color:#3a2e63; }
 
 /* --- Theatrical scroll reveals (page-wide) --- */
 .aurora-root [data-reveal]{ opacity:0; will-change:transform,opacity,filter; }
@@ -225,17 +223,10 @@ const CSS = `
 .aurora-root .split .ch{ display:inline-block; opacity:0; will-change:transform,opacity; white-space:pre; }
 .aurora-root .split.in-view .ch{ animation: auroraCharIn .8s cubic-bezier(.2,.75,.2,1) both; }
 
-/* Aurora blobs drift continuously for ambient motion everywhere */
-.aurora-root .aura{ animation: auroraDrift 14s ease-in-out infinite; }
-.aurora-root .aura.a2{ animation-duration:18s; animation-delay:-4s; }
-.aurora-root .aura.a3{ animation-duration:22s; animation-delay:-9s; }
-
-/* Hero rings get an orbital wrapper */
-.aurora-root .hero .vis::before{
-  content:""; position:absolute; width:680px; height:680px; border-radius:50%;
-  border:1px dashed rgba(155,92,255,.18);
-  animation: auroraOrbit 60s linear infinite;
-}
+/* Only the hero auras get a gentle drift — keeps the rest of the page calm */
+.aurora-root .hero .aura{ animation: auroraDrift 18s ease-in-out infinite; }
+.aurora-root .hero .aura.a2{ animation-duration:22s; animation-delay:-5s; }
+.aurora-root .hero .aura.a3{ animation-duration:26s; animation-delay:-11s; }
 
 /* Card hover gains a magnetic gradient outline */
 .aurora-root .svc, .aurora-root .proc, .aurora-root .quote{ position:relative; }
