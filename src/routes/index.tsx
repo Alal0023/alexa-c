@@ -272,30 +272,6 @@ function AuroraLanding() {
     const root = rootRef.current;
     if (!root) return;
 
-    // Split headlines tagged with .split-target into per-char spans
-    root.querySelectorAll<HTMLElement>(".split-target").forEach((el) => {
-      if (el.dataset.split === "1") return;
-      el.dataset.split = "1";
-      const walk = (node: ChildNode) => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          const text = node.textContent ?? "";
-          const frag = document.createDocumentFragment();
-          [...text].forEach((c, i) => {
-            const s = document.createElement("span");
-            s.className = "ch";
-            s.style.animationDelay = `${i * 0.025}s`;
-            s.textContent = c;
-            frag.appendChild(s);
-          });
-          node.parentNode?.replaceChild(frag, node);
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-          [...node.childNodes].forEach(walk);
-        }
-      };
-      [...el.childNodes].forEach(walk);
-      el.classList.add("split");
-    });
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -309,25 +285,10 @@ function AuroraLanding() {
     );
 
     root
-      .querySelectorAll("[data-reveal], [data-stagger], .split")
+      .querySelectorAll("[data-reveal], [data-stagger]")
       .forEach((el) => io.observe(el));
 
-    // Parallax on aura blobs
-    const auras = root.querySelectorAll<HTMLElement>(".aura");
-    const onScroll = () => {
-      const y = window.scrollY;
-      auras.forEach((a, i) => {
-        const speed = (i % 3) * 0.06 + 0.04;
-        a.style.translate = `0 ${y * speed * -1}px`;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    return () => {
-      io.disconnect();
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => { io.disconnect(); };
   }, []);
 
   return (
