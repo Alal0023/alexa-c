@@ -72,6 +72,7 @@ const CSS = `
   font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
 .aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad-tight); }
 .aurora-root .hero h1{ font-weight:800; font-size:64px; line-height:.98; letter-spacing:-.04em; margin:20px 0 0; }
+.aurora-root .hero h1 .word.grad{ line-height:1.12; padding-bottom:.06em; }
 .aurora-root .hero p.lede{ font-size:18px; line-height:1.5; color:var(--muted); max-width:560px; margin:18px 0 0; font-weight:500; }
 .aurora-root .hero p.lede b{ color:var(--ink); font-weight:800; }
 .aurora-root .hero .btns{ display:flex; gap:16px; margin-top:22px; flex-wrap:wrap; }
@@ -82,6 +83,10 @@ const CSS = `
 .aurora-root .btn.grad.alt-vt{ background-image:var(--grad-vt); }
 .aurora-root .btn.grad.alt-pa{ background-image:var(--grad-pa); }
 .aurora-root .btn.grad.alt-ta{ background-image:var(--grad-ta); }
+.aurora-root .proof-grid .proof-card .visit{ background:var(--grad-pv); }
+.aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-pa); }
+.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-ta); }
+.aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-vt); }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
 .aurora-root .hero .vis{ position:relative; display:flex; align-items:center; justify-content:center; min-height:480px; }
 .aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1.5px solid #37225C; box-shadow:inset 0 0 0 0 transparent; }
@@ -354,14 +359,14 @@ const CSS = `
 .aurora-root .proof-card .meta .ttl{ font-weight:800; font-size:15px; letter-spacing:-.01em; line-height:1.2; }
 .aurora-root .proof-card .meta .sub{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
 .aurora-root .proof-card .visit{ font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#0C0A18; padding:6px 10px; border-radius:100px; background:var(--grad-vt); font-weight:800; white-space:nowrap; }
-.aurora-root .proof-portfolio{ margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px 26px; background:var(--surface); border:1px solid var(--line); border-radius:18px; transition:border-color .25s ease, transform .25s ease; }
+.aurora-root .proof-portfolio{ margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px 16px 22px 26px; background:var(--surface); border:1px solid var(--line); border-radius:18px; transition:border-color .25s ease, transform .25s ease; }
 .aurora-root .proof-portfolio:hover{ border-color:#9B5CFF; transform:translateX(4px); }
 .aurora-root .proof-portfolio .l{ display:flex; flex-direction:column; gap:4px; }
 .aurora-root .proof-portfolio .l b{ font-weight:800; font-size:19px; }
 .aurora-root .proof-portfolio .l span{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
 @media (max-width:980px){ .aurora-root .proof-grid{ grid-template-columns:1fr 1fr; } }
 @media (max-width:560px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
-.aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); max-width:720px; }
+.aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
 
 /* Final CTA platform line */
@@ -454,13 +459,13 @@ function AuroraLanding() {
           <div className="row" aria-hidden="true">
             <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
             <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
-            <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
+            <div className="item"><span className="d"></span> <b>Lovable</b> · UX Pilot · Claude Code · React</div>
             <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
           </div>
           <div className="row">
             <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
             <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
-            <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
+            <div className="item"><span className="d"></span> <b>Lovable</b> · UX Pilot · Claude Code · React</div>
             <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
           </div>
         </div>
