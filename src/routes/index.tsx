@@ -922,16 +922,6 @@ function AuroraLandingInner() {
                   </div>
                 </a>
               ))}
-              <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
-                <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
-                <div className="meta">
-                  <div className="top">
-                    <div className="ttl">Full portfolio</div>
-                    <span className="visit">Visit →</span>
-                  </div>
-                  <div className="sub">alexandra-ciobanu.com</div>
-                </div>
-              </a>
             </Carousel>
           </div>
           <div className="proof-car-tablet tablet-car">
