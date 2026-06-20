@@ -488,6 +488,7 @@ const CSS = `
 
 function AuroraLanding() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -551,8 +552,26 @@ function AuroraLanding() {
             <a href="#contact">Contact</a>
           </div>
           <a href="#contact" className="cta">Start a project →</a>
+          <button className="hamb" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
         </div>
       </nav>
+
+      <div className={`drawer ${menuOpen ? "open" : ""}`} role="dialog" aria-modal="true" aria-hidden={!menuOpen}>
+        <div className="top">
+          <div className="logo" style={{ fontWeight: 800, fontSize: 22 }}>Alexa <span className="grad-t">C.</span></div>
+          <button className="close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>✕</button>
+        </div>
+        <div className="links">
+          <a href="#proof" onClick={() => setMenuOpen(false)}>Work</a>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        </div>
+        <a href="#contact" className="cta" onClick={() => setMenuOpen(false)}>Start a project →</a>
+      </div>
 
       <header className="hero">
         <div className="aura a1"></div><div className="aura a2"></div><div className="aura a3"></div>
