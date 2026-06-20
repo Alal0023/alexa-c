@@ -426,8 +426,7 @@ function AuroraLanding() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ top: "8%", right: "2%" }}><div className="v grad-t">95%</div><div className="l">A11y coverage</div></div>
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">15 yrs</div><div className="l">Ex-Amazon lead</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">5–10d</div><div className="l">Brief to shipped</div></div>
           </div>
         </div>
       </header>
@@ -609,9 +608,9 @@ function AuroraLanding() {
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
         <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
-          <div className="s" data-reveal="count"><div className="v grad">15</div><div className="l">Years in design leadership</div></div>
-          <div className="s" data-reveal="count"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
-          <div className="s" data-reveal="count"><div className="v grad">5–10d</div><div className="l">From brief to shipped</div></div>
+          <div className="s"><div className="v grad">15</div><div className="l">Years in design leadership</div></div>
+          <div className="s"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s"><div className="v grad">5–10d</div><div className="l">From brief to shipped</div></div>
         </div>
       </section>
 
