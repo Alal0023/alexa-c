@@ -449,6 +449,9 @@ const CSS = `
 /* How I Build pull-quote */
 .aurora-root .pullquote{ font-weight:700; font-size:28px; line-height:1.35; letter-spacing:-.01em; max-width:920px; border-left:3px solid; border-image:var(--grad-tight) 1; padding:6px 0 6px 26px; margin:0 0 18px; }
 
+/* Sync-pop: applies at all viewports so cards appear together */
+.aurora-root .pop-sync[data-stagger].in-view > *{ animation-delay:0s !important; }
+
 /* Connected process line */
 .aurora-root .proc-line{ position:relative; margin-top:36px; }
 .aurora-root .proc-line::before{
