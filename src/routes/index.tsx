@@ -588,9 +588,8 @@ function AuroraLanding() {
         <div className="wrap row">
           <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="links">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
             <a href="#proof">Work</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
