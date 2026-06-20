@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import studioAsset from "../assets/alexa-studio.png.asset.json";
 import wideAsset from "../assets/alexa-wide.png.asset.json";
+import sidneyAsset from "../assets/sidney.png.asset.json";
+import ryanAsset from "../assets/ryan.png.asset.json";
+import elodieAsset from "../assets/elodie.png.asset.json";
 
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
@@ -446,17 +449,17 @@ function AuroraLanding() {
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
-              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
+              <div className="who"><img src={sidneyAsset.url} alt="Sidney Levy" /><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
-              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
+              <div className="who"><img src={ryanAsset.url} alt="Ryan Schmidt" /><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
-              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
+              <div className="who"><img src={elodieAsset.url} alt="Elodie Fichet" /><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
             </div>
           </div>
         </div>
