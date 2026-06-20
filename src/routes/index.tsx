@@ -666,27 +666,55 @@ function AuroraLandingInner() {
         entries.forEach((e) => {
           if (!e.isIntersecting) return;
           const el = e.target as HTMLElement;
-          const target = parseFloat(el.dataset.countTo || "0");
           const suffix = el.dataset.countSuffix || "";
           const prefix = el.dataset.countPrefix || "";
           const duration = 1600;
-          const start = performance.now();
-          const isInt = Number.isInteger(target);
-          const tick = (now: number) => {
-            const p = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            const val = target * eased;
-            el.textContent = prefix + (isInt ? Math.round(val).toString() : val.toFixed(1)) + suffix;
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
+
+          if (el.dataset.countRange) {
+            const [low, high] = el.dataset.countRange.split(",").map((n) => parseInt(n, 10));
+            const phaseDur = duration / 2;
+            const run = (target: number, start: number, onDone: () => void) => {
+              const tick = (now: number) => {
+                const p = Math.min((now - start) / phaseDur, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                const val = Math.max(1, Math.round(target * eased));
+                el.textContent = val + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+                else onDone();
+              };
+              requestAnimationFrame(tick);
+            };
+            const s1 = performance.now();
+            run(low, s1, () => {
+              const s2 = performance.now();
+              run(high, s2, () => {
+                el.textContent = low + "–" + high + suffix;
+              });
+            });
+          } else {
+            const target = parseFloat(el.dataset.countTo || "0");
+            const start = performance.now();
+            const isInt = Number.isInteger(target);
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              const val = target * eased;
+              el.textContent = prefix + (isInt ? Math.round(val).toString() : val.toFixed(1)) + suffix;
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
           countIO.unobserve(el);
         });
       },
       { threshold: 0.5 }
     );
-    root.querySelectorAll<HTMLElement>("[data-count-to]").forEach((el) => {
-      el.textContent = (el.dataset.countPrefix || "") + "0" + (el.dataset.countSuffix || "");
+    root.querySelectorAll<HTMLElement>("[data-count-to], [data-count-range]").forEach((el) => {
+      if (el.dataset.countRange) {
+        el.textContent = "0" + (el.dataset.countSuffix || "");
+      } else {
+        el.textContent = (el.dataset.countPrefix || "") + "0" + (el.dataset.countSuffix || "");
+      }
       countIO.observe(el);
     });
 
