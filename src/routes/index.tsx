@@ -493,6 +493,40 @@ const CSS = `
 .aurora-root .platforms a{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800; }
 .aurora-root .cta-card .email-line{ display:block; margin-top:18px; font-size:15px; color:var(--muted); }
 .aurora-root .cta-card .email-line a{ color:var(--ink); border-bottom:1px solid var(--line); }
+
+/* Tablet carousels for specific sections */
+@media (max-width:980px) and (min-width:721px){
+  .aurora-root .tablet-car .mcar-track{
+    display:flex !important;
+    grid-template-columns:none !important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:16px !important;
+    padding:6px 12% 6px 0;
+    margin:0 -28px 0 0;
+    padding-left:0;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .aurora-root .tablet-car .mcar-track::-webkit-scrollbar{ display:none; }
+  .aurora-root .tablet-car .mcar-track > *{
+    flex:0 0 88%;
+    scroll-snap-align:start;
+    min-width:0;
+  }
+  .aurora-root .tablet-car .mcar-ctrl{
+    display:flex !important;
+    align-items:center;
+    gap:14px;
+    margin-top:22px;
+    max-width:100%;
+  }
+  .aurora-root .proof-car-desktop-mobile{ display:none; }
+  .aurora-root .stats .s .v{ font-size:48px; }
+}
+@media (max-width:720px), (min-width:981px){
+  .aurora-root .proof-car-tablet{ display:none; }
+}
 `;
 
 function AuroraLanding() {
@@ -514,21 +548,11 @@ function Carousel({
   const trackRef = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState(0);
   const [index, setIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 720px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     setCount(track.children.length);
-    if (!isMobile) return;
     const onScroll = () => {
       const first = track.children[0] as HTMLElement | undefined;
       if (!first) return;
@@ -538,7 +562,7 @@ function Carousel({
     };
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => track.removeEventListener("scroll", onScroll);
-  }, [isMobile, children]);
+  }, [children]);
 
   const go = (i: number) => {
     const track = trackRef.current;
@@ -744,23 +768,25 @@ function AuroraLandingInner() {
             <h2>Endorsed by design leaders at Amazon.</h2>
             <p>Professional recommendations, not client reviews — public, named, and checkable, since a new freelance profile doesn't have those yet.</p>
           </div>
-          <Carousel className="grid" stagger>
-            <div className="quote">
-              <div className="stars grad">★★★★★</div>
-              <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
-              <div className="who"><div className="ava"><img className="ava-sidney" src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
-            </div>
-            <div className="quote">
-              <div className="stars grad">★★★★★</div>
-              <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
-              <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
-            </div>
-            <div className="quote">
-              <div className="stars grad">★★★★★</div>
-              <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
-              <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
-            </div>
-          </Carousel>
+          <div className="tablet-car">
+            <Carousel className="grid" stagger>
+              <div className="quote">
+                <div className="stars grad">★★★★★</div>
+                <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
+                <div className="who"><div className="ava"><img className="ava-sidney" src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
+              </div>
+              <div className="quote">
+                <div className="stars grad">★★★★★</div>
+                <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
+                <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
+              </div>
+              <div className="quote">
+                <div className="stars grad">★★★★★</div>
+                <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
+                <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
+              </div>
+            </Carousel>
+          </div>
         </div>
       </section>
 
@@ -849,35 +875,58 @@ function AuroraLandingInner() {
             <h2>Don't take my word for it — open the build yourself.</h2>
             <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
           </div>
-          <Carousel className="proof-grid" stagger>
-            {[
-              { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
-              { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
-              { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" },
-              { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
-            ].map((p) => (
-              <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+          <div className="proof-car-desktop-mobile">
+            <Carousel className="proof-grid" stagger>
+              {[
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
+                { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
+                { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
+              ].map((p) => (
+                <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
+                  <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+                  <div className="meta">
+                    <div className="top">
+                      <div className="ttl">{p.title}</div>
+                      <span className="visit">Visit →</span>
+                    </div>
+                    <div className="sub">{p.sub}</div>
+                  </div>
+                </a>
+              ))}
+              <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
+                <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
                 <div className="meta">
                   <div className="top">
-                    <div className="ttl">{p.title}</div>
+                    <div className="ttl">Full portfolio</div>
                     <span className="visit">Visit →</span>
                   </div>
-                  <div className="sub">{p.sub}</div>
+                  <div className="sub">alexandra-ciobanu.com</div>
                 </div>
               </a>
-            ))}
-            <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
-              <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
-              <div className="meta">
-                <div className="top">
-                  <div className="ttl">Full portfolio</div>
-                  <span className="visit">Visit →</span>
-                </div>
-                <div className="sub">alexandra-ciobanu.com</div>
-              </div>
-            </a>
-          </Carousel>
+            </Carousel>
+          </div>
+          <div className="proof-car-tablet tablet-car">
+            <Carousel className="proof-grid" stagger>
+              {[
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
+                { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
+                { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
+              ].map((p) => (
+                <a key={`${p.url}-tablet`} className="proof-card" href={p.url} target="_blank" rel="noopener">
+                  <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+                  <div className="meta">
+                    <div className="top">
+                      <div className="ttl">{p.title}</div>
+                      <span className="visit">Visit →</span>
+                    </div>
+                    <div className="sub">{p.sub}</div>
+                  </div>
+                </a>
+              ))}
+            </Carousel>
+          </div>
           <a className="proof-portfolio" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" data-reveal>
             <span className="l"><b>Full portfolio — alexandra-ciobanu.com</b><span>Case studies, writing &amp; long-form work</span></span>
             <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-ap)", padding: "10px 20px", borderRadius: 100, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0 }}>Visit →</span>
