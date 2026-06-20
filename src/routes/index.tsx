@@ -801,7 +801,6 @@ function AuroraLandingInner() {
           <div className="tablet-car">
             <Carousel className="grid" stagger>
               <div className="quote">
-                <div className="stars grad">★★★★★</div>
                 <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
                 <div className="who"><div className="ava"><img className="ava-sidney" src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
               </div>
