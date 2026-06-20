@@ -431,13 +431,13 @@ function AuroraLanding() {
 
       <div className="trust">
         <div className="track">
-          <div className="row">
+          <div className="row" aria-hidden="true">
             <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
             <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
             <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
             <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
           </div>
-          <div className="row" aria-hidden="true">
+          <div className="row">
             <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
             <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
             <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
