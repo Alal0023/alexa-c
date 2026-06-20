@@ -97,7 +97,7 @@ const CSS = `
 .aurora-root .trust .item{ font-family:var(--mono); font-size:15px; letter-spacing:.04em; color:var(--muted); display:flex; align-items:center; gap:10px; flex-shrink:0; padding:0 40px; }
 .aurora-root .trust .item b{ color:var(--ink); }
 .aurora-root .trust .item .d{ width:7px; height:7px; border-radius:50%; background:var(--grad-tight); flex-shrink:0; }
-@keyframes trustScroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+@keyframes trustScroll{ from{ transform:translateX(-50%);} to{ transform:translateX(0);} }
 
 .aurora-root section.block{ position:relative; padding:104px 0; overflow:hidden; }
 .aurora-root .shead{ max-width:760px; margin-bottom:54px; }
