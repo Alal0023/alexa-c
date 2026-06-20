@@ -257,8 +257,7 @@ const CSS = `
 
 .aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
 .aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
-.aurora-root .hero p.lede{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) .9s both; }
-.aurora-root .hero .btns{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) 1.1s both; }
+.aurora-root .hero .hero-rest{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) .85s both; }
 .aurora-root .shead h2,.aurora-root .cta-card h2{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
 .aurora-root .shead p,.aurora-root .cta-card p{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) .18s both; }
 
