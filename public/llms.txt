@@ -1,0 +1,9 @@
+# Alexa C.
+
+> Senior designer and app developer building production-ready apps and landing pages for early-stage startups — accessible by default, shipped in 5–10 days.
+
+Ex-Amazon senior designer. Fixed price, manual WCAG 2.1/2.2 AA review on every build, real code (React + production stack) — no platform lock-in.
+
+## Pages
+
+- [Home](/): Services, process, pricing, FAQ, and contact.
