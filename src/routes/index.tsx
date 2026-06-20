@@ -202,7 +202,9 @@ const CSS = `
 .aurora-root .hero .badge:nth-of-type(2){ animation-delay: 1.5s, 1.8s; }
 
 /* Keep gradient text static so it never overrides word/reveal animations */
-.aurora-root .grad,.aurora-root .grad-t{ background-size:100% 100%; }
+.aurora-root .grad,.aurora-root .grad-t{ background-size:100% 100%; display:inline-block; transform:none !important; filter:none !important; }
+/* Hero animated gradient word is the one allowed exception */
+.aurora-root .hero h1 .word.grad{ transform:initial !important; filter:initial !important; }
 /* Gradient word in hero needs BOTH the reveal animation and visible gradient */
 .aurora-root .word.grad{ animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; }
 
