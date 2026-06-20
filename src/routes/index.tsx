@@ -400,17 +400,48 @@ const CSS = `
   .aurora-root .mcar-btn:disabled{ opacity:.35; }
   /* Hero: text first then image */
   .aurora-root .hero .vis{ order:1; margin-top:32px; }
+  /* Hero portrait constrained so it doesn't visually overflow */
+  .aurora-root .hero{ padding:36px 0 56px; }
+  .aurora-root .hero .vis{ min-height:340px; }
+  .aurora-root .hero .portrait{ width:240px !important; height:240px !important; }
+  .aurora-root .hero .ring{ display:none; }
+  .aurora-root .hero .badge{ padding:10px 14px; }
+  .aurora-root .hero .badge .v{ font-size:18px; }
   /* Stats: keep 3 columns on mobile, scale down */
-  .aurora-root .stats .grid{ grid-template-columns:repeat(3,1fr) !important; gap:14px !important; }
-  .aurora-root .stats .s .v{ font-size:38px; }
-  .aurora-root .stats .s .l{ font-size:12px; margin-top:8px; line-height:1.3; }
+  .aurora-root .stats{ padding:48px 0; }
+  .aurora-root .stats .grid{ grid-template-columns:repeat(3,1fr) !important; gap:10px !important; }
+  .aurora-root .stats .s .v{ font-size:30px !important; letter-spacing:-.02em; white-space:nowrap; }
+  .aurora-root .stats .s .l{ font-size:11px; margin-top:6px; line-height:1.3; }
   /* Tame oversized inline headings on mobile */
-  .aurora-root .about h2{ font-size:36px !important; line-height:1.05 !important; }
-  .aurora-root .about p{ font-size:17px !important; }
+  .aurora-root .about h2{ font-size:30px !important; line-height:1.08 !important; letter-spacing:-.02em !important; overflow-wrap:break-word; word-break:break-word; hyphens:auto; }
+  .aurora-root .about p{ font-size:16px !important; }
+  .aurora-root .about .portrait{ min-height:0 !important; max-height:60vh; aspect-ratio:4/5; }
+  .aurora-root .about .portrait img{ object-position:center 12%; }
+  .aurora-root .cell{ padding:22px; min-width:0; overflow:hidden; }
+  .aurora-root .cell h3{ font-size:18px; overflow-wrap:break-word; word-break:break-word; }
+  .aurora-root .cell p{ font-size:14px; overflow-wrap:break-word; word-break:break-word; }
+  /* Section rhythm: tighter, consistent vertical spacing on mobile */
+  .aurora-root section.block{ padding:48px 0 !important; }
+  .aurora-root .shead{ margin-bottom:28px; }
+  .aurora-root .shead h2{ font-size:34px !important; line-height:1.05; letter-spacing:-.02em; }
+  .aurora-root .shead p{ font-size:16px !important; }
+  .aurora-root .cta-final{ padding:56px 0 !important; }
+  .aurora-root .cta-card{ padding:36px 22px !important; }
+  .aurora-root .cta-card h2{ font-size:32px !important; line-height:1.05; }
+  .aurora-root .cta-card p{ font-size:16px !important; }
+  .aurora-root .pullquote{ font-size:19px; padding-left:18px; }
   /* Keep the connecting line behind the circles in carousel mode */
-  .aurora-root .proc-line::before{ display:block; top:44px; left:0; right:0; opacity:.55; }
+  .aurora-root .proc-line{ overflow:visible; }
+  .aurora-root .proc-line::before{ content:""; display:block !important; position:absolute; top:44px; left:6%; right:6%; height:3px; border-radius:3px; background:var(--grad); opacity:.85; z-index:1; }
   .aurora-root .proc-line .step{ position:relative; z-index:2; }
   .aurora-root .proc-line .step .circle{ background:var(--bg); }
+  /* Hide the 5th carousel card (Full portfolio) on mobile — keep only the rectangle below */
+  .aurora-root .proof-car-desktop-mobile .mcar-track > a:nth-child(5){ display:none !important; }
+  .aurora-root .proof-car-desktop-mobile .mcar-pip:nth-child(5){ display:none !important; }
+  /* Full portfolio rectangle: stack vertically for breathing room */
+  .aurora-root .proof-portfolio{ flex-direction:column; align-items:stretch; padding:24px 22px; gap:18px; text-align:left; }
+  .aurora-root .proof-portfolio .l b{ font-size:17px; line-height:1.25; }
+  .aurora-root .proof-portfolio .visit{ align-self:flex-start; padding:12px 22px !important; font-size:11px !important; }
   /* Sync-pop: cards animate together, not staggered */
   .aurora-root .pop-sync[data-stagger].in-view > *{ animation-delay:0s !important; }
 }
@@ -464,7 +495,6 @@ const CSS = `
 .aurora-root .proc-line .step h3{ font-weight:800; font-size:18px; margin:14px 0 6px; }
 .aurora-root .proc-line .step p{ font-size:14px; color:var(--muted); margin:0; line-height:1.45; max-width:200px; }
 @media (max-width:720px){
-  .aurora-root .proc-line::before{ display:none; }
   .aurora-root .proc-line .steps{ grid-template-columns:1fr 1fr; }
 }
 
