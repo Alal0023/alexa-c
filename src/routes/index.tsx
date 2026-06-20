@@ -708,8 +708,8 @@ function AuroraLanding() {
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
           <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
-          <div className="s"><div className="v stat-grad" data-count-to="15">15</div><div className="l">Years in design leadership</div></div>
-          <div className="s"><div className="v stat-grad" data-count-to="95" data-count-suffix="%">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s"><div className="v stat-grad" data-count-to="15">15</div><div className="l">15 years ex Amazon lead</div></div>
+          <div className="s"><div className="v stat-grad" data-count-to="95" data-count-suffix="%">95%</div><div className="l">95% a11y coverage</div></div>
           <div className="s"><div className="v stat-grad" data-count-to="10" data-count-prefix="5–" data-count-suffix="d">5–10d</div><div className="l">From brief to shipped</div></div>
         </div>
       </section>
