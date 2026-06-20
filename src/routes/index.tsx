@@ -10,6 +10,20 @@ import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
 
+const FAQS: [string, string][] = [
+  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
+  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
+  ["What's included in the price?", "For apps: design, full-stack build (real code, real database), an accessibility review, and handoff docs. For landing pages: design, build, an accessibility review, and a walkthrough so your team can run it after I'm gone."],
+  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. No surprise invoices in between — the price agreed on the discovery call is the price you pay."],
+  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
+  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
+  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I use AI tools to build faster, the way any senior engineer uses modern tooling — but nothing ships without me checking it line by line. Accessibility, code quality, and structure are all manually verified, not just generated and handed over."],
+  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
+  ["What happens after handoff?", "You get the code, documentation, and a walkthrough call. The product is yours — no lock-in, no required ongoing retainer (though I'm available if you want continued support)."],
+  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
+  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same fixed-price approach, same accessibility standard either way."],
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -18,13 +32,58 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alexa-c.lovable.app/" },
       { property: "og:image", content: studioAsset.url },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
       { name: "twitter:description", content: DESCRIPTION },
       { name: "twitter:image", content: studioAsset.url },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://alexa-c.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Alexa C.",
+          jobTitle: "Senior Designer & App Developer",
+          description: DESCRIPTION,
+          url: "https://alexa-c.lovable.app/",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map(([q, a]) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          provider: { "@type": "Person", name: "Alexa C." },
+          name: "Landing pages & apps, shipped in 5–10 days",
+          areaServed: "Worldwide",
+          description: DESCRIPTION,
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Offers",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apps" } },
+            ],
+          },
+        }),
+      },
+    ],
   }),
   component: AuroraLanding,
 });
@@ -137,7 +196,7 @@ const CSS = `
 .aurora-root .proc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; position:relative; z-index:2; }
 .aurora-root .proc{ background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:30px; }
 .aurora-root .proc .pn{ font-weight:800; font-size:40px; line-height:1; }
-.aurora-root .proc h4{ font-weight:700; font-size:22px; margin:18px 0 8px; letter-spacing:-.01em; }
+.aurora-root .proc h3{ font-weight:700; font-size:22px; margin:18px 0 8px; letter-spacing:-.01em; }
 .aurora-root .proc p{ font-size:16px; line-height:1.45; color:var(--muted); margin:0; font-weight:500; }
 
 .aurora-root .proof{ background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
@@ -213,7 +272,7 @@ const CSS = `
 .aurora-root .grad,.aurora-root .grad-t{ background-size:100% 100%; display:inline-block; }
 /* Never apply transforms/filters to gradient-clipped text — it renders as flipped/garbled glyphs on some GPUs */
 .aurora-root .stats .v.grad,
-.aurora-root .proc-line .step h4,
+.aurora-root .proc-line .step h3,
 .aurora-root .proc-line .step .circle{ transform:none !important; filter:none !important; }
 .aurora-root .stats [data-stagger].in-view > *{ animation:auroraFadeOnly .8s ease both; }
 .aurora-root .stats [data-stagger].in-view > *:nth-child(1){ animation-delay:.05s; }
@@ -307,7 +366,7 @@ const CSS = `
 /* 2x2 competency / approach grid */
 .aurora-root .grid-2x2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:32px; }
 .aurora-root .cell{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; }
-.aurora-root .cell h4{ font-weight:800; font-size:20px; margin:0 0 10px; letter-spacing:-.01em; }
+.aurora-root .cell h3{ font-weight:800; font-size:20px; margin:0 0 10px; letter-spacing:-.01em; }
 .aurora-root .cell p{ font-size:16px; line-height:1.5; color:var(--muted); margin:0; font-weight:500; }
 @media (max-width:720px){ .aurora-root .grid-2x2{ grid-template-columns:1fr; } }
 
@@ -342,7 +401,7 @@ const CSS = `
 .aurora-root .proc-line .steps{ position:relative; z-index:2; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
 .aurora-root .proc-line .step{ display:flex; flex-direction:column; align-items:center; text-align:center; }
 .aurora-root .proc-line .circle{ width:76px; height:76px; border-radius:50%; background:var(--bg); border:2px solid #37225C; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:800; font-size:20px; color:var(--ink); box-shadow:var(--shadow); }
-.aurora-root .proc-line .step h4{ font-weight:800; font-size:18px; margin:14px 0 6px; }
+.aurora-root .proc-line .step h3{ font-weight:800; font-size:18px; margin:14px 0 6px; }
 .aurora-root .proc-line .step p{ font-size:14px; color:var(--muted); margin:0; line-height:1.45; max-width:200px; }
 @media (max-width:720px){
   .aurora-root .proc-line::before{ display:none; }
@@ -375,20 +434,6 @@ const CSS = `
 .aurora-root .cta-card .email-line{ display:block; margin-top:18px; font-size:15px; color:var(--muted); }
 .aurora-root .cta-card .email-line a{ color:var(--ink); border-bottom:1px solid var(--line); }
 `;
-
-const FAQS: [string, string][] = [
-  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
-  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
-  ["What's included in the price?", "For apps: design, full-stack build (real code, real database), an accessibility review, and handoff docs. For landing pages: design, build, an accessibility review, and a walkthrough so your team can run it after I'm gone."],
-  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. No surprise invoices in between — the price agreed on the discovery call is the price you pay."],
-  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
-  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
-  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I use AI tools to build faster, the way any senior engineer uses modern tooling — but nothing ships without me checking it line by line. Accessibility, code quality, and structure are all manually verified, not just generated and handed over."],
-  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
-  ["What happens after handoff?", "You get the code, documentation, and a walkthrough call. The product is yours — no lock-in, no required ongoing retainer (though I'm available if you want continued support)."],
-  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
-  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same fixed-price approach, same accessibility standard either way."],
-];
 
 function AuroraLanding() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -511,10 +556,10 @@ function AuroraLanding() {
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
             <div className="grid-2x2" data-stagger>
-              <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
-              <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
-              <div className="cell"><h4 className="grad-t">Tools &amp; Stack</h4><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
-              <div className="cell"><h4 className="grad-t">Handoff Standards</h4><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
+              <div className="cell"><h3 className="grad-t">Accessibility Process</h3><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
+              <div className="cell"><h3 className="grad-t">Build Process</h3><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
+              <div className="cell"><h3 className="grad-t">Tools &amp; Stack</h3><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
+              <div className="cell"><h3 className="grad-t">Handoff Standards</h3><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
             </div>
           </div>
         </div>
@@ -599,10 +644,10 @@ function AuroraLanding() {
           </div>
           <p className="pullquote" data-reveal>I won't hand you an AI-generated export and disappear. Every build is mine — senior-reviewed, tested, and hardened before it ships. If I wouldn't put it in front of my own users, I won't put it in front of yours.</p>
           <div className="grid-2x2" data-stagger>
-            <div className="cell"><h4 className="grad-t">Build Process</h4><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
-            <div className="cell"><h4 className="grad-t">Accessibility &amp; Quality</h4><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
-            <div className="cell"><h4 className="grad-t">Handoff</h4><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
-            <div className="cell"><h4 className="grad-t">Tooling, named honestly</h4><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
+            <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
+            <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
+            <div className="cell"><h3 className="grad-t">Handoff</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
+            <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
           </div>
         </div>
       </section>
@@ -616,10 +661,10 @@ function AuroraLanding() {
           </div>
           <div className="proc-line">
             <div className="steps" data-stagger>
-              <div className="step"><div className="circle">01</div><h4>Discover</h4><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
-              <div className="step"><div className="circle">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components.</p></div>
-              <div className="step"><div className="circle">03</div><h4>Build</h4><p>Production-ready code, accessibility verified before handoff.</p></div>
-              <div className="step"><div className="circle">04</div><h4>Handoff</h4><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
+              <div className="step"><div className="circle">01</div><h3>Discover</h3><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
+              <div className="step"><div className="circle">02</div><h3>Design</h3><p>Systemised, accessible design in real tokens and components.</p></div>
+              <div className="step"><div className="circle">03</div><h3>Build</h3><p>Production-ready code, accessibility verified before handoff.</p></div>
+              <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
             </div>
           </div>
         </div>
