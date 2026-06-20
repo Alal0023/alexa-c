@@ -437,6 +437,7 @@ const CSS = `
   .aurora-root .proc-line .step .circle{ background:var(--bg); }
   /* Hide the 5th carousel card (Full portfolio) on mobile — keep only the rectangle below */
   .aurora-root .proof-car-desktop-mobile .mcar-track > a:nth-child(5){ display:none !important; }
+  .aurora-root .proof-car-desktop-mobile .mcar-pip:nth-child(5){ display:none !important; }
   /* Full portfolio rectangle: stack vertically for breathing room */
   .aurora-root .proof-portfolio{ flex-direction:column; align-items:stretch; padding:24px 22px; gap:18px; text-align:left; }
   .aurora-root .proof-portfolio .l b{ font-size:17px; line-height:1.25; }
