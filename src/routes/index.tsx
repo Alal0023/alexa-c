@@ -391,7 +391,7 @@ function AuroraLanding() {
               ))}
               <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
             </h1>
-            <p className="lede">Fifteen years in product design, including nearly a decade leading design at Amazon. I design and build <b>production-ready apps and landing pages</b> for early-stage startups and small businesses — real code, accessible by default. 5–10 days for a focused build — a single landing page, or an app with up to 5 core screens and one integration. Bigger scopes get a fixed quote on the same call, before anything starts.</p>
+            <p className="lede">I design and build <b>production-ready apps and landing pages</b> for early-stage startups and small businesses — real code, accessible by default. 5–10 days for a focused build (a landing page, or an app with up to 5 screens). Bigger scopes get a fixed quote on the same call.</p>
             <div className="btns">
               <a href="#contact" className="btn grad">Start a project →</a>
               <a href="#process" className="btn link">How it works ↓</a>
@@ -424,8 +424,7 @@ function AuroraLanding() {
           <div data-reveal="right">
             <span className="eyebrow">Who I am</span>
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
-            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design maturity and accessibility across global teams at Amazon. I turn brand rules into production-ready, compliant, interactive systems.</p>
-            <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in this industry taught me that the work matters less than whether people can trust you to finish it. I answer messages, I flag problems early instead of hiding them, and I don't take on more than I can actually deliver well.</p>
+            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
             <div className="grid-2x2" data-stagger>
               <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scan. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
               <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools (Lovable, Claude Code, UX Pilot) — every output reviewed and hardened by a senior eye before it ships.</p></div>
@@ -441,7 +440,7 @@ function AuroraLanding() {
           <div className="shead" data-reveal>
             <span className="eyebrow">Backed by people who'd know</span>
             <h2>Endorsed by design leaders at Amazon.</h2>
-            <p>Professional recommendations, not client reviews — public, named, and checkable. Included because a new freelance profile has no track record yet; these speak to who's actually behind it.</p>
+            <p>Professional recommendations, not client reviews — public, named, and checkable, since a new freelance profile doesn't have those yet.</p>
           </div>
           <div className="grid" data-stagger>
             <div className="quote">
@@ -546,7 +545,7 @@ function AuroraLanding() {
           <div className="shead" data-reveal>
             <span className="eyebrow">Proof of work</span>
             <h2>Don't take my word for it — open the build yourself.</h2>
-            <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end, from design system to encryption model. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
+            <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
           </div>
           <div className="proof-links" data-stagger>
             <a href="#" target="_blank" rel="noopener"><span>Vellum</span><span className="arrow">→</span></a>
