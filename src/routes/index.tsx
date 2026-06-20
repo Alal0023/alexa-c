@@ -514,21 +514,11 @@ function Carousel({
   const trackRef = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState(0);
   const [index, setIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 720px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     setCount(track.children.length);
-    if (!isMobile) return;
     const onScroll = () => {
       const first = track.children[0] as HTMLElement | undefined;
       if (!first) return;
@@ -538,7 +528,7 @@ function Carousel({
     };
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => track.removeEventListener("scroll", onScroll);
-  }, [isMobile, children]);
+  }, [children]);
 
   const go = (i: number) => {
     const track = trackRef.current;
