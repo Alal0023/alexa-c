@@ -352,7 +352,7 @@ const CSS = `
 @media (max-width:620px){
   .aurora-root nav .menu{ display:none; }
   .aurora-root nav .cta{ display:none; }
-  .aurora-root nav .hamb{ display:flex; }
+  .aurora-root nav .hamb{ display:flex !important; }
   .aurora-root .hero h1{ font-size:52px; }
   .aurora-root .hero .portrait{ width:300px; height:300px; }
 }
@@ -391,8 +391,9 @@ const CSS = `
     scroll-snap-align:start;
     min-width:0;
   }
-  .aurora-root .mcar-ctrl{ display:flex; align-items:center; gap:14px; margin-top:22px; }
+  .aurora-root .mcar-ctrl{ display:flex !important; align-items:center; gap:14px; margin-top:22px; max-width:100%; }
   .aurora-root .mcar-pips{ display:flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; background:var(--surface); border:1px solid var(--line); border-radius:100px; flex:1; min-height:38px; }
+  .aurora-root .mcar-pips{ min-width:0; }
   .aurora-root .mcar-pip{ width:6px; height:6px; border-radius:50%; background:var(--muted); opacity:.45; transition:width .3s ease, opacity .3s ease, background .3s ease; flex-shrink:0; }
   .aurora-root .mcar-pip.active{ width:24px; height:6px; border-radius:100px; background:var(--grad-tight); opacity:1; }
   .aurora-root .mcar-btn{ width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-family:var(--mono); }
@@ -403,11 +404,15 @@ const CSS = `
   .aurora-root .stats .grid{ grid-template-columns:repeat(3,1fr) !important; gap:14px !important; }
   .aurora-root .stats .s .v{ font-size:38px; }
   .aurora-root .stats .s .l{ font-size:12px; margin-top:8px; line-height:1.3; }
-  /* Project card: visit pill bottom-right of thumb */
-  .aurora-root .proof-card .thumb{ position:relative; }
-  .aurora-root .proof-card .visit-float{ display:inline-block; position:absolute; right:10px; bottom:10px; z-index:2; }
-  /* Process line: hide connecting bar in carousel mode */
-  .aurora-root .proc-line::before{ display:none; }
+  /* Tame oversized inline headings on mobile */
+  .aurora-root .about h2{ font-size:36px !important; line-height:1.05 !important; }
+  .aurora-root .about p{ font-size:17px !important; }
+  /* Keep the connecting line behind the circles in carousel mode */
+  .aurora-root .proc-line::before{ display:block; top:44px; left:0; right:0; opacity:.55; }
+  .aurora-root .proc-line .step{ position:relative; z-index:2; }
+  .aurora-root .proc-line .step .circle{ background:var(--bg); }
+  /* Sync-pop: cards animate together, not staggered */
+  .aurora-root .pop-sync[data-stagger].in-view > *{ animation-delay:0s !important; }
 }
 
 /* CTA microcopy + secondary text link */
