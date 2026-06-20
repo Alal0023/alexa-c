@@ -5,6 +5,7 @@ import wideAsset from "../assets/alexa-wide.png.asset.json";
 import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
+import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
@@ -48,6 +49,7 @@ const CSS = `
 .aurora-root a{ color:inherit; text-decoration:none; }
 .aurora-root .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .grad-t{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.aurora-root .stat-grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block; }
 .aurora-root .wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
 .aurora-root .eyebrow{ font-family:var(--mono); font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 .aurora-root .aura{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.34; z-index:0; pointer-events:none; }
@@ -187,6 +189,7 @@ const CSS = `
 @keyframes auroraDrift{ 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(30px,-20px,0) scale(1.06);} }
 @keyframes auroraOrbit{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
 @keyframes auroraCount{ from{ opacity:0; transform:translateY(40%) scale(.85);} to{ opacity:1; transform:none;} }
+@keyframes auroraFadeOnly{ from{ opacity:0;} to{ opacity:1;} }
 
 .aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
 .aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
@@ -207,6 +210,11 @@ const CSS = `
 .aurora-root .stats .v.grad,
 .aurora-root .proc-line .step h4,
 .aurora-root .proc-line .step .circle{ transform:none !important; filter:none !important; }
+.aurora-root .stats [data-stagger].in-view > *{ animation:auroraFadeOnly .8s ease both; }
+.aurora-root .stats [data-stagger].in-view > *:nth-child(1){ animation-delay:.05s; }
+.aurora-root .stats [data-stagger].in-view > *:nth-child(2){ animation-delay:.18s; }
+.aurora-root .stats [data-stagger].in-view > *:nth-child(3){ animation-delay:.31s; }
+.aurora-root .stats .v{ transform:none !important; filter:none !important; }
 /* Gradient word in hero needs BOTH the reveal animation and visible gradient */
 .aurora-root .word.grad{ animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; }
 
