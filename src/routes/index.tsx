@@ -483,7 +483,7 @@ function AuroraLanding() {
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
-              <div className="who"><div className="ava"><img src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
+              <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
