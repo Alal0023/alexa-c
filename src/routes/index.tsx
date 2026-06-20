@@ -565,8 +565,8 @@ function AuroraLanding() {
             <h2>From brief to shipped.</h2>
             <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
           </div>
-          <div className="proc-line" data-stagger>
-            <div className="steps">
+          <div className="proc-line">
+            <div className="steps" data-stagger>
               <div className="step"><div className="circle">01</div><h4>Discover</h4><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
               <div className="step"><div className="circle">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components.</p></div>
               <div className="step"><div className="circle">03</div><h4>Build</h4><p>Production-ready code, accessibility verified before handoff.</p></div>
