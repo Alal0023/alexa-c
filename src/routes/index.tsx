@@ -840,7 +840,7 @@ function AuroraLandingInner() {
             <h2>Don't take my word for it — open the build yourself.</h2>
             <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
           </div>
-          <div className="proof-grid" data-stagger>
+          <Carousel className="proof-grid" stagger>
             {[
               { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
               { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
@@ -848,7 +848,9 @@ function AuroraLandingInner() {
               { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
             ].map((p) => (
               <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
+                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true">
+                  <span className="visit visit-float">Visit →</span>
+                </span>
                 <div className="meta">
                   <div className="top">
                     <div className="ttl">{p.title}</div>
@@ -858,7 +860,19 @@ function AuroraLandingInner() {
                 </div>
               </a>
             ))}
-          </div>
+            <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
+              <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true">
+                <span className="visit visit-float">Visit →</span>
+              </span>
+              <div className="meta">
+                <div className="top">
+                  <div className="ttl">Full portfolio</div>
+                  <span className="visit">Visit →</span>
+                </div>
+                <div className="sub">alexandra-ciobanu.com</div>
+              </div>
+            </a>
+          </Carousel>
           <a className="proof-portfolio" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" data-reveal>
             <span className="l"><b>Full portfolio — alexandra-ciobanu.com</b><span>Case studies, writing &amp; long-form work</span></span>
             <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-ap)", padding: "8px 14px", borderRadius: 100, fontWeight: 800 }}>Visit →</span>
