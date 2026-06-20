@@ -513,10 +513,12 @@ function AuroraLanding() {
               ))}
               <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
             </h1>
-            <p className="lede">I build for early-stage startups and small businesses — real code, not mockups.</p>
-            <div className="btns">
-              <a href="#contact" className="btn grad">Start a project →</a>
-              <a href="#process" className="btn link">How it works ↓</a>
+            <div className="hero-rest">
+              <p className="lede">I build for early-stage startups and small businesses — real code, not mockups.</p>
+              <div className="btns">
+                <a href="#contact" className="btn grad">Start a project →</a>
+                <a href="#process" className="btn link">How it works ↓</a>
+              </div>
             </div>
           </div>
           <div className="vis">
