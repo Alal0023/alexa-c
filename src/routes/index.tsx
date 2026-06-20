@@ -352,7 +352,7 @@ const CSS = `
 @media (max-width:620px){
   .aurora-root nav .menu{ display:none; }
   .aurora-root nav .cta{ display:none; }
-  .aurora-root nav .hamb{ display:flex; }
+  .aurora-root nav .hamb{ display:flex !important; }
   .aurora-root .hero h1{ font-size:52px; }
   .aurora-root .hero .portrait{ width:300px; height:300px; }
 }
@@ -391,8 +391,9 @@ const CSS = `
     scroll-snap-align:start;
     min-width:0;
   }
-  .aurora-root .mcar-ctrl{ display:flex; align-items:center; gap:14px; margin-top:22px; }
+  .aurora-root .mcar-ctrl{ display:flex !important; align-items:center; gap:14px; margin-top:22px; max-width:100%; }
   .aurora-root .mcar-pips{ display:flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; background:var(--surface); border:1px solid var(--line); border-radius:100px; flex:1; min-height:38px; }
+  .aurora-root .mcar-pips{ min-width:0; }
   .aurora-root .mcar-pip{ width:6px; height:6px; border-radius:50%; background:var(--muted); opacity:.45; transition:width .3s ease, opacity .3s ease, background .3s ease; flex-shrink:0; }
   .aurora-root .mcar-pip.active{ width:24px; height:6px; border-radius:100px; background:var(--grad-tight); opacity:1; }
   .aurora-root .mcar-btn{ width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-family:var(--mono); }
@@ -403,11 +404,15 @@ const CSS = `
   .aurora-root .stats .grid{ grid-template-columns:repeat(3,1fr) !important; gap:14px !important; }
   .aurora-root .stats .s .v{ font-size:38px; }
   .aurora-root .stats .s .l{ font-size:12px; margin-top:8px; line-height:1.3; }
-  /* Project card: visit pill bottom-right of thumb */
-  .aurora-root .proof-card .thumb{ position:relative; }
-  .aurora-root .proof-card .visit-float{ display:inline-block; position:absolute; right:10px; bottom:10px; z-index:2; }
-  /* Process line: hide connecting bar in carousel mode */
-  .aurora-root .proc-line::before{ display:none; }
+  /* Tame oversized inline headings on mobile */
+  .aurora-root .about h2{ font-size:36px !important; line-height:1.05 !important; }
+  .aurora-root .about p{ font-size:17px !important; }
+  /* Keep the connecting line behind the circles in carousel mode */
+  .aurora-root .proc-line::before{ display:block; top:44px; left:0; right:0; opacity:.55; }
+  .aurora-root .proc-line .step{ position:relative; z-index:2; }
+  .aurora-root .proc-line .step .circle{ background:var(--bg); }
+  /* Sync-pop: cards animate together, not staggered */
+  .aurora-root .pop-sync[data-stagger].in-view > *{ animation-delay:0s !important; }
 }
 
 /* CTA microcopy + secondary text link */
@@ -443,6 +448,9 @@ const CSS = `
 
 /* How I Build pull-quote */
 .aurora-root .pullquote{ font-weight:700; font-size:28px; line-height:1.35; letter-spacing:-.01em; max-width:920px; border-left:3px solid; border-image:var(--grad-tight) 1; padding:6px 0 6px 26px; margin:0 0 18px; }
+
+/* Sync-pop: applies at all viewports so cards appear together */
+.aurora-root .pop-sync[data-stagger].in-view > *{ animation-delay:0s !important; }
 
 /* Connected process line */
 .aurora-root .proc-line{ position:relative; margin-top:36px; }
@@ -763,7 +771,7 @@ function AuroraLandingInner() {
             <h2>Two offers, fixed price.</h2>
             <p>Real code, accessibility built in, shipped in days — not months.</p>
           </div>
-          <Carousel className="svc-grid" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <Carousel className="svc-grid pop-sync" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
             <div className="svc">
               <div className="no grad-t">01 · LANDING PAGES</div>
               <h3>Landing Pages</h3>
@@ -849,9 +857,7 @@ function AuroraLandingInner() {
               { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
             ].map((p) => (
               <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true">
-                  <span className="visit visit-float">Visit →</span>
-                </span>
+                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
                 <div className="meta">
                   <div className="top">
                     <div className="ttl">{p.title}</div>
@@ -862,9 +868,7 @@ function AuroraLandingInner() {
               </a>
             ))}
             <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
-              <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true">
-                <span className="visit visit-float">Visit →</span>
-              </span>
+              <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
               <div className="meta">
                 <div className="top">
                   <div className="ttl">Full portfolio</div>
@@ -876,7 +880,7 @@ function AuroraLandingInner() {
           </Carousel>
           <a className="proof-portfolio" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" data-reveal>
             <span className="l"><b>Full portfolio — alexandra-ciobanu.com</b><span>Case studies, writing &amp; long-form work</span></span>
-            <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-ap)", padding: "8px 14px", borderRadius: 100, fontWeight: 800 }}>Visit →</span>
+            <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-ap)", padding: "10px 20px", borderRadius: 100, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0 }}>Visit →</span>
           </a>
           <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
         </div>
