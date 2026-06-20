@@ -750,8 +750,8 @@ function AuroraLandingInner() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">Apps</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">Landing Pages</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">15 years</div><div className="l">ex Amazon lead</div></div>
+            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">95%</div><div className="l">a11y coverage</div></div>
           </div>
         </div>
       </header>
