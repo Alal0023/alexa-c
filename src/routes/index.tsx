@@ -329,13 +329,26 @@ const CSS = `
 .aurora-root .cta-card .email-line a{ color:var(--ink); border-bottom:1px solid var(--line); }
 `;
 
+const FAQS: [string, string][] = [
+  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
+  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
+  ["What's included in the price?", "For apps: design, full-stack build (real code, real database), an accessibility review, and handoff docs. For landing pages: design, build, an accessibility review, and a walkthrough so your team can run it after I'm gone."],
+  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. No surprise invoices in between — the price agreed on the discovery call is the price you pay."],
+  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
+  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
+  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I use AI tools to build faster, the way any senior engineer uses modern tooling — but nothing ships without me checking it line by line. Accessibility, code quality, and structure are all manually verified, not just generated and handed over."],
+  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
+  ["What happens after handoff?", "You get the code, documentation, and a walkthrough call. The product is yours — no lock-in, no required ongoing retainer (though I'm available if you want continued support)."],
+  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
+  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same fixed-price approach, same accessibility standard either way."],
+];
+
 function AuroraLanding() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -347,11 +360,7 @@ function AuroraLanding() {
       },
       { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
     );
-
-    root
-      .querySelectorAll("[data-reveal], [data-stagger]")
-      .forEach((el) => io.observe(el));
-
+    root.querySelectorAll("[data-reveal], [data-stagger]").forEach((el) => io.observe(el));
     return () => { io.disconnect(); };
   }, []);
 
@@ -376,18 +385,19 @@ function AuroraLanding() {
         <div className="aura a1"></div><div className="aura a2"></div><div className="aura a3"></div>
         <div className="wrap grid">
           <div>
-            <span className="pill"><span className="dot"></span> Design systems · Accessibility · AI UX</span>
+            <span className="pill"><span className="dot"></span> Apps · Landing pages · Accessibility</span>
             <h1>
-              {"Compliant, conversion-ready design,".split(" ").map((w, i) => (
-                <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.08}s`, marginRight: "0.28em" }}>{w}</span>
+              {"A working app or landing page, live on your domain in".split(" ").map((w, i) => (
+                <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.06}s`, marginRight: "0.28em" }}>{w}</span>
               ))}
-              <span className="grad word" style={{ animationDelay: "0.7s" }}>built in code.</span>
+              <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
             </h1>
-            <p className="lede">Senior product design without the agency price tag. I turn brand rules into <b>production-ready, accessible systems</b> — and ship working AI apps while others are still in Figma.</p>
+            <p className="lede">Fifteen years in product design, including nearly a decade leading design at Amazon. I design and build <b>production-ready apps and landing pages</b> for early-stage startups and small businesses — real code, accessible by default. 5–10 days for a focused build — a single landing page, or an app with up to 5 core screens and one integration. Bigger scopes get a fixed quote on the same call, before anything starts.</p>
             <div className="btns">
               <a href="#contact" className="btn grad">Start a project →</a>
-              <a href="#services" className="btn ghost">View the gigs</a>
+              <a href="#process" className="btn link">How it works ↓</a>
             </div>
+            <span className="cta-sub">30 minutes, no pitch — we'll talk about what you're building and whether the timeline fits.</span>
           </div>
           <div className="vis">
             <div className="ring" style={{ width: 440, height: 440 }}></div>
@@ -402,51 +412,11 @@ function AuroraLanding() {
       <div className="trust">
         <div className="wrap row" data-stagger>
           <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
-          <div className="item"><span className="d"></span> WCAG 2.1 AA &amp; <b>EAA</b> audits</div>
-          <div className="item"><span className="d"></span> <b>Lovable</b> · Figma · Framer</div>
-          <div className="item"><span className="d"></span> <b>4.9★</b> across projects</div>
+          <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
+          <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
+          <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
         </div>
       </div>
-
-      <section className="block" id="services">
-        <div className="wrap">
-          <div className="shead" data-reveal>
-            <span className="eyebrow">What sells in 2026</span>
-            <h2 className="split-target">Four gigs, one specialist.</h2>
-            <p>Each offer is scoped, fixed-price and shipped with accessibility built in — not bolted on at the end.</p>
-          </div>
-          <div className="svc-grid" data-stagger>
-            <div className="svc">
-              <div className="no grad-t">GIG A</div>
-              <h3>Lovable &amp; AI app builds</h3>
-              <p>A working full-stack MVP with a real backend in days — not a clickable mockup. Vibe-coded, then hardened by a senior eye.</p>
-              <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
-              <div className="hot grad-t">▲ excellent demand</div>
-            </div>
-            <div className="svc">
-              <div className="no grad-t">GIG B</div>
-              <h3>EAA &amp; WCAG audits</h3>
-              <p>Manual, legal-grade accessibility audits with a prioritised fix list. The European Accessibility Act is now enforced — this is the 2026 goldmine.</p>
-              <div className="meta"><div className="m"><div className="mv grad">AA / AAA</div><div className="ml">WCAG 2.1</div></div><div className="m"><div className="mv grad">5 days</div><div className="ml">Turnaround</div></div></div>
-              <div className="hot grad-t">▲ legally mandated</div>
-            </div>
-            <div className="svc">
-              <div className="no grad-t">GIG C</div>
-              <h3>AI-native product UX</h3>
-              <p>Interfaces for agents and AI products — making automation feel controllable and trustworthy. The fastest-rising design niche of the year.</p>
-              <div className="meta"><div className="m"><div className="mv grad">Agents</div><div className="ml">Specialism</div></div><div className="m"><div className="mv grad">Prototype</div><div className="ml">+ handoff</div></div></div>
-              <div className="hot grad-t">▲ fastest-rising</div>
-            </div>
-            <div className="svc">
-              <div className="no grad-t">GIG D</div>
-              <h3>Design systems in code</h3>
-              <p>Tokenised Figma → Framer / Webflow systems with accessibility built into every component, and docs your developers will actually use.</p>
-              <div className="meta"><div className="m"><div className="mv grad">Tokens</div><div className="ml">Figma → code</div></div><div className="m"><div className="mv grad">Docs</div><div className="ml">Dev-ready</div></div></div>
-              <div className="hot grad-t">▲ compounding value</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="block about" id="about">
         <div className="aura a1"></div>
@@ -454,38 +424,24 @@ function AuroraLanding() {
           <div className="portrait" data-reveal="left"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
           <div data-reveal="right">
             <span className="eyebrow">Who I am</span>
-            <h2 className="split-target" style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
+            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design maturity and accessibility across global teams at Amazon. I turn brand rules into production-ready, compliant, interactive systems.</p>
-            <ul data-stagger>
-              <li><span className="n">A11Y</span><span className="t"><b>Raised accessibility coverage 80% → 95%</b> <span>across a multi-brand creative org.</span></span></li>
-              <li><span className="n">EAA</span><span className="t"><b>Manual WCAG 2.1 AA &amp; EAA audits</b> <span>— not automated widgets that fail in court.</span></span></li>
-              <li><span className="n">AI</span><span className="t"><b>AI-native prototyping &amp; code handoff</b> <span>via Lovable, Figma and Framer.</span></span></li>
-            </ul>
+            <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in this industry taught me that the work matters less than whether people can trust you to finish it. I answer messages, I flag problems early instead of hiding them, and I don't take on more than I can actually deliver well.</p>
+            <div className="grid-2x2" data-stagger>
+              <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scan. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
+              <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools (Lovable, Claude Code, UX Pilot) — every output reviewed and hardened by a senior eye before it ships.</p></div>
+              <div className="cell"><h4 className="grad-t">Tools &amp; Stack</h4><p>Real code, real database (React + production stack) — fully yours, no platform lock-in.</p></div>
+              <div className="cell"><h4 className="grad-t">Handoff Standards</h4><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="block" id="process" style={{ background: "var(--surface-2)", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
+      <section className="block proof" id="endorsed">
         <div className="wrap">
           <div className="shead" data-reveal>
-            <span className="eyebrow">How it works</span>
-            <h2 className="split-target">From brief to shipped.</h2>
-            <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
-          </div>
-          <div className="proc-grid" data-stagger>
-            <div className="proc"><div className="pn grad">01</div><h4>Discover</h4><p>A short call to scope the goal, audience and success metric. You get a fixed quote and timeline.</p></div>
-            <div className="proc"><div className="pn grad">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components — reviewed against a clear quality bar.</p></div>
-            <div className="proc"><div className="pn grad">03</div><h4>Build</h4><p>Production-ready code or a hardened Lovable app, with accessibility verified before handoff.</p></div>
-            <div className="proc"><div className="pn grad">04</div><h4>Handoff</h4><p>Docs, a fix list and a walkthrough so your team can run with it long after I'm gone.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="block proof" id="proof">
-        <div className="wrap">
-          <div className="shead" data-reveal>
-            <span className="eyebrow">Proof</span>
-            <h2 className="split-target">Buyers come back for the rigour.</h2>
+            <span className="eyebrow">Endorsed by</span>
+            <h2>Buyers come back for the rigour.</h2>
           </div>
           <div className="grid" data-stagger>
             <div className="quote">
@@ -507,13 +463,108 @@ function AuroraLanding() {
         </div>
       </section>
 
+      <section className="block" id="services">
+        <div className="wrap">
+          <div className="shead" data-reveal>
+            <span className="eyebrow">What I build</span>
+            <h2>Two offers, fixed price.</h2>
+            <p>Real code, accessibility built in, shipped in days — not months.</p>
+          </div>
+          <div className="svc-grid" data-stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+            <div className="svc">
+              <div className="no grad-t">01 · LANDING PAGES</div>
+              <h3>Landing Pages</h3>
+              <p>A single conversion-focused landing page — designed, built in real code, and shipped to your domain. Accessibility review included.</p>
+              <div className="price"><s>$750</s> <em>$450</em> <b>· founding client pricing</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">5 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">A11y</div><div className="ml">WCAG 2.2 AA</div></div></div>
+            </div>
+            <div className="svc">
+              <div className="no grad-t">02 · APPS</div>
+              <h3>Apps</h3>
+              <p>A full-stack app — up to 5 core screens and one integration. Real code, real database, accessibility built in, handoff docs included.</p>
+              <div className="price"><s>$1,500</s> <em>$900</em> <b>· founding client pricing</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
+            </div>
+          </div>
+          <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
+        </div>
+      </section>
+
+      <section className="block faq" id="faq">
+        <div className="wrap">
+          <div className="shead" data-reveal>
+            <span className="eyebrow">FAQ</span>
+            <h2>Questions, answered before you ask.</h2>
+          </div>
+          <div className="faq-list" data-stagger>
+            {FAQS.map(([q, a], i) => (
+              <details className="q" key={i}>
+                <summary>{q}</summary>
+                <div className="a">{a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="block" id="approach">
+        <div className="wrap">
+          <div className="shead" data-reveal>
+            <span className="eyebrow">The approach</span>
+            <h2>How I build.</h2>
+          </div>
+          <p className="pullquote" data-reveal>I won't hand you an AI-generated export and disappear. Every build is mine — senior-reviewed, tested, and hardened before it ships. If I wouldn't put it in front of my own users, I won't put it in front of yours.</p>
+          <div className="grid-2x2" data-stagger>
+            <div className="cell"><h4 className="grad-t">Build Process</h4><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
+            <div className="cell"><h4 className="grad-t">Accessibility &amp; Quality</h4><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
+            <div className="cell"><h4 className="grad-t">Handoff</h4><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
+            <div className="cell"><h4 className="grad-t">Tooling, named honestly</h4><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="block" id="process" style={{ background: "var(--surface-2)", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
+        <div className="wrap">
+          <div className="shead" data-reveal>
+            <span className="eyebrow">How it works</span>
+            <h2>From brief to shipped.</h2>
+            <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
+          </div>
+          <div className="proc-line" data-stagger>
+            <div className="steps">
+              <div className="step"><div className="circle">01</div><h4>Discover</h4><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
+              <div className="step"><div className="circle">02</div><h4>Design</h4><p>Systemised, accessible design in real tokens and components.</p></div>
+              <div className="step"><div className="circle">03</div><h4>Build</h4><p>Production-ready code, accessibility verified before handoff.</p></div>
+              <div className="step"><div className="circle">04</div><h4>Handoff</h4><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="block proof" id="proof">
+        <div className="wrap">
+          <div className="shead" data-reveal>
+            <span className="eyebrow">Proof of work</span>
+            <h2>Don't take my word for it — open the build yourself.</h2>
+            <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end, from design system to encryption model. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
+          </div>
+          <div className="proof-links" data-stagger>
+            <a href="#" target="_blank" rel="noopener"><span>Vellum</span><span className="arrow">→</span></a>
+            <a href="#" target="_blank" rel="noopener"><span>GOV.UK Prototype</span><span className="arrow">→</span></a>
+            <a href="#" target="_blank" rel="noopener"><span>Volley Landing Page</span><span className="arrow">→</span></a>
+            <a href="#" target="_blank" rel="noopener"><span>Volley Ads</span><span className="arrow">→</span></a>
+            <a href="https://alexandra-ciobanu.com" target="_blank" rel="noopener"><span>Full portfolio: alexandra-ciobanu.com</span><span className="arrow">→</span></a>
+          </div>
+          <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
+        </div>
+      </section>
+
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
-        <div className="wrap grid" data-stagger>
-          <div className="s" data-reveal="count"><div className="v grad">15</div><div className="l">Years in design</div></div>
+        <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+          <div className="s" data-reveal="count"><div className="v grad">15</div><div className="l">Years in design leadership</div></div>
           <div className="s" data-reveal="count"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
-          <div className="s" data-reveal="count"><div className="v grad">4.9★</div><div className="l">Average rating</div></div>
-          <div className="s" data-reveal="count"><div className="v grad">10d</div><div className="l">From brief to MVP</div></div>
+          <div className="s" data-reveal="count"><div className="v grad">5–10d</div><div className="l">From brief to shipped</div></div>
         </div>
       </section>
 
@@ -522,12 +573,13 @@ function AuroraLanding() {
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">Open for Q3</span>
-            <h2 className="split-target">Let's build something that ships.</h2>
-            <p>Tell me what you're making. I'll come back with a fixed price, a timeline, and a plan to make it accessible and fast.</p>
+            <h2>Let's build something that ships.</h2>
+            <p>One short call, a fixed price by the end of it, and a clear yes/no — no chasing, no pressure.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad alt-pa">hello@alexac.studio</a>
-              <a href="#" className="btn ghost">See Fiverr profile →</a>
+              <a href="mailto:hello@alexac.studio" className="btn grad">Start a project →</a>
             </div>
+            <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
+            <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a> — same process, same pricing, same standard.</p>
           </div>
         </div>
       </section>
@@ -541,7 +593,7 @@ function AuroraLanding() {
             <a href="#proof">Work</a>
             <a href="#contact">Contact</a>
           </div>
-          <div className="fine">© 2026 · Design Systems Studio · Remote</div>
+          <div className="fine">© 2026 Alexa C. — UK</div>
         </div>
       </footer>
     </div>
