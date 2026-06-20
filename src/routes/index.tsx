@@ -464,7 +464,6 @@ const CSS = `
 .aurora-root .proc-line .step h3{ font-weight:800; font-size:18px; margin:14px 0 6px; }
 .aurora-root .proc-line .step p{ font-size:14px; color:var(--muted); margin:0; line-height:1.45; max-width:200px; }
 @media (max-width:720px){
-  .aurora-root .proc-line::before{ display:none; }
   .aurora-root .proc-line .steps{ grid-template-columns:1fr 1fr; }
 }
 
