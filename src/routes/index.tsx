@@ -551,6 +551,11 @@ const CSS = `
     margin-top:22px;
     max-width:100%;
   }
+  .aurora-root .tablet-car .mcar-pips{ display:flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; background:var(--surface); border:1px solid var(--line); border-radius:100px; flex:1; min-height:38px; min-width:0; }
+  .aurora-root .tablet-car .mcar-pip{ width:6px; height:6px; border-radius:50%; background:var(--muted); opacity:.45; transition:width .3s ease, opacity .3s ease, background .3s ease; flex-shrink:0; }
+  .aurora-root .tablet-car .mcar-pip.active{ width:24px; height:6px; border-radius:100px; background:var(--grad-tight); opacity:1; }
+  .aurora-root .tablet-car .mcar-btn{ width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-family:var(--mono); }
+  .aurora-root .tablet-car .mcar-btn:disabled{ opacity:.35; }
   .aurora-root .proof-car-desktop-mobile{ display:none; }
   .aurora-root .stats .s .v{ font-size:48px; }
 }
