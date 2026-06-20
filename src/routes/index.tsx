@@ -408,7 +408,38 @@ function AuroraLanding() {
       { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
     );
     root.querySelectorAll("[data-reveal], [data-stagger]").forEach((el) => io.observe(el));
-    return () => { io.disconnect(); };
+
+    // Count-up animation for stats
+    const countIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          const target = parseFloat(el.dataset.countTo || "0");
+          const suffix = el.dataset.countSuffix || "";
+          const prefix = el.dataset.countPrefix || "";
+          const duration = 1600;
+          const start = performance.now();
+          const isInt = Number.isInteger(target);
+          const tick = (now: number) => {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const val = target * eased;
+            el.textContent = prefix + (isInt ? Math.round(val).toString() : val.toFixed(1)) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          countIO.unobserve(el);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    root.querySelectorAll<HTMLElement>("[data-count-to]").forEach((el) => {
+      el.textContent = (el.dataset.countPrefix || "") + "0" + (el.dataset.countSuffix || "");
+      countIO.observe(el);
+    });
+
+    return () => { io.disconnect(); countIO.disconnect(); };
   }, []);
 
   return (
