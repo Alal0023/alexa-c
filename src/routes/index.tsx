@@ -431,6 +431,7 @@ function AuroraLanding() {
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
             <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">5–10d</div><div className="l">Brief to shipped</div></div>
+            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">95%</div><div className="l">A11Y Coverage</div></div>
           </div>
         </div>
       </header>
