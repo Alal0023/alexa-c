@@ -142,6 +142,9 @@ const CSS = `
 .aurora-root .quote .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
 .aurora-root .quote .who .ava{ width:64px; height:64px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid var(--line); background:var(--surface-2); }
 .aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:30% 18%; transform:scale(1.9); transform-origin:30% 18%; display:block; }
+.aurora-root .quote .who .ava img.ava-sidney{ object-position:55% 5%; transform-origin:55% 5%; }
+.aurora-root .quote .who .ava img.ava-ryan{ object-position:40% 10%; transform-origin:40% 10%; }
+.aurora-root .quote .who .ava img.ava-elodie{ object-position:65% 5%; transform-origin:65% 5%; }
 .aurora-root .quote .who{ min-width:0; }
 .aurora-root .quote .who .nm{ min-width:0; }
 .aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
@@ -475,17 +478,17 @@ function AuroraLanding() {
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
-              <div className="who"><div className="ava"><img src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
+              <div className="who"><div className="ava"><img className="ava-sidney" src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
-              <div className="who"><div className="ava"><img src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
+              <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
-              <div className="who"><div className="ava"><img src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
+              <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
             </div>
           </div>
         </div>
