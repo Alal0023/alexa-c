@@ -60,7 +60,7 @@ const CSS = `
 .aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad-vt); color:#0C0A18; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
 .aurora-root nav .cta:hover{ transform:translateY(-2px); box-shadow:0 18px 36px -14px rgba(54,224,200,.5); }
 
-.aurora-root .hero{ position:relative; overflow:hidden; padding:44px 0 60px; }
+.aurora-root .hero{ position:relative; overflow:hidden; padding:64px 0 110px; }
 .aurora-root .hero .aura.a1{ width:620px; height:620px; background:#7D5CFF; top:-200px; left:-160px; }
 .aurora-root .hero .aura.a2{ width:540px; height:540px; background:#FF6FD8; top:-160px; right:-140px; }
 .aurora-root .hero .aura.a3{ width:520px; height:520px; background:#36E0C8; bottom:-260px; left:24%; opacity:.22; }
@@ -114,8 +114,8 @@ const CSS = `
 .aurora-root .svc .hot{ margin-top:auto; font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
 
 .aurora-root .about .aura.a1{ width:540px; height:540px; background:#9B5CFF; top:-120px; right:-160px; opacity:.22; }
-.aurora-root .about .grid{ position:relative; z-index:2; display:grid; grid-template-columns:.82fr 1.18fr; gap:62px; align-items:center; }
-.aurora-root .about .portrait{ border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); aspect-ratio:4/5; }
+.aurora-root .about .grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 1fr; gap:56px; align-items:stretch; }
+.aurora-root .about .portrait{ border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); align-self:stretch; min-height:100%; }
 .aurora-root .about .portrait img{ width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block; }
 .aurora-root .about ul{ list-style:none; padding:0; margin:28px 0 0; display:flex; flex-direction:column; gap:20px; }
 .aurora-root .about li{ display:grid; grid-template-columns:62px 1fr; gap:18px; align-items:start; }
@@ -138,7 +138,7 @@ const CSS = `
 .aurora-root .quote .q em{ font-style:normal; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .quote .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
 .aurora-root .quote .who .ava{ width:64px; height:64px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid var(--line); background:var(--surface-2); }
-.aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:center top; transform:scale(1.6); transform-origin:center 22%; display:block; }
+.aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:30% 18%; transform:scale(1.9); transform-origin:30% 18%; display:block; }
 .aurora-root .quote .who{ min-width:0; }
 .aurora-root .quote .who .nm{ min-width:0; }
 .aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
@@ -321,20 +321,22 @@ const CSS = `
 }
 
 /* Proof links */
-.aurora-root .proof-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:8px; }
+.aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
 .aurora-root .proof-card{ display:block; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .aurora-root .proof-card:hover{ border-color:#9B5CFF; transform:translateY(-4px); box-shadow:0 24px 50px -28px rgba(155,92,255,.45); }
-.aurora-root .proof-card .thumb{ aspect-ratio:16/10; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
-.aurora-root .proof-card .meta{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:18px 22px; }
-.aurora-root .proof-card .meta .ttl{ font-weight:800; font-size:19px; letter-spacing:-.01em; }
-.aurora-root .proof-card .meta .sub{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin-top:4px; }
-.aurora-root .proof-card .visit{ font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); padding:8px 14px; border-radius:100px; background:var(--grad-vt); color:#0C0A18; font-weight:800; white-space:nowrap; }
+.aurora-root .proof-card .thumb{ aspect-ratio:4/3; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
+.aurora-root .proof-card .meta{ display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; }
+.aurora-root .proof-card .meta .top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.aurora-root .proof-card .meta .ttl{ font-weight:800; font-size:15px; letter-spacing:-.01em; line-height:1.2; }
+.aurora-root .proof-card .meta .sub{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
+.aurora-root .proof-card .visit{ font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#0C0A18; padding:6px 10px; border-radius:100px; background:var(--grad-vt); font-weight:800; white-space:nowrap; }
 .aurora-root .proof-portfolio{ margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px 26px; background:var(--surface); border:1px solid var(--line); border-radius:18px; transition:border-color .25s ease, transform .25s ease; }
 .aurora-root .proof-portfolio:hover{ border-color:#9B5CFF; transform:translateX(4px); }
 .aurora-root .proof-portfolio .l{ display:flex; flex-direction:column; gap:4px; }
 .aurora-root .proof-portfolio .l b{ font-weight:800; font-size:19px; }
 .aurora-root .proof-portfolio .l span{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
-@media (max-width:720px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
+@media (max-width:980px){ .aurora-root .proof-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); max-width:720px; }
 .aurora-root .founding b{ color:var(--ink); }
 
@@ -571,10 +573,13 @@ function AuroraLanding() {
               { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/" },
             ].map((p) => (
               <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: `url(https://image.thum.io/get/width/900/crop/600/${p.shot})` }} aria-hidden="true"></span>
+                <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
                 <div className="meta">
-                  <div><div className="ttl">{p.title}</div><div className="sub">{p.sub}</div></div>
-                  <span className="visit">Visit →</span>
+                  <div className="top">
+                    <div className="ttl">{p.title}</div>
+                    <span className="visit">Visit →</span>
+                  </div>
+                  <div className="sub">{p.sub}</div>
                 </div>
               </a>
             ))}
