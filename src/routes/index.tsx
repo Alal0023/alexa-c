@@ -4,19 +4,19 @@ import studioAsset from "../assets/alexa-studio.png.asset.json";
 import wideAsset from "../assets/alexa-wide.png.asset.json";
 
 const DESCRIPTION =
-  "Senior product design without the agency price tag. Compliant, conversion-ready design — built in code. EAA & WCAG audits, AI-native UX, design systems.";
+  "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alexa C. — Compliant, conversion-ready design, built in code." },
+      { title: "Alexa C. — Apps & landing pages, live in 5–10 days." },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "Alexa C. — Senior Design Lead" },
+      { property: "og:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:image", content: studioAsset.url },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Alexa C. — Senior Design Lead" },
+      { name: "twitter:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
       { name: "twitter:description", content: DESCRIPTION },
       { name: "twitter:image", content: studioAsset.url },
     ],
