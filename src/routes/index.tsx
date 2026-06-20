@@ -622,11 +622,11 @@ function AuroraLanding() {
 
       <section className="block faq" id="faq">
         <div className="wrap">
-          <div className="shead" data-reveal>
+          <div className="shead">
             <span className="eyebrow">FAQ</span>
             <h2>Questions, answered before you ask.</h2>
           </div>
-          <div className="faq-list" data-stagger>
+          <div className="faq-list">
             {FAQS.map(([q, a], i) => (
               <details className="q" key={i}>
                 <summary>{q}</summary>
