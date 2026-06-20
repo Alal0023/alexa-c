@@ -10,6 +10,20 @@ import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
 
+const FAQS: [string, string][] = [
+  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
+  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
+  ["What's included in the price?", "For apps: design, full-stack build (real code, real database), an accessibility review, and handoff docs. For landing pages: design, build, an accessibility review, and a walkthrough so your team can run it after I'm gone."],
+  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. No surprise invoices in between — the price agreed on the discovery call is the price you pay."],
+  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
+  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
+  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I use AI tools to build faster, the way any senior engineer uses modern tooling — but nothing ships without me checking it line by line. Accessibility, code quality, and structure are all manually verified, not just generated and handed over."],
+  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
+  ["What happens after handoff?", "You get the code, documentation, and a walkthrough call. The product is yours — no lock-in, no required ongoing retainer (though I'm available if you want continued support)."],
+  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
+  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same fixed-price approach, same accessibility standard either way."],
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -420,20 +434,6 @@ const CSS = `
 .aurora-root .cta-card .email-line{ display:block; margin-top:18px; font-size:15px; color:var(--muted); }
 .aurora-root .cta-card .email-line a{ color:var(--ink); border-bottom:1px solid var(--line); }
 `;
-
-const FAQS: [string, string][] = [
-  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
-  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
-  ["What's included in the price?", "For apps: design, full-stack build (real code, real database), an accessibility review, and handoff docs. For landing pages: design, build, an accessibility review, and a walkthrough so your team can run it after I'm gone."],
-  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. No surprise invoices in between — the price agreed on the discovery call is the price you pay."],
-  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
-  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
-  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I use AI tools to build faster, the way any senior engineer uses modern tooling — but nothing ships without me checking it line by line. Accessibility, code quality, and structure are all manually verified, not just generated and handed over."],
-  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
-  ["What happens after handoff?", "You get the code, documentation, and a walkthrough call. The product is yours — no lock-in, no required ongoing retainer (though I'm available if you want continued support)."],
-  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
-  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same fixed-price approach, same accessibility standard either way."],
-];
 
 function AuroraLanding() {
   const rootRef = useRef<HTMLDivElement>(null);
