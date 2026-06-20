@@ -1,5 +1,3 @@
-  .aurora-root .proof-car-desktop-mobile .mcar-track > a:nth-child(5){ display:none !important; }
-  .aurora-root .proof-car-desktop-mobile .mcar-pip:nth-child(5){ display:none !important; }
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import studioAsset from "../assets/alexa-studio.png.asset.json";
