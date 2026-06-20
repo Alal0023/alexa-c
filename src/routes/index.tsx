@@ -718,12 +718,12 @@ function AuroraLandingInner() {
             <span className="eyebrow">Who I am</span>
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
-            <div className="grid-2x2" data-stagger>
+            <Carousel className="grid-2x2" stagger>
               <div className="cell"><h3 className="grad-t">Accessibility Process</h3><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
               <div className="cell"><h3 className="grad-t">Build Process</h3><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
               <div className="cell"><h3 className="grad-t">Tools &amp; Stack</h3><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
               <div className="cell"><h3 className="grad-t">Handoff Standards</h3><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
-            </div>
+            </Carousel>
           </div>
         </div>
       </section>
@@ -735,7 +735,7 @@ function AuroraLandingInner() {
             <h2>Endorsed by design leaders at Amazon.</h2>
             <p>Professional recommendations, not client reviews — public, named, and checkable, since a new freelance profile doesn't have those yet.</p>
           </div>
-          <div className="grid" data-stagger>
+          <Carousel className="grid" stagger>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
@@ -751,7 +751,7 @@ function AuroraLandingInner() {
               <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
               <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
             </div>
-          </div>
+          </Carousel>
         </div>
       </section>
 
@@ -762,7 +762,7 @@ function AuroraLandingInner() {
             <h2>Two offers, fixed price.</h2>
             <p>Real code, accessibility built in, shipped in days — not months.</p>
           </div>
-          <div className="svc-grid" data-stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <Carousel className="svc-grid" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
             <div className="svc">
               <div className="no grad-t">01 · LANDING PAGES</div>
               <h3>Landing Pages</h3>
@@ -777,7 +777,7 @@ function AuroraLandingInner() {
               <div className="price"><s>$1,500</s> <em>$900</em> <b>· founding client pricing</b></div>
               <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
             </div>
-          </div>
+          </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
         </div>
       </section>
@@ -806,12 +806,12 @@ function AuroraLandingInner() {
             <h2>How I build.</h2>
           </div>
           <p className="pullquote" data-reveal>I won't hand you an AI-generated export and disappear. Every build is mine — senior-reviewed, tested, and hardened before it ships. If I wouldn't put it in front of my own users, I won't put it in front of yours.</p>
-          <div className="grid-2x2" data-stagger>
+          <Carousel className="grid-2x2" stagger>
             <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
             <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
             <div className="cell"><h3 className="grad-t">Handoff</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
             <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
-          </div>
+          </Carousel>
         </div>
       </section>
 
@@ -823,12 +823,12 @@ function AuroraLandingInner() {
             <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
           </div>
           <div className="proc-line">
-            <div className="steps" data-stagger>
+            <Carousel className="steps" stagger>
               <div className="step"><div className="circle">01</div><h3>Discover</h3><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
               <div className="step"><div className="circle">02</div><h3>Design</h3><p>Systemised, accessible design in real tokens and components.</p></div>
               <div className="step"><div className="circle">03</div><h3>Build</h3><p>Production-ready code, accessibility verified before handoff.</p></div>
               <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
-            </div>
+            </Carousel>
           </div>
         </div>
       </section>
