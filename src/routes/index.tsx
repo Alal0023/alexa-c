@@ -601,10 +601,10 @@ function AuroraLanding() {
               { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
               { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
               { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" },
-              { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/" },
+              { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
             ].map((p) => (
               <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
+                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
                 <div className="meta">
                   <div className="top">
                     <div className="ttl">{p.title}</div>
@@ -625,10 +625,10 @@ function AuroraLanding() {
 
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
-        <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
-          <div className="s"><div className="v grad">15</div><div className="l">Years in design leadership</div></div>
-          <div className="s"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
-          <div className="s"><div className="v grad">5–10d</div><div className="l">From brief to shipped</div></div>
+          <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+          <div className="s"><div className="v stat-grad">15</div><div className="l">Years in design leadership</div></div>
+          <div className="s"><div className="v stat-grad">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s"><div className="v stat-grad">5–10d</div><div className="l">From brief to shipped</div></div>
         </div>
       </section>
 
@@ -643,7 +643,7 @@ function AuroraLanding() {
               <a href="mailto:hello@alexac.studio" className="btn grad">Start a project →</a>
             </div>
             <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
-            <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a> — same process, same pricing, same standard.</p>
+            <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
           </div>
         </div>
       </section>
