@@ -372,12 +372,11 @@ function AuroraLanding() {
         <div className="wrap row">
           <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="menu">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
             <a href="#proof">Work</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
-          <a href="#contact" className="cta">Book a call →</a>
+          <a href="#contact" className="cta">Start a project →</a>
         </div>
       </nav>
 
@@ -440,24 +439,25 @@ function AuroraLanding() {
       <section className="block proof" id="endorsed">
         <div className="wrap">
           <div className="shead" data-reveal>
-            <span className="eyebrow">Endorsed by</span>
-            <h2>Buyers come back for the rigour.</h2>
+            <span className="eyebrow">Backed by people who'd know</span>
+            <h2>Endorsed by design leaders at Amazon.</h2>
+            <p>Professional recommendations, not client reviews — public, named, and checkable. Included because a new freelance profile has no track record yet; these speak to who's actually behind it.</p>
           </div>
           <div className="grid" data-stagger>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
-              <div className="q">“She resolved our EAA risk <em>and</em> sped up the build. We shipped compliant in a fortnight.”</div>
-              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Product Lead<span>// SaaS · UK</span></div></div>
+              <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
+              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
-              <div className="q">“The design system <em>actually compiled.</em> Our devs used it day one with zero back-and-forth.”</div>
-              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Founder<span>// AI startup</span></div></div>
+              <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
+              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
-              <div className="q">“Turned a vague idea into a <em>working AI app</em> in ten days. Genuinely senior work.”</div>
-              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Operator<span>// Fintech</span></div></div>
+              <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
+              <div className="who"><img src={studioAsset.url} alt="" /><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
             </div>
           </div>
         </div>
@@ -588,9 +588,8 @@ function AuroraLanding() {
         <div className="wrap row">
           <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="links">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
             <a href="#proof">Work</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
