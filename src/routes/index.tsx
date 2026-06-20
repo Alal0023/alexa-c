@@ -672,7 +672,7 @@ function AuroraLanding() {
         <div className="aura a1"></div>
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
-            <span className="eyebrow">Open for Q3</span>
+            <span className="eyebrow">FOUNDING CLIENT SLOTS OPEN</span>
             <h2>Let's build something that ships.</h2>
             <p>One short call, a fixed price by the end of it, and a clear yes/no — no chasing, no pressure.</p>
             <div className="btns">
