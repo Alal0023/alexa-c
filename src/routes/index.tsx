@@ -137,7 +137,8 @@ const CSS = `
 .aurora-root .quote .q{ font-size:21px; line-height:1.45; font-weight:600; }
 .aurora-root .quote .q em{ font-style:normal; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .quote .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
-.aurora-root .quote .who img{ width:46px; height:46px; border-radius:50%; object-fit:cover; }
+.aurora-root .quote .who .ava{ width:52px; height:52px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid var(--line); background:var(--surface-2); }
+.aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:center 28%; transform:scale(1.35); transform-origin:center 30%; display:block; }
 .aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
 .aurora-root .quote .who .nm span{ display:block; font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.04em; margin-top:2px; }
 
@@ -449,17 +450,17 @@ function AuroraLanding() {
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
-              <div className="who"><img src={sidneyAsset.url} alt="Sidney Levy" /><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
+              <div className="who"><div className="ava"><img src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm">Sidney Levy<span>Design &amp; Product Leader, ex-Amazon</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
-              <div className="who"><img src={ryanAsset.url} alt="Ryan Schmidt" /><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
+              <div className="who"><div className="ava"><img src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
             </div>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
-              <div className="who"><img src={elodieAsset.url} alt="Elodie Fichet" /><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
+              <div className="who"><div className="ava"><img src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
             </div>
           </div>
         </div>
@@ -551,10 +552,11 @@ function AuroraLanding() {
             <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
           </div>
           <div className="proof-links" data-stagger>
-            <a href="#" target="_blank" rel="noopener"><span>Vellum</span><span className="arrow">→</span></a>
-            <a href="#" target="_blank" rel="noopener"><span>GOV.UK Prototype</span><span className="arrow">→</span></a>
-            <a href="#" target="_blank" rel="noopener"><span>Volley Landing Page</span><span className="arrow">→</span></a>
-            <a href="#" target="_blank" rel="noopener"><span>Volley Ads</span><span className="arrow">→</span></a>
+            <a href="https://vellum-family-legacy.lovable.app/" target="_blank" rel="noopener"><span>Vellum</span><span className="arrow">→</span></a>
+            <a href="https://govuk-design-journey.lovable.app/" target="_blank" rel="noopener"><span>GOV.UK Prototype</span><span className="arrow">→</span></a>
+            <a href="https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" target="_blank" rel="noopener"><span>Volley Landing Page</span><span className="arrow">→</span></a>
+            <a href="https://volley-add-testing-framework.lovable.app/" target="_blank" rel="noopener"><span>Volley Ads</span><span className="arrow">→</span></a>
+            <a href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener"><span>Portfolio — alexandra-ciobanu.com</span><span className="arrow">→</span></a>
             <a href="https://alexandra-ciobanu.com" target="_blank" rel="noopener"><span>Full portfolio: alexandra-ciobanu.com</span><span className="arrow">→</span></a>
           </div>
           <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
