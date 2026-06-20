@@ -343,7 +343,6 @@ const CSS = `
 @media (max-width:980px){
   .aurora-root .wrap{ padding:0 28px; }
   .aurora-root .hero .grid,.aurora-root .about .grid{ grid-template-columns:1fr; }
-  .aurora-root .hero .vis{ order:-1; }
   .aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid{ grid-template-columns:1fr 1fr; }
   .aurora-root .hero h1{ font-size:64px; }
   .aurora-root .shead h2{ font-size:44px; }
@@ -352,9 +351,62 @@ const CSS = `
 }
 @media (max-width:620px){
   .aurora-root nav .menu{ display:none; }
-  .aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid{ grid-template-columns:1fr; }
+  .aurora-root nav .cta{ display:none; }
+  .aurora-root nav .hamb{ display:flex; }
   .aurora-root .hero h1{ font-size:52px; }
   .aurora-root .hero .portrait{ width:300px; height:300px; }
+}
+
+/* ============ Mobile hamburger + drawer ============ */
+.aurora-root nav .hamb{ display:none; width:46px; height:46px; align-items:center; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:14px; cursor:pointer; color:var(--ink); }
+.aurora-root nav .hamb svg{ width:22px; height:22px; }
+.aurora-root .drawer{ position:fixed; inset:0; z-index:100; background:rgba(12,10,24,.96); backdrop-filter:blur(20px); display:flex; flex-direction:column; padding:24px 28px 36px; transform:translateX(100%); transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+.aurora-root .drawer.open{ transform:none; }
+.aurora-root .drawer .top{ display:flex; align-items:center; justify-content:space-between; height:78px; }
+.aurora-root .drawer .close{ width:46px; height:46px; background:var(--surface); border:1px solid var(--line); border-radius:14px; color:var(--ink); font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.aurora-root .drawer .links{ display:flex; flex-direction:column; gap:6px; margin-top:32px; flex:1; }
+.aurora-root .drawer .links a{ font-family:var(--mono); font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding:18px 0; border-bottom:1px solid var(--line-soft); font-weight:700; }
+.aurora-root .drawer .links a:first-child{ border-top:1px solid var(--line-soft); }
+.aurora-root .drawer .cta{ display:block; text-align:center; font-weight:800; font-size:18px; padding:18px 24px; border-radius:18px; background:var(--grad-pv); color:#0C0A18; margin-top:24px; }
+
+/* ============ Mobile carousel ============ */
+.aurora-root .mcar-ctrl{ display:none; }
+@media (max-width:720px){
+  .aurora-root .mcar-track{
+    display:flex !important;
+    grid-template-columns:none !important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:16px !important;
+    padding:6px 12% 6px 0;
+    margin:0 -28px 0 0;
+    padding-left:0;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .aurora-root .mcar-track::-webkit-scrollbar{ display:none; }
+  .aurora-root .mcar-track > *{
+    flex:0 0 88%;
+    scroll-snap-align:start;
+    min-width:0;
+  }
+  .aurora-root .mcar-ctrl{ display:flex; align-items:center; gap:14px; margin-top:22px; }
+  .aurora-root .mcar-pips{ display:flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; background:var(--surface); border:1px solid var(--line); border-radius:100px; flex:1; min-height:38px; }
+  .aurora-root .mcar-pip{ width:6px; height:6px; border-radius:50%; background:var(--muted); opacity:.45; transition:width .3s ease, opacity .3s ease, background .3s ease; flex-shrink:0; }
+  .aurora-root .mcar-pip.active{ width:24px; height:6px; border-radius:100px; background:var(--grad-tight); opacity:1; }
+  .aurora-root .mcar-btn{ width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-family:var(--mono); }
+  .aurora-root .mcar-btn:disabled{ opacity:.35; }
+  /* Hero: text first then image */
+  .aurora-root .hero .vis{ order:1; margin-top:32px; }
+  /* Stats: keep 3 columns on mobile, scale down */
+  .aurora-root .stats .grid{ grid-template-columns:repeat(3,1fr) !important; gap:14px !important; }
+  .aurora-root .stats .s .v{ font-size:38px; }
+  .aurora-root .stats .s .l{ font-size:12px; margin-top:8px; line-height:1.3; }
+  /* Project card: visit pill bottom-right of thumb */
+  .aurora-root .proof-card .thumb{ position:relative; }
+  .aurora-root .proof-card .visit-float{ position:absolute; right:10px; bottom:10px; z-index:2; }
+  /* Process line: hide connecting bar in carousel mode */
+  .aurora-root .proc-line::before{ display:none; }
 }
 
 /* CTA microcopy + secondary text link */
