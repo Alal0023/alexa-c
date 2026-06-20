@@ -371,6 +371,7 @@ const CSS = `
 
 /* ============ Mobile carousel ============ */
 .aurora-root .mcar-ctrl{ display:none; }
+.aurora-root .proof-card .visit-float{ display:none; }
 @media (max-width:720px){
   .aurora-root .mcar-track{
     display:flex !important;
@@ -404,7 +405,7 @@ const CSS = `
   .aurora-root .stats .s .l{ font-size:12px; margin-top:8px; line-height:1.3; }
   /* Project card: visit pill bottom-right of thumb */
   .aurora-root .proof-card .thumb{ position:relative; }
-  .aurora-root .proof-card .visit-float{ position:absolute; right:10px; bottom:10px; z-index:2; }
+  .aurora-root .proof-card .visit-float{ display:inline-block; position:absolute; right:10px; bottom:10px; z-index:2; }
   /* Process line: hide connecting bar in carousel mode */
   .aurora-root .proc-line::before{ display:none; }
 }
