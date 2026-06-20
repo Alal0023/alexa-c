@@ -234,6 +234,12 @@ const CSS = `
 .aurora-root [data-stagger].in-view > *:nth-child(5){ animation-delay:.57s; }
 .aurora-root [data-stagger].in-view > *:nth-child(6){ animation-delay:.7s; }
 
+/* Slower stagger for timeline steps so each dot appears clearly in sequence */
+.aurora-root .steps[data-stagger].in-view > *:nth-child(1){ animation-delay:0s; }
+.aurora-root .steps[data-stagger].in-view > *:nth-child(2){ animation-delay:.55s; }
+.aurora-root .steps[data-stagger].in-view > *:nth-child(3){ animation-delay:1.1s; }
+.aurora-root .steps[data-stagger].in-view > *:nth-child(4){ animation-delay:1.65s; }
+
 /* Per-character split headlines */
 .aurora-root .split{ display:inline-block; }
 .aurora-root .split .ch{ display:inline-block; opacity:0; will-change:transform,opacity; white-space:pre; }
