@@ -38,7 +38,7 @@ const CSS = `
   --grad-pv:linear-gradient(100deg,#FF6FD8 0%,#9B5CFF 100%);
   --grad-vt:linear-gradient(100deg,#9B5CFF 0%,#36E0C8 100%);
   --grad-ta:linear-gradient(100deg,#36E0C8 0%,#FFC24B 100%);
-  --grad-pa:linear-gradient(100deg,#FF6FD8 0%,#FFC24B 100%);
+  --grad-ap:linear-gradient(100deg,#FFC24B 0%,#FF6FD8 100%);
   --jakarta:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'Space Mono',monospace;
   --shadow:0 30px 70px -34px rgba(0,0,0,.7); --glow:0 0 70px rgba(155,92,255,.28);
   background:var(--bg); color:var(--ink); font-family:var(--jakarta);
