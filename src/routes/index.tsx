@@ -433,19 +433,18 @@ function AuroraLanding() {
               ))}
               <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
             </h1>
-            <p className="lede">I design and build <b>production-ready apps and landing pages</b> for early-stage startups and small businesses — real code, accessible by default. 5–10 days for a focused build (a landing page, or an app with up to 5 screens). Bigger scopes get a fixed quote on the same call.</p>
+            <p className="lede">I build for early-stage startups and small businesses — real code, not mockups.</p>
             <div className="btns">
               <a href="#contact" className="btn grad">Start a project →</a>
               <a href="#process" className="btn link">How it works ↓</a>
             </div>
-            <span className="cta-sub">30 minutes, no pitch — we'll talk about what you're building and whether the timeline fits.</span>
           </div>
           <div className="vis">
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">5–10d</div><div className="l">Brief to shipped</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">95%</div><div className="l">A11Y Coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">Apps</div></div>
+            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">Landing Pages</div></div>
           </div>
         </div>
       </header>
@@ -476,9 +475,9 @@ function AuroraLanding() {
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
             <div className="grid-2x2" data-stagger>
-              <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scan. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
-              <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools (Lovable, Claude Code, UX Pilot) — every output reviewed and hardened by a senior eye before it ships.</p></div>
-              <div className="cell"><h4 className="grad-t">Tools &amp; Stack</h4><p>Real code, real database (React + production stack) — fully yours, no platform lock-in.</p></div>
+              <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
+              <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
+              <div className="cell"><h4 className="grad-t">Tools &amp; Stack</h4><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
               <div className="cell"><h4 className="grad-t">Handoff Standards</h4><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
             </div>
           </div>
