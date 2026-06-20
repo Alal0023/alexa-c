@@ -493,6 +493,40 @@ const CSS = `
 .aurora-root .platforms a{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800; }
 .aurora-root .cta-card .email-line{ display:block; margin-top:18px; font-size:15px; color:var(--muted); }
 .aurora-root .cta-card .email-line a{ color:var(--ink); border-bottom:1px solid var(--line); }
+
+/* Tablet carousels for specific sections */
+@media (max-width:980px) and (min-width:721px){
+  .aurora-root .tablet-car .mcar-track{
+    display:flex !important;
+    grid-template-columns:none !important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:16px !important;
+    padding:6px 12% 6px 0;
+    margin:0 -28px 0 0;
+    padding-left:0;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .aurora-root .tablet-car .mcar-track::-webkit-scrollbar{ display:none; }
+  .aurora-root .tablet-car .mcar-track > *{
+    flex:0 0 88%;
+    scroll-snap-align:start;
+    min-width:0;
+  }
+  .aurora-root .tablet-car .mcar-ctrl{
+    display:flex !important;
+    align-items:center;
+    gap:14px;
+    margin-top:22px;
+    max-width:100%;
+  }
+  .aurora-root .proof-car-desktop-mobile{ display:none; }
+  .aurora-root .stats .s .v{ font-size:48px; }
+}
+@media (max-width:720px), (min-width:981px){
+  .aurora-root .proof-car-tablet{ display:none; }
+}
 `;
 
 function AuroraLanding() {
