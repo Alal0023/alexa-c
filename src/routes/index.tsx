@@ -90,11 +90,14 @@ const CSS = `
 .aurora-root .hero .badge .v{ font-weight:800; font-size:26px; }
 .aurora-root .hero .badge .l{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin-top:2px; }
 
-.aurora-root .trust{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2); }
-.aurora-root .trust .row{ display:flex; align-items:center; justify-content:space-between; gap:30px; padding:26px 0; flex-wrap:wrap; }
-.aurora-root .trust .item{ font-family:var(--mono); font-size:15px; letter-spacing:.04em; color:var(--muted); display:flex; align-items:center; gap:10px; }
+.aurora-root .trust{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2); overflow:hidden; }
+.aurora-root .trust .row{ display:flex; align-items:center; width:max-content; padding:22px 0; }
+.aurora-root .trust .track{ display:flex; align-items:center; width:max-content; animation:trustScroll 22s linear infinite; }
+.aurora-root .trust .track:hover{ animation-play-state:paused; }
+.aurora-root .trust .item{ font-family:var(--mono); font-size:15px; letter-spacing:.04em; color:var(--muted); display:flex; align-items:center; gap:10px; flex-shrink:0; padding:0 40px; }
 .aurora-root .trust .item b{ color:var(--ink); }
-.aurora-root .trust .item .d{ width:7px; height:7px; border-radius:50%; background:var(--grad-tight); }
+.aurora-root .trust .item .d{ width:7px; height:7px; border-radius:50%; background:var(--grad-tight); flex-shrink:0; }
+@keyframes trustScroll{ from{ transform:translateX(-50%);} to{ transform:translateX(0);} }
 
 .aurora-root section.block{ position:relative; padding:104px 0; overflow:hidden; }
 .aurora-root .shead{ max-width:760px; margin-bottom:54px; }
@@ -427,11 +430,19 @@ function AuroraLanding() {
       </header>
 
       <div className="trust">
-        <div className="wrap row" data-stagger>
-          <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
-          <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
-          <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
-          <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
+        <div className="track">
+          <div className="row" aria-hidden="true">
+            <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
+            <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
+            <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
+            <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
+          </div>
+          <div className="row">
+            <div className="item"><span className="d"></span> <b>Ex-Amazon</b>&nbsp;Sr. Design Lead</div>
+            <div className="item"><span className="d"></span> WCAG 2.1/2.2 AA &amp; <b>EAA</b> ready</div>
+            <div className="item"><span className="d"></span> <b>Lovable</b> · Claude Code · React</div>
+            <div className="item"><span className="d"></span> <b>UK</b>-based · GMT/BST</div>
+          </div>
         </div>
       </div>
 
