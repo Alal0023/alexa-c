@@ -838,7 +838,7 @@ function AuroraLandingInner() {
               <h3>Apps</h3>
               <p>A full-stack app — up to 5 core screens and one integration. Real code, real database, accessibility built in, handoff docs included.</p>
               <div className="price"><s>$1,500</s> <em>$900</em> <b>· founding client pricing</b></div>
-              <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
+              <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div><div className="m"><div className="mv grad">A11y</div><div className="ml">WCAG 2.2 AA</div></div></div>
             </div>
           </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
@@ -922,16 +922,6 @@ function AuroraLandingInner() {
                   </div>
                 </a>
               ))}
-              <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
-                <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
-                <div className="meta">
-                  <div className="top">
-                    <div className="ttl">Full portfolio</div>
-                    <span className="visit">Visit →</span>
-                  </div>
-                  <div className="sub">alexandra-ciobanu.com</div>
-                </div>
-              </a>
             </Carousel>
           </div>
           <div className="proof-car-tablet tablet-car">
