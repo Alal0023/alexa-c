@@ -487,6 +487,97 @@ const CSS = `
 `;
 
 function AuroraLanding() {
+  // dummy to keep diff anchor
+  return <AuroraLandingInner />;
+}
+
+function Carousel({
+  children,
+  className,
+  stagger,
+  style,
+}: {
+  children: ReactNode;
+  className?: string;
+  stagger?: boolean;
+  style?: React.CSSProperties;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [count, setCount] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 720px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    setCount(track.children.length);
+    if (!isMobile) return;
+    const onScroll = () => {
+      const first = track.children[0] as HTMLElement | undefined;
+      if (!first) return;
+      const step = first.getBoundingClientRect().width + 16;
+      const i = Math.round(track.scrollLeft / step);
+      setIndex(Math.min(Math.max(i, 0), track.children.length - 1));
+    };
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => track.removeEventListener("scroll", onScroll);
+  }, [isMobile, children]);
+
+  const go = (i: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const first = track.children[0] as HTMLElement | undefined;
+    if (!first) return;
+    const step = first.getBoundingClientRect().width + 16;
+    track.scrollTo({ left: i * step, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <div
+        ref={trackRef}
+        className={`mcar-track ${className || ""}`}
+        data-stagger={stagger ? "" : undefined}
+        style={style}
+      >
+        {children}
+      </div>
+      <div className="mcar-ctrl" aria-hidden="true">
+        <div className="mcar-pips">
+          {Array.from({ length: count }).map((_, i) => (
+            <span key={i} className={`mcar-pip ${i === index ? "active" : ""}`} />
+          ))}
+        </div>
+        <button
+          className="mcar-btn"
+          aria-label="Previous"
+          onClick={() => go(Math.max(0, index - 1))}
+          disabled={index === 0}
+        >
+          ‹
+        </button>
+        <button
+          className="mcar-btn"
+          aria-label="Next"
+          onClick={() => go(Math.min(count - 1, index + 1))}
+          disabled={index >= count - 1}
+        >
+          ›
+        </button>
+      </div>
+    </>
+  );
+}
+
+function AuroraLandingInner() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
