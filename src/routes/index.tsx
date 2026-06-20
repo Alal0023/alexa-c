@@ -60,7 +60,7 @@ const CSS = `
 .aurora-root nav .cta{ font-weight:800; font-size:16px; padding:12px 24px; border-radius:100px; background:var(--grad-vt); color:#0C0A18; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
 .aurora-root nav .cta:hover{ transform:translateY(-2px); box-shadow:0 18px 36px -14px rgba(54,224,200,.5); }
 
-.aurora-root .hero{ position:relative; overflow:hidden; padding:90px 0 70px; }
+.aurora-root .hero{ position:relative; overflow:hidden; padding:44px 0 60px; }
 .aurora-root .hero .aura.a1{ width:620px; height:620px; background:#7D5CFF; top:-200px; left:-160px; }
 .aurora-root .hero .aura.a2{ width:540px; height:540px; background:#FF6FD8; top:-160px; right:-140px; }
 .aurora-root .hero .aura.a3{ width:520px; height:520px; background:#36E0C8; bottom:-260px; left:24%; opacity:.22; }
@@ -69,10 +69,10 @@ const CSS = `
   background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
   font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
 .aurora-root .hero .pill .dot{ width:10px; height:10px; border-radius:50%; background:var(--grad-tight); }
-.aurora-root .hero h1{ font-weight:800; font-size:88px; line-height:.95; letter-spacing:-.04em; margin:26px 0 0; }
-.aurora-root .hero p.lede{ font-size:24px; line-height:1.5; color:var(--muted); max-width:600px; margin:26px 0 0; font-weight:500; }
+.aurora-root .hero h1{ font-weight:800; font-size:64px; line-height:.98; letter-spacing:-.04em; margin:20px 0 0; }
+.aurora-root .hero p.lede{ font-size:18px; line-height:1.5; color:var(--muted); max-width:560px; margin:18px 0 0; font-weight:500; }
 .aurora-root .hero p.lede b{ color:var(--ink); font-weight:800; }
-.aurora-root .hero .btns{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
+.aurora-root .hero .btns{ display:flex; gap:16px; margin-top:22px; flex-wrap:wrap; }
 .aurora-root .btn{ font-weight:800; font-size:19px; padding:17px 34px; border-radius:100px; display:inline-flex; align-items:center; gap:10px; cursor:pointer; transition:transform .2s ease; }
 .aurora-root .btn:hover{ transform:translateY(-2px); }
 .aurora-root .btn.grad{ background:var(--grad-pv); color:#0C0A18; box-shadow:var(--shadow); background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
@@ -137,8 +137,10 @@ const CSS = `
 .aurora-root .quote .q{ font-size:21px; line-height:1.45; font-weight:600; }
 .aurora-root .quote .q em{ font-style:normal; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .quote .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
-.aurora-root .quote .who .ava{ width:52px; height:52px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid var(--line); background:var(--surface-2); }
-.aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:center 28%; transform:scale(1.35); transform-origin:center 30%; display:block; }
+.aurora-root .quote .who .ava{ width:64px; height:64px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid var(--line); background:var(--surface-2); }
+.aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:center top; transform:scale(1.6); transform-origin:center 22%; display:block; }
+.aurora-root .quote .who{ min-width:0; }
+.aurora-root .quote .who .nm{ min-width:0; }
 .aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
 .aurora-root .quote .who .nm span{ display:block; font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.04em; margin-top:2px; }
 
@@ -319,10 +321,20 @@ const CSS = `
 }
 
 /* Proof links */
-.aurora-root .proof-links{ display:flex; flex-direction:column; gap:12px; margin-top:20px; max-width:720px; }
-.aurora-root .proof-links a{ display:flex; justify-content:space-between; align-items:center; padding:18px 22px; background:var(--surface); border:1px solid var(--line); border-radius:14px; font-weight:700; font-size:18px; transition:border-color .25s ease, transform .25s ease; }
-.aurora-root .proof-links a:hover{ border-color:#9B5CFF; transform:translateX(4px); }
-.aurora-root .proof-links a span.arrow{ font-family:var(--mono); color:var(--muted); }
+.aurora-root .proof-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:8px; }
+.aurora-root .proof-card{ display:block; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root .proof-card:hover{ border-color:#9B5CFF; transform:translateY(-4px); box-shadow:0 24px 50px -28px rgba(155,92,255,.45); }
+.aurora-root .proof-card .thumb{ aspect-ratio:16/10; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
+.aurora-root .proof-card .meta{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:18px 22px; }
+.aurora-root .proof-card .meta .ttl{ font-weight:800; font-size:19px; letter-spacing:-.01em; }
+.aurora-root .proof-card .meta .sub{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin-top:4px; }
+.aurora-root .proof-card .visit{ font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); padding:8px 14px; border-radius:100px; background:var(--grad-vt); color:#0C0A18; font-weight:800; white-space:nowrap; }
+.aurora-root .proof-portfolio{ margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px 26px; background:var(--surface); border:1px solid var(--line); border-radius:18px; transition:border-color .25s ease, transform .25s ease; }
+.aurora-root .proof-portfolio:hover{ border-color:#9B5CFF; transform:translateX(4px); }
+.aurora-root .proof-portfolio .l{ display:flex; flex-direction:column; gap:4px; }
+.aurora-root .proof-portfolio .l b{ font-weight:800; font-size:19px; }
+.aurora-root .proof-portfolio .l span{ font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
+@media (max-width:720px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); max-width:720px; }
 .aurora-root .founding b{ color:var(--ink); }
 
@@ -551,14 +563,26 @@ function AuroraLanding() {
             <h2>Don't take my word for it — open the build yourself.</h2>
             <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
           </div>
-          <div className="proof-links" data-stagger>
-            <a href="https://vellum-family-legacy.lovable.app/" target="_blank" rel="noopener"><span>Vellum</span><span className="arrow">→</span></a>
-            <a href="https://govuk-design-journey.lovable.app/" target="_blank" rel="noopener"><span>GOV.UK Prototype</span><span className="arrow">→</span></a>
-            <a href="https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" target="_blank" rel="noopener"><span>Volley Landing Page</span><span className="arrow">→</span></a>
-            <a href="https://volley-add-testing-framework.lovable.app/" target="_blank" rel="noopener"><span>Volley Ads</span><span className="arrow">→</span></a>
-            <a href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener"><span>Portfolio — alexandra-ciobanu.com</span><span className="arrow">→</span></a>
-            <a href="https://alexandra-ciobanu.com" target="_blank" rel="noopener"><span>Full portfolio: alexandra-ciobanu.com</span><span className="arrow">→</span></a>
+          <div className="proof-grid" data-stagger>
+            {[
+              { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
+              { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
+              { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" },
+              { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/" },
+            ].map((p) => (
+              <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
+                <span className="thumb" style={{ backgroundImage: `url(https://image.thum.io/get/width/900/crop/600/${p.shot})` }} aria-hidden="true"></span>
+                <div className="meta">
+                  <div><div className="ttl">{p.title}</div><div className="sub">{p.sub}</div></div>
+                  <span className="visit">Visit →</span>
+                </div>
+              </a>
+            ))}
           </div>
+          <a className="proof-portfolio" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" data-reveal>
+            <span className="l"><b>Full portfolio — alexandra-ciobanu.com</b><span>Case studies, writing &amp; long-form work</span></span>
+            <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-vt)", padding: "8px 14px", borderRadius: 100, fontWeight: 800 }}>Visit →</span>
+          </a>
           <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
         </div>
       </section>
