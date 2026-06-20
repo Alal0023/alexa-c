@@ -18,13 +18,58 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alexa-c.lovable.app/" },
       { property: "og:image", content: studioAsset.url },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
       { name: "twitter:description", content: DESCRIPTION },
       { name: "twitter:image", content: studioAsset.url },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://alexa-c.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Alexa C.",
+          jobTitle: "Senior Designer & App Developer",
+          description: DESCRIPTION,
+          url: "https://alexa-c.lovable.app/",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map(([q, a]) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          provider: { "@type": "Person", name: "Alexa C." },
+          name: "Landing pages & apps, shipped in 5–10 days",
+          areaServed: "Worldwide",
+          description: DESCRIPTION,
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Offers",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apps" } },
+            ],
+          },
+        }),
+      },
+    ],
   }),
   component: AuroraLanding,
 });
