@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import studioAsset from "../assets/alexa-studio.png.asset.json";
 import wideAsset from "../assets/alexa-wide.png.asset.json";
 import sidneyAsset from "../assets/sidney.png.asset.json";
@@ -343,7 +343,6 @@ const CSS = `
 @media (max-width:980px){
   .aurora-root .wrap{ padding:0 28px; }
   .aurora-root .hero .grid,.aurora-root .about .grid{ grid-template-columns:1fr; }
-  .aurora-root .hero .vis{ order:-1; }
   .aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid{ grid-template-columns:1fr 1fr; }
   .aurora-root .hero h1{ font-size:64px; }
   .aurora-root .shead h2{ font-size:44px; }
@@ -352,9 +351,63 @@ const CSS = `
 }
 @media (max-width:620px){
   .aurora-root nav .menu{ display:none; }
-  .aurora-root .svc-grid,.aurora-root .proc-grid,.aurora-root .proof .grid,.aurora-root .stats .grid{ grid-template-columns:1fr; }
+  .aurora-root nav .cta{ display:none; }
+  .aurora-root nav .hamb{ display:flex; }
   .aurora-root .hero h1{ font-size:52px; }
   .aurora-root .hero .portrait{ width:300px; height:300px; }
+}
+
+/* ============ Mobile hamburger + drawer ============ */
+.aurora-root nav .hamb{ display:none; width:46px; height:46px; align-items:center; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:14px; cursor:pointer; color:var(--ink); }
+.aurora-root nav .hamb svg{ width:22px; height:22px; }
+.aurora-root .drawer{ position:fixed; inset:0; z-index:100; background:rgba(12,10,24,.96); backdrop-filter:blur(20px); display:flex; flex-direction:column; padding:24px 28px 36px; transform:translateX(100%); transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+.aurora-root .drawer.open{ transform:none; }
+.aurora-root .drawer .top{ display:flex; align-items:center; justify-content:space-between; height:78px; }
+.aurora-root .drawer .close{ width:46px; height:46px; background:var(--surface); border:1px solid var(--line); border-radius:14px; color:var(--ink); font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.aurora-root .drawer .links{ display:flex; flex-direction:column; gap:6px; margin-top:32px; flex:1; }
+.aurora-root .drawer .links a{ font-family:var(--mono); font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding:18px 0; border-bottom:1px solid var(--line-soft); font-weight:700; }
+.aurora-root .drawer .links a:first-child{ border-top:1px solid var(--line-soft); }
+.aurora-root .drawer .cta{ display:block; text-align:center; font-weight:800; font-size:18px; padding:18px 24px; border-radius:18px; background:var(--grad-pv); color:#0C0A18; margin-top:24px; }
+
+/* ============ Mobile carousel ============ */
+.aurora-root .mcar-ctrl{ display:none; }
+.aurora-root .proof-card .visit-float{ display:none; }
+@media (max-width:720px){
+  .aurora-root .mcar-track{
+    display:flex !important;
+    grid-template-columns:none !important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:16px !important;
+    padding:6px 12% 6px 0;
+    margin:0 -28px 0 0;
+    padding-left:0;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .aurora-root .mcar-track::-webkit-scrollbar{ display:none; }
+  .aurora-root .mcar-track > *{
+    flex:0 0 88%;
+    scroll-snap-align:start;
+    min-width:0;
+  }
+  .aurora-root .mcar-ctrl{ display:flex; align-items:center; gap:14px; margin-top:22px; }
+  .aurora-root .mcar-pips{ display:flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; background:var(--surface); border:1px solid var(--line); border-radius:100px; flex:1; min-height:38px; }
+  .aurora-root .mcar-pip{ width:6px; height:6px; border-radius:50%; background:var(--muted); opacity:.45; transition:width .3s ease, opacity .3s ease, background .3s ease; flex-shrink:0; }
+  .aurora-root .mcar-pip.active{ width:24px; height:6px; border-radius:100px; background:var(--grad-tight); opacity:1; }
+  .aurora-root .mcar-btn{ width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-family:var(--mono); }
+  .aurora-root .mcar-btn:disabled{ opacity:.35; }
+  /* Hero: text first then image */
+  .aurora-root .hero .vis{ order:1; margin-top:32px; }
+  /* Stats: keep 3 columns on mobile, scale down */
+  .aurora-root .stats .grid{ grid-template-columns:repeat(3,1fr) !important; gap:14px !important; }
+  .aurora-root .stats .s .v{ font-size:38px; }
+  .aurora-root .stats .s .l{ font-size:12px; margin-top:8px; line-height:1.3; }
+  /* Project card: visit pill bottom-right of thumb */
+  .aurora-root .proof-card .thumb{ position:relative; }
+  .aurora-root .proof-card .visit-float{ display:inline-block; position:absolute; right:10px; bottom:10px; z-index:2; }
+  /* Process line: hide connecting bar in carousel mode */
+  .aurora-root .proc-line::before{ display:none; }
 }
 
 /* CTA microcopy + secondary text link */
@@ -435,7 +488,99 @@ const CSS = `
 `;
 
 function AuroraLanding() {
+  // dummy to keep diff anchor
+  return <AuroraLandingInner />;
+}
+
+function Carousel({
+  children,
+  className,
+  stagger,
+  style,
+}: {
+  children: ReactNode;
+  className?: string;
+  stagger?: boolean;
+  style?: React.CSSProperties;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [count, setCount] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 720px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    setCount(track.children.length);
+    if (!isMobile) return;
+    const onScroll = () => {
+      const first = track.children[0] as HTMLElement | undefined;
+      if (!first) return;
+      const step = first.getBoundingClientRect().width + 16;
+      const i = Math.round(track.scrollLeft / step);
+      setIndex(Math.min(Math.max(i, 0), track.children.length - 1));
+    };
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => track.removeEventListener("scroll", onScroll);
+  }, [isMobile, children]);
+
+  const go = (i: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const first = track.children[0] as HTMLElement | undefined;
+    if (!first) return;
+    const step = first.getBoundingClientRect().width + 16;
+    track.scrollTo({ left: i * step, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <div
+        ref={trackRef}
+        className={`mcar-track ${className || ""}`}
+        data-stagger={stagger ? "" : undefined}
+        style={style}
+      >
+        {children}
+      </div>
+      <div className="mcar-ctrl" aria-hidden="true">
+        <div className="mcar-pips">
+          {Array.from({ length: count }).map((_, i) => (
+            <span key={i} className={`mcar-pip ${i === index ? "active" : ""}`} />
+          ))}
+        </div>
+        <button
+          className="mcar-btn"
+          aria-label="Previous"
+          onClick={() => go(Math.max(0, index - 1))}
+          disabled={index === 0}
+        >
+          ‹
+        </button>
+        <button
+          className="mcar-btn"
+          aria-label="Next"
+          onClick={() => go(Math.min(count - 1, index + 1))}
+          disabled={index >= count - 1}
+        >
+          ›
+        </button>
+      </div>
+    </>
+  );
+}
+
+function AuroraLandingInner() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -499,8 +644,26 @@ function AuroraLanding() {
             <a href="#contact">Contact</a>
           </div>
           <a href="#contact" className="cta">Start a project →</a>
+          <button className="hamb" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
         </div>
       </nav>
+
+      <div className={`drawer ${menuOpen ? "open" : ""}`} role="dialog" aria-modal="true" aria-hidden={!menuOpen}>
+        <div className="top">
+          <div className="logo" style={{ fontWeight: 800, fontSize: 22 }}>Alexa <span className="grad-t">C.</span></div>
+          <button className="close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>✕</button>
+        </div>
+        <div className="links">
+          <a href="#proof" onClick={() => setMenuOpen(false)}>Work</a>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        </div>
+        <a href="#contact" className="cta" onClick={() => setMenuOpen(false)}>Start a project →</a>
+      </div>
 
       <header className="hero">
         <div className="aura a1"></div><div className="aura a2"></div><div className="aura a3"></div>
@@ -556,12 +719,12 @@ function AuroraLanding() {
             <span className="eyebrow">Who I am</span>
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
-            <div className="grid-2x2" data-stagger>
+            <Carousel className="grid-2x2" stagger>
               <div className="cell"><h3 className="grad-t">Accessibility Process</h3><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
               <div className="cell"><h3 className="grad-t">Build Process</h3><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
               <div className="cell"><h3 className="grad-t">Tools &amp; Stack</h3><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
               <div className="cell"><h3 className="grad-t">Handoff Standards</h3><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
-            </div>
+            </Carousel>
           </div>
         </div>
       </section>
@@ -573,7 +736,7 @@ function AuroraLanding() {
             <h2>Endorsed by design leaders at Amazon.</h2>
             <p>Professional recommendations, not client reviews — public, named, and checkable, since a new freelance profile doesn't have those yet.</p>
           </div>
-          <div className="grid" data-stagger>
+          <Carousel className="grid" stagger>
             <div className="quote">
               <div className="stars grad">★★★★★</div>
               <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
@@ -589,7 +752,7 @@ function AuroraLanding() {
               <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
               <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
             </div>
-          </div>
+          </Carousel>
         </div>
       </section>
 
@@ -600,7 +763,7 @@ function AuroraLanding() {
             <h2>Two offers, fixed price.</h2>
             <p>Real code, accessibility built in, shipped in days — not months.</p>
           </div>
-          <div className="svc-grid" data-stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <Carousel className="svc-grid" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
             <div className="svc">
               <div className="no grad-t">01 · LANDING PAGES</div>
               <h3>Landing Pages</h3>
@@ -615,7 +778,7 @@ function AuroraLanding() {
               <div className="price"><s>$1,500</s> <em>$900</em> <b>· founding client pricing</b></div>
               <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div></div>
             </div>
-          </div>
+          </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
         </div>
       </section>
@@ -644,12 +807,12 @@ function AuroraLanding() {
             <h2>How I build.</h2>
           </div>
           <p className="pullquote" data-reveal>I won't hand you an AI-generated export and disappear. Every build is mine — senior-reviewed, tested, and hardened before it ships. If I wouldn't put it in front of my own users, I won't put it in front of yours.</p>
-          <div className="grid-2x2" data-stagger>
+          <Carousel className="grid-2x2" stagger>
             <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
             <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
             <div className="cell"><h3 className="grad-t">Handoff</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
             <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
-          </div>
+          </Carousel>
         </div>
       </section>
 
@@ -661,12 +824,12 @@ function AuroraLanding() {
             <p>A calm, four-step path with a fixed price agreed up front — no surprises, no scope creep.</p>
           </div>
           <div className="proc-line">
-            <div className="steps" data-stagger>
+            <Carousel className="steps" stagger>
               <div className="step"><div className="circle">01</div><h3>Discover</h3><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
               <div className="step"><div className="circle">02</div><h3>Design</h3><p>Systemised, accessible design in real tokens and components.</p></div>
               <div className="step"><div className="circle">03</div><h3>Build</h3><p>Production-ready code, accessibility verified before handoff.</p></div>
               <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
-            </div>
+            </Carousel>
           </div>
         </div>
       </section>
@@ -678,7 +841,7 @@ function AuroraLanding() {
             <h2>Don't take my word for it — open the build yourself.</h2>
             <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
           </div>
-          <div className="proof-grid" data-stagger>
+          <Carousel className="proof-grid" stagger>
             {[
               { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
               { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
@@ -686,7 +849,9 @@ function AuroraLanding() {
               { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
             ].map((p) => (
               <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
+                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true">
+                  <span className="visit visit-float">Visit →</span>
+                </span>
                 <div className="meta">
                   <div className="top">
                     <div className="ttl">{p.title}</div>
@@ -696,7 +861,19 @@ function AuroraLanding() {
                 </div>
               </a>
             ))}
-          </div>
+            <a className="proof-card" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" style={{ display: "flex", flexDirection: "column" }}>
+              <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent("https://alexandra-ciobanu.com/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true">
+                <span className="visit visit-float">Visit →</span>
+              </span>
+              <div className="meta">
+                <div className="top">
+                  <div className="ttl">Full portfolio</div>
+                  <span className="visit">Visit →</span>
+                </div>
+                <div className="sub">alexandra-ciobanu.com</div>
+              </div>
+            </a>
+          </Carousel>
           <a className="proof-portfolio" href="https://alexandra-ciobanu.com/" target="_blank" rel="noopener" data-reveal>
             <span className="l"><b>Full portfolio — alexandra-ciobanu.com</b><span>Case studies, writing &amp; long-form work</span></span>
             <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-ap)", padding: "8px 14px", borderRadius: 100, fontWeight: 800 }}>Visit →</span>
