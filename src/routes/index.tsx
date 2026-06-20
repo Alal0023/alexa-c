@@ -143,7 +143,7 @@ const CSS = `
 .aurora-root .quote .who .ava{ width:64px; height:64px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid var(--line); background:var(--surface-2); }
 .aurora-root .quote .who .ava img{ width:100%; height:100%; object-fit:cover; object-position:30% 18%; transform:scale(1.9); transform-origin:30% 18%; display:block; }
 .aurora-root .quote .who .ava img.ava-sidney{ object-position:55% 5%; transform:scale(1.54) translateY(-10px) translateX(-2px); transform-origin:55% 5%; }
-.aurora-root .quote .who .ava img.ava-ryan{ object-position:40% 10%; transform:scale(1.9) translateY(-12px); transform-origin:40% 10%; }
+.aurora-root .quote .who .ava img.ava-ryan{ object-position:40% 10%; transform:scale(1.9) translateY(-12px) translateX(-2px); transform-origin:40% 10%; }
 .aurora-root .quote .who .ava img.ava-elodie{ object-position:65% 5%; transform:scale(1.9) translateY(-12px); transform-origin:65% 5%; }
 .aurora-root .quote .who{ min-width:0; }
 .aurora-root .quote .who .nm{ min-width:0; }
