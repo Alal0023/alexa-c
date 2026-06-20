@@ -5,6 +5,7 @@ import wideAsset from "../assets/alexa-wide.png.asset.json";
 import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
+import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
@@ -48,6 +49,7 @@ const CSS = `
 .aurora-root a{ color:inherit; text-decoration:none; }
 .aurora-root .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .grad-t{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.aurora-root .stat-grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block; }
 .aurora-root .wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
 .aurora-root .eyebrow{ font-family:var(--mono); font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 .aurora-root .aura{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.34; z-index:0; pointer-events:none; }
@@ -178,7 +180,7 @@ const CSS = `
 @keyframes auroraWordIn{ from{ opacity:0; transform:translateY(60%); filter:blur(8px);} to{ opacity:1; transform:none; filter:none;} }
 @keyframes auroraGradMove{ 0%,100%{ background-position:0% 50%;} 50%{ background-position:100% 50%;} }
 @keyframes auroraSheen{ 0%{ transform:translateX(-120%) skewX(-20deg);} 60%,100%{ transform:translateX(220%) skewX(-20deg);} }
-@keyframes auroraRiseBlur{ from{ opacity:0; transform:translateY(70px) scale(.96); filter:blur(14px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraRiseBlur{ from{ opacity:0; transform:translateY(70px) scale(.96);} to{ opacity:1; transform:none;} }
 @keyframes auroraSlideL{ from{ opacity:0; transform:translateX(-90px) rotate(-1.5deg);} to{ opacity:1; transform:none;} }
 @keyframes auroraSlideR{ from{ opacity:0; transform:translateX(90px) rotate(1.5deg);} to{ opacity:1; transform:none;} }
 @keyframes auroraZoomIn{ from{ opacity:0; transform:scale(.7) rotate(-4deg); filter:blur(12px);} to{ opacity:1; transform:none; filter:none;} }
@@ -187,6 +189,7 @@ const CSS = `
 @keyframes auroraDrift{ 0%,100%{ transform:translate3d(0,0,0) scale(1);} 50%{ transform:translate3d(30px,-20px,0) scale(1.06);} }
 @keyframes auroraOrbit{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
 @keyframes auroraCount{ from{ opacity:0; transform:translateY(40%) scale(.85);} to{ opacity:1; transform:none;} }
+@keyframes auroraFadeOnly{ from{ opacity:0;} to{ opacity:1;} }
 
 .aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
 .aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
@@ -207,6 +210,11 @@ const CSS = `
 .aurora-root .stats .v.grad,
 .aurora-root .proc-line .step h4,
 .aurora-root .proc-line .step .circle{ transform:none !important; filter:none !important; }
+.aurora-root .stats [data-stagger].in-view > *{ animation:auroraFadeOnly .8s ease both; }
+.aurora-root .stats [data-stagger].in-view > *:nth-child(1){ animation-delay:.05s; }
+.aurora-root .stats [data-stagger].in-view > *:nth-child(2){ animation-delay:.18s; }
+.aurora-root .stats [data-stagger].in-view > *:nth-child(3){ animation-delay:.31s; }
+.aurora-root .stats .v{ transform:none !important; filter:none !important; }
 /* Gradient word in hero needs BOTH the reveal animation and visible gradient */
 .aurora-root .word.grad{ animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; }
 
@@ -425,19 +433,18 @@ function AuroraLanding() {
               ))}
               <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
             </h1>
-            <p className="lede">I design and build <b>production-ready apps and landing pages</b> for early-stage startups and small businesses — real code, accessible by default. 5–10 days for a focused build (a landing page, or an app with up to 5 screens). Bigger scopes get a fixed quote on the same call.</p>
+            <p className="lede">I build for early-stage startups and small businesses — real code, not mockups.</p>
             <div className="btns">
               <a href="#contact" className="btn grad">Start a project →</a>
               <a href="#process" className="btn link">How it works ↓</a>
             </div>
-            <span className="cta-sub">30 minutes, no pitch — we'll talk about what you're building and whether the timeline fits.</span>
           </div>
           <div className="vis">
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">5–10d</div><div className="l">Brief to shipped</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">95%</div><div className="l">A11Y Coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">Apps</div></div>
+            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">Landing Pages</div></div>
           </div>
         </div>
       </header>
@@ -468,9 +475,9 @@ function AuroraLanding() {
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
             <div className="grid-2x2" data-stagger>
-              <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scan. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
-              <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools (Lovable, Claude Code, UX Pilot) — every output reviewed and hardened by a senior eye before it ships.</p></div>
-              <div className="cell"><h4 className="grad-t">Tools &amp; Stack</h4><p>Real code, real database (React + production stack) — fully yours, no platform lock-in.</p></div>
+              <div className="cell"><h4 className="grad-t">Accessibility Process</h4><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
+              <div className="cell"><h4 className="grad-t">Build Process</h4><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
+              <div className="cell"><h4 className="grad-t">Tools &amp; Stack</h4><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
               <div className="cell"><h4 className="grad-t">Handoff Standards</h4><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
             </div>
           </div>
@@ -594,10 +601,10 @@ function AuroraLanding() {
               { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/" },
               { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/" },
               { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678" },
-              { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/" },
+              { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url },
             ].map((p) => (
               <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
-                <span className="thumb" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
+                <span className="thumb" style={{ backgroundImage: p.shot.startsWith("/") ? `url(${p.shot})` : `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true"></span>
                 <div className="meta">
                   <div className="top">
                     <div className="ttl">{p.title}</div>
@@ -618,10 +625,10 @@ function AuroraLanding() {
 
       <section className="stats">
         <div className="aura a1"></div><div className="aura a2"></div>
-        <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
-          <div className="s"><div className="v grad">15</div><div className="l">Years in design leadership</div></div>
-          <div className="s"><div className="v grad">95%</div><div className="l">Accessibility coverage</div></div>
-          <div className="s"><div className="v grad">5–10d</div><div className="l">From brief to shipped</div></div>
+          <div className="wrap grid" data-stagger style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+          <div className="s"><div className="v stat-grad">15</div><div className="l">Years in design leadership</div></div>
+          <div className="s"><div className="v stat-grad">95%</div><div className="l">Accessibility coverage</div></div>
+          <div className="s"><div className="v stat-grad">5–10d</div><div className="l">From brief to shipped</div></div>
         </div>
       </section>
 
@@ -636,7 +643,7 @@ function AuroraLanding() {
               <a href="mailto:hello@alexac.studio" className="btn grad">Start a project →</a>
             </div>
             <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
-            <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a> — same process, same pricing, same standard.</p>
+            <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
           </div>
         </div>
       </section>
