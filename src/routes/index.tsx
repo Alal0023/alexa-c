@@ -180,7 +180,7 @@ const CSS = `
 @keyframes auroraWordIn{ from{ opacity:0; transform:translateY(60%); filter:blur(8px);} to{ opacity:1; transform:none; filter:none;} }
 @keyframes auroraGradMove{ 0%,100%{ background-position:0% 50%;} 50%{ background-position:100% 50%;} }
 @keyframes auroraSheen{ 0%{ transform:translateX(-120%) skewX(-20deg);} 60%,100%{ transform:translateX(220%) skewX(-20deg);} }
-@keyframes auroraRiseBlur{ from{ opacity:0; transform:translateY(70px) scale(.96); filter:blur(14px);} to{ opacity:1; transform:none; filter:none;} }
+@keyframes auroraRiseBlur{ from{ opacity:0; transform:translateY(70px) scale(.96);} to{ opacity:1; transform:none;} }
 @keyframes auroraSlideL{ from{ opacity:0; transform:translateX(-90px) rotate(-1.5deg);} to{ opacity:1; transform:none;} }
 @keyframes auroraSlideR{ from{ opacity:0; transform:translateX(90px) rotate(1.5deg);} to{ opacity:1; transform:none;} }
 @keyframes auroraZoomIn{ from{ opacity:0; transform:scale(.7) rotate(-4deg); filter:blur(12px);} to{ opacity:1; transform:none; filter:none;} }
