@@ -809,7 +809,7 @@ function AuroraLandingInner() {
                 <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm">Ryan Schmidt<span>Creative Director, Amazon Prime</span></div></div>
               </div>
               <div className="quote">
-                <div className="stars grad">★★★★★</div>
+                
                 <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
                 <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm">Elodie Fichet, Ph.D.<span>Head of Brand Accessibility, Amazon</span></div></div>
               </div>
