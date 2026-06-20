@@ -372,12 +372,11 @@ function AuroraLanding() {
         <div className="wrap row">
           <div className="logo">Alexa <span className="grad-t">C.</span></div>
           <div className="menu">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
             <a href="#proof">Work</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
-          <a href="#contact" className="cta">Book a call →</a>
+          <a href="#contact" className="cta">Start a project →</a>
         </div>
       </nav>
 
