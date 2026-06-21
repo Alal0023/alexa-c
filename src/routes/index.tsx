@@ -11,12 +11,18 @@ const DESCRIPTION =
   "Accessible, EAA/WCAG 2.2 AA-compliant websites and apps — built at AI speed, hardened by a senior human eye. Ex-Amazon design lead who raised accessibility from ~80% to ~95%.";
 
 const FAQS: [string, string][] = [
-  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
-  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
-  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
-  ["I found you on Fiverr or LinkedIn — does anything change if I book directly?", "No — same process, same fixed-price approach, same accessibility standard either way."],
-  ["Is this AI-generated?", "I build with AI-native tools — that's how I deliver in days, not months. But AI alone produces inaccessible, brittle code: the February 2026 WebAIM study tied rising web-accessibility failures directly to AI-assisted 'vibe coding,' with 95.9% of top sites now failing WCAG. Every build I ship is reviewed and hardened by hand — keyboard, screen reader, and contrast tested — by a senior designer. You get AI speed with human accountability."],
-  ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope. You can check all of it."],
+  ["How does pricing work?", "Every project is fixed price, agreed before any code is written. We start with a short discovery call to scope your goal, audience, and must-haves; I'll quote a fixed price and timeline by the end of it — no hourly billing, no surprise invoices. As a founding client (first 3 projects), you also get 40% off standard pricing in exchange for a detailed case study and testimonial once we ship."],
+  ["Can I see examples of your work before booking?", "Yes — scroll down to 'Proof of work' for live, inspectable projects, including a GOV.UK-pattern accessibility prototype and a privacy-first platform I designed and built end-to-end. No client case studies yet, since I'm just launching, but everything linked there is real, not a mockup."],
+  ["What's included in the price?", "Every package includes a fully functional, production-ready build — not a template — source code you own outright, a manual WCAG 2.2 AA accessibility check, and an agreed number of revision rounds. Higher tiers add a CRO review, a full accessibility audit, and handoff documentation. Exact inclusions are listed against each package above."],
+  ["How and when do I pay?", "Typically 50% deposit to begin, 50% on delivery, paid by Stripe. For larger app projects, we can split into milestone payments. Everything is agreed and confirmed in writing before work starts."],
+  ["What if I don't like the result?", "Every package includes 2 rounds of revisions, so we adjust until it's right before final delivery — I'll confirm scope on the call so there are no surprises. If we genuinely can't land on something that works, we'll discuss a partial refund based on work completed."],
+  ["What if my project ends up bigger than expected?", "If new requirements come up mid-project, I'll flag it immediately and quote the additional scope separately — you'll never be charged for extra work without agreeing to it first. The original fixed price never changes without your sign-off."],
+  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I build with AI-native tools — that's how I deliver in days, not months. But AI alone produces inaccessible, brittle code: a February 2026 study found rising web-accessibility failures tied directly to AI-assisted 'vibe coding,' with 95.9% of top sites now failing WCAG. Every build I ship is reviewed and hardened by hand — keyboard, screen reader, and contrast tested — by a senior designer. You get AI speed with human accountability."],
+  ["Can I get just a landing page, or just an app?", "Yes — they're separate, fixed-price offers. Most clients start with the landing page and come back for the app later, but you're welcome to book either on its own, or both together."],
+  ["What happens after handoff?", "You get full documentation and a walkthrough call so your team — or you — can run, extend, or hand the project to another developer with no lock-in. I'm also available for ongoing support through an Accessibility & Care retainer if you'd rather not manage it yourself."],
+  ["Where are you based?", "East London, UK — working GMT/BST hours. I work with clients across the UK and EU, in English, French, or German."],
+  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same pricing, same person. Booking directly just means no marketplace fees on my end, which I can sometimes pass on as a small discount. If you'd rather use Fiverr's buyer protection for your first project, that's completely fine too."],
+  ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope before any work starts. You can check all of it yourself."],
   ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
 ];
 
@@ -976,7 +982,7 @@ function AuroraLandingInner() {
               <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes included</div></div></div>
             </div>
           </Carousel>
-          <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see the FAQ →</a></p>
+          <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq-pricing">see how pricing works →</a></p>
         </div>
       </section>
 
@@ -988,7 +994,7 @@ function AuroraLandingInner() {
           </div>
           <div className="faq-list">
             {FAQS.map(([q, a], i) => (
-              <details className="q" key={i}>
+              <details className="q" key={i} id={i === 0 ? "faq-pricing" : undefined}>
                 <summary>{q}</summary>
                 <div className="a">{a}</div>
               </details>
