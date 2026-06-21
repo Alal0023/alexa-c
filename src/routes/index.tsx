@@ -976,7 +976,7 @@ function AuroraLandingInner() {
               <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes included</div></div></div>
             </div>
           </Carousel>
-          <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
+          <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see the FAQ →</a></p>
         </div>
       </section>
 
