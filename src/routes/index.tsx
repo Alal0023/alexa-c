@@ -108,6 +108,9 @@ const CSS = `
 .aurora-root .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .grad-t{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .stat-grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block; }
+.aurora-root .stats .s:nth-child(1) .stat-grad{ background-image:var(--grad-pv); -webkit-background-clip:text; background-clip:text; }
+.aurora-root .stats .s:nth-child(2) .stat-grad{ background-image:var(--grad-vt); -webkit-background-clip:text; background-clip:text; }
+.aurora-root .stats .s:nth-child(3) .stat-grad{ background-image:var(--grad-ta); -webkit-background-clip:text; background-clip:text; }
 .aurora-root .wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
 .aurora-root .eyebrow{ font-family:var(--mono); font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 .aurora-root .aura{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.34; z-index:0; pointer-events:none; }
