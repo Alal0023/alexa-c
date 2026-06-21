@@ -1041,7 +1041,7 @@ function AuroraLandingInner() {
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
                         <span className="url">🔒 {p.urlLabel}</span>
                       </div>
-                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500)` }} aria-hidden="true" />
                     </>
                   )}
                   <div className="meta">
@@ -1074,7 +1074,7 @@ function AuroraLandingInner() {
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
                         <span className="url">🔒 {p.urlLabel}</span>
                       </div>
-                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500)` }} aria-hidden="true" />
                     </>
                   )}
                   <div className="meta">
