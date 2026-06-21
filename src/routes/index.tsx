@@ -994,7 +994,7 @@ function AuroraLandingInner() {
           </div>
           <div className="faq-list">
             {FAQS.map(([q, a], i) => (
-              <details className="q" key={i}>
+              <details className="q" key={i} id={i === 0 ? "faq-pricing" : undefined}>
                 <summary>{q}</summary>
                 <div className="a">{a}</div>
               </details>
