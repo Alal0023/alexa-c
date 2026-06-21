@@ -501,10 +501,10 @@ const CSS = `
 
 /* Proof links */
 .aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
-.aurora-root .proof-card{ display:block; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root .proof-card{ display:flex; flex-direction:column; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .aurora-root .proof-card:hover{ border-color:#9B5CFF; transform:translateY(-4px); box-shadow:0 24px 50px -28px rgba(155,92,255,.45); }
 .aurora-root .proof-card .thumb{ aspect-ratio:4/3; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
-.aurora-root .proof-card .meta{ display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; }
+.aurora-root .proof-card .meta{ flex:1; display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; }
 .aurora-root .proof-card .meta .top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
 .aurora-root .proof-card .meta .ttl{ font-weight:800; font-size:15px; letter-spacing:-.01em; line-height:1.2; }
 .aurora-root .proof-card .meta .sub{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
