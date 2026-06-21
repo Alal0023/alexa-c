@@ -521,8 +521,7 @@ const CSS = `
 .aurora-root .proof-card .chrome .cd.y{ background:#febc2e; }
 .aurora-root .proof-card .chrome .cd.g{ background:#28c840; }
 .aurora-root .proof-card .chrome .url{ flex:1; min-width:0; font-family:var(--mono); font-size:10px; color:var(--muted); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:3px 8px; margin-left:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.aurora-root .proof-card .phone-frame{ aspect-ratio:4/3; background:linear-gradient(160deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:12px; }
-.aurora-root .proof-card .chrome-spacer{ visibility:hidden; }
+.aurora-root .proof-card .phone-frame{ aspect-ratio:16/11; background:linear-gradient(160deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:12px; }
 .aurora-root .proof-card .phone-frame .phone{ height:100%; aspect-ratio:9/17; background:#0C0A18; border-radius:18px; border:2px solid var(--line); padding:4px; position:relative; box-shadow:0 12px 28px -16px rgba(0,0,0,.6); }
 .aurora-root .proof-card .phone-frame .phone::before{ content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:36%; height:8px; background:#0C0A18; border-radius:0 0 10px 10px; z-index:2; }
 .aurora-root .proof-card .phone-frame .phone .pscreen{ width:100%; height:100%; border-radius:14px; background:#0c0a18 center/cover no-repeat; display:block; }
@@ -642,15 +641,15 @@ const CSS = `
 }
 
 /* ===== Stretched gradients (continuous, not per-word) ===== */
-/* Service card meta — split gradient across N items per card */
-.aurora-root .svc .meta .m .mv.grad{ background-image:var(--grad-pv); }
-/* 2-item rows: pink→purple, purple→yellow */
-.aurora-root .svc .meta .m:first-child:nth-last-child(2) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
-.aurora-root .svc .meta .m:nth-child(2):last-child .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#FFC24B); }
-/* 3-item rows: pink→purple, purple→teal, teal→yellow */
-.aurora-root .svc .meta .m:first-child:nth-last-child(3) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
-.aurora-root .svc .meta .m:nth-child(2):nth-last-child(2) .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
-.aurora-root .svc .meta .m:nth-child(3):last-child .mv.grad{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
+/* Service cards — one stretched gradient segment per card, continuing across the 4 cards */
+.aurora-root .svc-grid .svc:nth-of-type(1) .mv.grad,
+.aurora-root .svc-grid .svc:nth-of-type(1) h3.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .svc-grid .svc:nth-of-type(2) .mv.grad,
+.aurora-root .svc-grid .svc:nth-of-type(2) h3.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+.aurora-root .svc-grid .svc:nth-of-type(3) .mv.grad,
+.aurora-root .svc-grid .svc:nth-of-type(3) h3.grad-t{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
+.aurora-root .svc-grid .svc:nth-of-type(4) .mv.grad,
+.aurora-root .svc-grid .svc:nth-of-type(4) h3.grad-t{ background-image:linear-gradient(100deg,#FFC24B,#FF6FD8); }
 .aurora-root .svc .meta .m .mv.grad{ -webkit-background-clip:text; background-clip:text; color:transparent; }
 
 /* Approach cards — split full gradient across the 4 titles */
@@ -659,9 +658,9 @@ const CSS = `
 .aurora-root #approach .cell:nth-child(3) h3.grad-t{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
 .aurora-root #approach .cell:nth-child(4) h3.grad-t{ background-image:linear-gradient(100deg,#FFC24B,#FF6FD8); }
 
-/* Hero floating badges — EAA follows the next gradient segment (purple→teal) */
-.aurora-root .hero .badge:nth-of-type(1) .v.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
-.aurora-root .hero .badge:nth-of-type(2) .v.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+/* Hero floating badges — stretched across the pair (pink→purple, purple→teal) */
+.aurora-root .hero .vis .badge.b-one .v.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF) !important; }
+.aurora-root .hero .vis .badge.b-two .v.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8) !important; }
 
 /* Final CTA platforms (Fiverr / LinkedIn) — stretched gradient across the pair */
 .aurora-root .platforms a:nth-of-type(1){ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
@@ -671,6 +670,9 @@ const CSS = `
 .aurora-root nav .cta{ background-image:var(--grad); background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
 .aurora-root nav .cta:hover{ background-position:100% 50%; }
 .aurora-root .cta-final .btn.grad{ background-image:var(--grad); }
+/* Hero primary CTA — full 4-stop gradient sweep, in both themes */
+.aurora-root .hero .btn.grad{ background-image:var(--grad) !important; background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root .hero .btn.grad:hover{ background-position:100% 50%; }
 `;
 
 function AuroraLanding() {
@@ -915,8 +917,8 @@ function AuroraLandingInner() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">80→95%</div><div className="l">a11y raised at Amazon</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">EAA</div><div className="l">enforced since Jun 2025</div></div>
+            <div className="badge b-one" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">80→95%</div><div className="l">a11y raised at Amazon</div></div>
+            <div className="badge b-two" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">EAA</div><div className="l">enforced since Jun 2025</div></div>
           </div>
         </div>
       </header>
