@@ -1008,7 +1008,7 @@ function AuroraLandingInner() {
               <h3>Accessibility &amp; Care — Essentials</h3>
               <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href="#contact">Get in touch →</a></p>
               <div className="price"><em>£95/mo</em> <b>· monthly</b></div>
-              <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes included</div></div></div>
+              <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes incl.</div></div></div>
             </div>
           </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq-pricing">see how pricing works →</a></p>
