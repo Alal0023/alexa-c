@@ -12,6 +12,7 @@ const DESCRIPTION =
 
 const FAQS: [string, string][] = [
   ["Is this AI-generated?", "I build with AI-native tools — that's how I deliver in days, not months. But AI alone produces inaccessible, brittle code: the February 2026 WebAIM study tied rising web-accessibility failures directly to AI-assisted 'vibe coding,' with 95.9% of top sites now failing WCAG. Every build I ship is reviewed and hardened by hand — keyboard, screen reader, and contrast tested — by a senior designer. You get AI speed with human accountability."],
+  ["Do you write the code yourself?", "I direct and review every build using AI-native tools (Claude Code, Lovable) — testing it by hand for accessibility, functionality, and UX before delivery. You get real, production React code, not a black box."],
   ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope. You can check all of it."],
   ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
   ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
@@ -834,7 +835,7 @@ function AuroraLandingInner() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             )}
           </button>
-          <a href="#contact" className="cta">Start a project →</a>
+          <a href="#contact" className="cta">Book a call</a>
           <button className="hamb" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
@@ -853,7 +854,7 @@ function AuroraLandingInner() {
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
-        <a href="#contact" className="cta" onClick={() => setMenuOpen(false)}>Start a project →</a>
+        <a href="#contact" className="cta" onClick={() => setMenuOpen(false)}>Book a call</a>
       </div>
 
       <header className="hero">
@@ -910,12 +911,6 @@ function AuroraLandingInner() {
             <span className="eyebrow">Who I am</span>
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>I raised accessibility from 80% to 95% at Amazon. Now I do it for you.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>I spent nearly a decade as a design lead at Amazon, where I led accessibility across a multi-brand organisation and raised compliance from roughly <b style={{ color: "var(--ink)", fontWeight: 800 }}>80% to 95%</b>. Accessibility isn't a checkbox I add at the end — it's how I've worked for years. Now I bring that senior, regulator-ready eye to founders and small teams, building fast with AI-native tools and testing by hand the way a screen-reader user actually experiences your site.</p>
-            <Carousel className="grid-2x2" stagger>
-              <div className="cell"><h3 className="grad-t">Accessibility, by hand</h3><p>Manual WCAG 2.2 AA review on every build — keyboard, screen reader, and contrast tested by a senior designer.</p></div>
-              <div className="cell"><h3 className="grad-t">Regulator-ready</h3><p>EAA-aware from the first line of code. You get a clear accessibility statement at handoff, not a scanner report.</p></div>
-              <div className="cell"><h3 className="grad-t">AI speed, human eye</h3><p>AI-native tools for delivery in days — every line reviewed and hardened before anything ships.</p></div>
-              <div className="cell"><h3 className="grad-t">No lock-in</h3><p>Real code, real database, documentation and a walkthrough call. Your team can run it long after I'm gone.</p></div>
-            </Carousel>
           </div>
         </div>
       </section>
@@ -978,10 +973,10 @@ function AuroraLandingInner() {
             </div>
             <div className="svc">
               <div className="no grad-t">04 · RETAINER</div>
-              <h3>Accessibility &amp; Care</h3>
-              <p>Monthly monitoring, fixes as the site changes, and accessibility statement upkeep so you stay EAA-compliant after launch.</p>
-              <div className="price"><em>from £P.O.A</em> <b>· monthly</b></div>
-              <div className="meta"><div className="m"><div className="mv grad">Monthly</div><div className="ml">Monitoring</div></div><div className="m"><div className="mv grad">EAA</div><div className="ml">Statement upkeep</div></div></div>
+              <h3>Accessibility &amp; Care — Essentials</h3>
+              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href="#contact">Get in touch →</a></p>
+              <div className="price"><em>£95/mo</em> <b>· monthly</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes included</div></div></div>
             </div>
           </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
@@ -1043,8 +1038,8 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">Proof of work</span>
-            <h2>Real, inspectable work — open the build yourself.</h2>
-            <p>No client case studies yet — so here's real, inspectable work: a GOV.UK-pattern "Having a Baby" accessibility prototype, a privacy-first family platform (Vellum), and the Volley landing page + ad-testing framework. Live links, real components, not mockups.</p>
+            <h2>Real, production code — open the build yourself.</h2>
+            <p>Real, production code (React) — reviewed for accessibility, functionality, and UX before it ships, and fully yours to keep, move, or extend. No client case studies yet, so here's live work you can inspect: a GOV.UK-pattern "Having a Baby" accessibility prototype, a privacy-first family platform (Vellum), and the Volley landing page + ad-testing framework.</p>
           </div>
           <div className="proof-car-desktop-mobile">
             <Carousel className="proof-grid" stagger>
@@ -1137,7 +1132,7 @@ function AuroraLandingInner() {
             <h2>Find out if your site is EAA-ready.</h2>
             <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad">Book a compliance call →</a>
+              <a href="mailto:hello@alexac.studio" className="btn grad">Book a free 30-min compliance call →</a>
             </div>
             <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
