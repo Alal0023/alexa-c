@@ -564,6 +564,7 @@ const CSS = `
 .aurora-root.light .quote .q em,
 .aurora-root.light .platforms a{ font-weight:800; }
 .aurora-root.light .btn.grad,.aurora-root.light .proof-grid .proof-card .visit,.aurora-root.light .proof-portfolio .visit{ color:#FFFFFF !important; }
+.aurora-root.light nav .cta{ color:#FFFFFF; }
 .aurora-root.light nav{ background:rgba(255,255,255,.85); }
 .aurora-root.light .drawer{ background:rgba(250,250,252,.96); }
 .aurora-root.light .cta-card{ background:linear-gradient(160deg,#FFFFFF,#F3F1FA); }
@@ -571,8 +572,9 @@ const CSS = `
 .aurora-root.light .hero .portrait{ border-color:#7C5BC9; }
 .aurora-root.light .hero .badge .l,
 .aurora-root.light .trust .item,
-.aurora-root.light .proof-portfolio .l span{ font-weight:700; color:#2B2640; }
-.aurora-root.light .trust .item b{ font-weight:800; }
+.aurora-root.light .proof-portfolio .l span{ font-weight:600; color:#5F587A; }
+.aurora-root.light .trust .item{ color:#7A7290; font-weight:500; }
+.aurora-root.light .trust .item b{ color:#15122A; font-weight:800; }
 .aurora-root.light .aura{ opacity:.22; }
 .aurora-root.light .hero .aura.a3{ opacity:.14; }
 .aurora-root.light .stats .aura{ opacity:.10; }
