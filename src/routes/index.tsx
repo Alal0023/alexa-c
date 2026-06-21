@@ -907,10 +907,25 @@ function AuroraLandingInner() {
           <div>
             <span className="pill"><span className="dot"></span> EAA · WCAG 2.2 AA · Audits · Builds</span>
             <h1>
-              {"Accessible, compliant websites and apps —built at AI speed,".split(" ").map((w, i) => (
-                <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.06}s`, marginRight: "0.28em" }}>{w}</span>
-              ))}
-              <span className="grad word" style={{ animationDelay: "0.85s", marginRight: "0.28em" }}>refined by a senior eye.</span>
+              <span className="word" style={{ animationDelay: "0.05s", marginRight: "0.28em" }}>Accessible,</span>
+              <br className="br-m" />
+              <span className="word" style={{ animationDelay: "0.11s", marginRight: "0.28em" }}>compliant</span>
+              <br className="br-m" />
+              <span className="word" style={{ animationDelay: "0.17s", marginRight: "0.28em" }}>websites</span>
+              <span className="word" style={{ animationDelay: "0.23s", marginRight: "0.28em" }}>and</span>
+              <br className="br-m" />
+              <span className="word" style={{ animationDelay: "0.29s", marginRight: "0.28em" }}>apps</span>
+              <span className="word" style={{ animationDelay: "0.35s", marginRight: "0.28em" }}>—built</span>
+              <span className="word" style={{ animationDelay: "0.41s", marginRight: "0.28em" }}>at</span>
+              <br className="br-m" />
+              <span className="word" style={{ animationDelay: "0.47s", marginRight: "0.28em" }}>AI</span>
+              <span className="word" style={{ animationDelay: "0.53s", marginRight: "0.28em" }}>speed,</span>
+              <br className="br-m" />
+              <span className="word grad" style={{ animationDelay: "0.85s", marginRight: "0.28em" }}>
+                refined by a
+                <br className="br-m" />
+                senior eye.
+              </span>
             </h1>
             <div className="hero-rest">
               <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
