@@ -1133,11 +1133,11 @@ function AuroraLandingInner() {
         <div className="aura a1"></div>
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
-            <span className="eyebrow">FOUNDING CLIENT SLOTS OPEN</span>
-            <h2>Let's build something that ships.</h2>
-            <p>One 30 min call, a fixed price by the end of it, and a clear yes/no — no chasing, no pressure.</p>
+            <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
+            <h2>Find out if your site is EAA-ready.</h2>
+            <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad">Start a project →</a>
+              <a href="mailto:hello@alexac.studio" className="btn grad">Book a compliance call →</a>
             </div>
             <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
