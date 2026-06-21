@@ -640,6 +640,37 @@ const CSS = `
 @media (max-width:720px), (min-width:981px){
   .aurora-root .proof-car-tablet{ display:none; }
 }
+
+/* ===== Stretched gradients (continuous, not per-word) ===== */
+/* Service card meta — split gradient across N items per card */
+.aurora-root .svc .meta .m .mv.grad{ background-image:var(--grad-pv); }
+/* 2-item rows: pink→purple, purple→yellow */
+.aurora-root .svc .meta .m:first-child:nth-last-child(2) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .svc .meta .m:nth-child(2):last-child .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#FFC24B); }
+/* 3-item rows: pink→purple, purple→teal, teal→yellow */
+.aurora-root .svc .meta .m:first-child:nth-last-child(3) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .svc .meta .m:nth-child(2):nth-last-child(2) .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+.aurora-root .svc .meta .m:nth-child(3):last-child .mv.grad{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
+.aurora-root .svc .meta .m .mv.grad{ -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+/* Approach cards — split full gradient across the 4 titles */
+.aurora-root #approach .cell:nth-child(1) h3.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root #approach .cell:nth-child(2) h3.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+.aurora-root #approach .cell:nth-child(3) h3.grad-t{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
+.aurora-root #approach .cell:nth-child(4) h3.grad-t{ background-image:linear-gradient(100deg,#FFC24B,#FF6FD8); }
+
+/* Hero floating badges — EAA follows the next gradient segment (purple→teal) */
+.aurora-root .hero .badge:nth-of-type(1) .v.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .hero .badge:nth-of-type(2) .v.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+
+/* Final CTA platforms (Fiverr / LinkedIn) — stretched gradient across the pair */
+.aurora-root .platforms a:nth-of-type(1){ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .platforms a:nth-of-type(2){ background-image:linear-gradient(100deg,#9B5CFF,#FFC24B); }
+
+/* Header + bottom CTA buttons — use the full 4-stop gradient for a visible sweep */
+.aurora-root nav .cta{ background-image:var(--grad); background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root nav .cta:hover{ background-position:100% 50%; }
+.aurora-root .cta-final .btn.grad{ background-image:var(--grad); }
 `;
 
 function AuroraLanding() {
