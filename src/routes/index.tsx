@@ -530,7 +530,36 @@ const CSS = `
   --line:#E4E1EE; --line-soft:#EEEBF5;
   --shadow:0 24px 60px -30px rgba(80,55,150,.22);
   --glow:0 0 70px rgba(155,92,255,.18);
+  /* Accessible (AA on light bg) gradient overrides */
+  --grad:linear-gradient(100deg,#B81C7E,#5A2DD6 38%,#0E7C70 70%,#8A5A00);
+  --grad-tight:linear-gradient(100deg,#B81C7E 0%,#7A2BB8 50%,#5A2DD6 100%);
+  --grad-pv:linear-gradient(100deg,#B81C7E 0%,#5A2DD6 100%);
+  --grad-vt:linear-gradient(100deg,#5A2DD6 0%,#0E7C70 100%);
+  --grad-ta:linear-gradient(100deg,#0E7C70 0%,#8A5A00 100%);
+  --grad-ap:linear-gradient(100deg,#8A5A00 0%,#B81C7E 100%);
 }
+/* Light theme: stronger contrast for secondary type */
+.aurora-root.light .eyebrow,
+.aurora-root.light footer .fine,
+.aurora-root.light .cta-card .email-line,
+.aurora-root.light footer .links{ color:#3F3A55; font-weight:700; }
+.aurora-root.light .svc .meta .m .ml,
+.aurora-root.light .proc p,
+.aurora-root.light .proof-card .meta .sub,
+.aurora-root.light .proof-portfolio .l span,
+.aurora-root.light .hero .badge .l,
+.aurora-root.light .cta-sub,
+.aurora-root.light .price{ color:#3F3A55; }
+.aurora-root.light .price s{ color:#5F586F; opacity:1; }
+/* Gradient text — keep the AA-safe stops; nudge weight for legibility */
+.aurora-root.light .grad,
+.aurora-root.light .grad-t,
+.aurora-root.light .stat-grad,
+.aurora-root.light .svc .no,
+.aurora-root.light .price em,
+.aurora-root.light .pricing-note a,
+.aurora-root.light .quote .q em,
+.aurora-root.light .platforms a{ font-weight:800; }
 .aurora-root.light nav{ background:rgba(255,255,255,.85); }
 .aurora-root.light .drawer{ background:rgba(250,250,252,.96); }
 .aurora-root.light .cta-card{ background:linear-gradient(160deg,#FFFFFF,#F3F1FA); }
