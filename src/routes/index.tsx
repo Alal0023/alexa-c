@@ -522,6 +522,7 @@ const CSS = `
 .aurora-root .proof-card .chrome .cd.g{ background:#28c840; }
 .aurora-root .proof-card .chrome .url{ flex:1; min-width:0; font-family:var(--mono); font-size:10px; color:var(--muted); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:3px 8px; margin-left:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .aurora-root .proof-card .phone-frame{ aspect-ratio:4/3; background:linear-gradient(160deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:12px; }
+.aurora-root .proof-card .chrome-spacer{ visibility:hidden; }
 .aurora-root .proof-card .phone-frame .phone{ height:100%; aspect-ratio:9/17; background:#0C0A18; border-radius:18px; border:2px solid var(--line); padding:4px; position:relative; box-shadow:0 12px 28px -16px rgba(0,0,0,.6); }
 .aurora-root .proof-card .phone-frame .phone::before{ content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:36%; height:8px; background:#0C0A18; border-radius:0 0 10px 10px; z-index:2; }
 .aurora-root .proof-card .phone-frame .phone .pscreen{ width:100%; height:100%; border-radius:14px; background:#0c0a18 center/cover no-repeat; display:block; }
@@ -639,6 +640,37 @@ const CSS = `
 @media (max-width:720px), (min-width:981px){
   .aurora-root .proof-car-tablet{ display:none; }
 }
+
+/* ===== Stretched gradients (continuous, not per-word) ===== */
+/* Service card meta — split gradient across N items per card */
+.aurora-root .svc .meta .m .mv.grad{ background-image:var(--grad-pv); }
+/* 2-item rows: pink→purple, purple→yellow */
+.aurora-root .svc .meta .m:first-child:nth-last-child(2) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .svc .meta .m:nth-child(2):last-child .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#FFC24B); }
+/* 3-item rows: pink→purple, purple→teal, teal→yellow */
+.aurora-root .svc .meta .m:first-child:nth-last-child(3) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .svc .meta .m:nth-child(2):nth-last-child(2) .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+.aurora-root .svc .meta .m:nth-child(3):last-child .mv.grad{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
+.aurora-root .svc .meta .m .mv.grad{ -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+/* Approach cards — split full gradient across the 4 titles */
+.aurora-root #approach .cell:nth-child(1) h3.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root #approach .cell:nth-child(2) h3.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+.aurora-root #approach .cell:nth-child(3) h3.grad-t{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
+.aurora-root #approach .cell:nth-child(4) h3.grad-t{ background-image:linear-gradient(100deg,#FFC24B,#FF6FD8); }
+
+/* Hero floating badges — EAA follows the next gradient segment (purple→teal) */
+.aurora-root .hero .badge:nth-of-type(1) .v.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .hero .badge:nth-of-type(2) .v.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
+
+/* Final CTA platforms (Fiverr / LinkedIn) — stretched gradient across the pair */
+.aurora-root .platforms a:nth-of-type(1){ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .platforms a:nth-of-type(2){ background-image:linear-gradient(100deg,#9B5CFF,#FFC24B); }
+
+/* Header + bottom CTA buttons — use the full 4-stop gradient for a visible sweep */
+.aurora-root nav .cta{ background-image:var(--grad); background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root nav .cta:hover{ background-position:100% 50%; }
+.aurora-root .cta-final .btn.grad{ background-image:var(--grad); }
 `;
 
 function AuroraLanding() {
@@ -1054,9 +1086,15 @@ function AuroraLandingInner() {
               ].map((p) => (
                 <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
-                    <div className="phone-frame" aria-hidden="true">
-                      <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
-                    </div>
+                    <>
+                      <div className="chrome chrome-spacer" aria-hidden="true">
+                        <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
+                        <span className="url">&nbsp;</span>
+                      </div>
+                      <div className="phone-frame" aria-hidden="true">
+                        <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
+                      </div>
+                    </>
                   ) : (
                     <>
                       <div className="chrome" aria-hidden="true">
@@ -1087,9 +1125,15 @@ function AuroraLandingInner() {
               ].map((p) => (
                 <a key={`${p.url}-tablet`} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
-                    <div className="phone-frame" aria-hidden="true">
-                      <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
-                    </div>
+                    <>
+                      <div className="chrome chrome-spacer" aria-hidden="true">
+                        <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
+                        <span className="url">&nbsp;</span>
+                      </div>
+                      <div className="phone-frame" aria-hidden="true">
+                        <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
+                      </div>
+                    </>
                   ) : (
                     <>
                       <div className="chrome" aria-hidden="true">
