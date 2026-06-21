@@ -917,8 +917,8 @@ function AuroraLandingInner() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">80→95%</div><div className="l">a11y raised at Amazon</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">EAA</div><div className="l">enforced since Jun 2025</div></div>
+            <div className="badge b-one" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">80→95%</div><div className="l">a11y raised at Amazon</div></div>
+            <div className="badge b-two" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">EAA</div><div className="l">enforced since Jun 2025</div></div>
           </div>
         </div>
       </header>
