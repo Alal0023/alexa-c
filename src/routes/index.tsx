@@ -992,10 +992,9 @@ function AuroraLandingInner() {
           <div className="proof-car-desktop-mobile">
             <Carousel className="proof-grid" stagger>
               {[
-                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/", frame: "browser" as const, urlLabel: "vellum-family-legacy.lovable.app" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
-                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url, frame: "phone" as const, urlLabel: "" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
                 <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
