@@ -522,6 +522,7 @@ const CSS = `
 .aurora-root .proof-card .chrome .cd.g{ background:#28c840; }
 .aurora-root .proof-card .chrome .url{ flex:1; min-width:0; font-family:var(--mono); font-size:10px; color:var(--muted); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:3px 8px; margin-left:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .aurora-root .proof-card .phone-frame{ aspect-ratio:4/3; background:linear-gradient(160deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:12px; }
+.aurora-root .proof-card .chrome-spacer{ visibility:hidden; }
 .aurora-root .proof-card .phone-frame .phone{ height:100%; aspect-ratio:9/17; background:#0C0A18; border-radius:18px; border:2px solid var(--line); padding:4px; position:relative; box-shadow:0 12px 28px -16px rgba(0,0,0,.6); }
 .aurora-root .proof-card .phone-frame .phone::before{ content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:36%; height:8px; background:#0C0A18; border-radius:0 0 10px 10px; z-index:2; }
 .aurora-root .proof-card .phone-frame .phone .pscreen{ width:100%; height:100%; border-radius:14px; background:#0c0a18 center/cover no-repeat; display:block; }
