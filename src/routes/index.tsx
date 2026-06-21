@@ -908,13 +908,13 @@ function AuroraLandingInner() {
           <div className="portrait" data-reveal="left"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
           <div data-reveal="right">
             <span className="eyebrow">Who I am</span>
-            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
-            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
+            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>I raised accessibility from 80% to 95% at Amazon. Now I do it for you.</h2>
+            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>I spent nearly a decade as a design lead at Amazon, where I led accessibility across a multi-brand organisation and raised compliance from roughly <b style={{ color: "var(--ink)", fontWeight: 800 }}>80% to 95%</b>. Accessibility isn't a checkbox I add at the end — it's how I've worked for years. Now I bring that senior, regulator-ready eye to founders and small teams, building fast with AI-native tools and testing by hand the way a screen-reader user actually experiences your site.</p>
             <Carousel className="grid-2x2" stagger>
-              <div className="cell"><h3 className="grad-t">Accessibility Process</h3><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
-              <div className="cell"><h3 className="grad-t">Build Process</h3><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
-              <div className="cell"><h3 className="grad-t">Tools &amp; Stack</h3><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
-              <div className="cell"><h3 className="grad-t">Handoff Standards</h3><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
+              <div className="cell"><h3 className="grad-t">Accessibility, by hand</h3><p>Manual WCAG 2.2 AA review on every build — keyboard, screen reader, and contrast tested by a senior designer.</p></div>
+              <div className="cell"><h3 className="grad-t">Regulator-ready</h3><p>EAA-aware from the first line of code. You get a clear accessibility statement at handoff, not a scanner report.</p></div>
+              <div className="cell"><h3 className="grad-t">AI speed, human eye</h3><p>AI-native tools for delivery in days — every line reviewed and hardened before anything ships.</p></div>
+              <div className="cell"><h3 className="grad-t">No lock-in</h3><p>Real code, real database, documentation and a walkthrough call. Your team can run it long after I'm gone.</p></div>
             </Carousel>
           </div>
         </div>
