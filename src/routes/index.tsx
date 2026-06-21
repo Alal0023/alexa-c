@@ -560,7 +560,7 @@ const CSS = `
 .aurora-root.light .pricing-note a,
 .aurora-root.light .quote .q em,
 .aurora-root.light .platforms a{ font-weight:800; }
-.aurora-root.light .btn.grad,.aurora-root.light .proof-grid .proof-card .visit{ color:#FFFFFF; }
+.aurora-root.light .btn.grad,.aurora-root.light .proof-grid .proof-card .visit,.aurora-root.light .proof-portfolio .visit{ color:#FFFFFF !important; }
 .aurora-root.light nav{ background:rgba(255,255,255,.85); }
 .aurora-root.light .drawer{ background:rgba(250,250,252,.96); }
 .aurora-root.light .cta-card{ background:linear-gradient(160deg,#FFFFFF,#F3F1FA); }
