@@ -860,18 +860,18 @@ function AuroraLandingInner() {
         <div className="aura a1"></div><div className="aura a2"></div><div className="aura a3"></div>
         <div className="wrap grid">
           <div>
-            <span className="pill"><span className="dot"></span> Apps · Landing pages · Accessibility</span>
+            <span className="pill"><span className="dot"></span> EAA · WCAG 2.2 AA · Audits · Builds</span>
             <h1>
-              {"A working app or landing page, live on your domain in".split(" ").map((w, i) => (
+              {"Accessible, compliant websites and apps — built at AI speed,".split(" ").map((w, i) => (
                 <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.06}s`, marginRight: "0.28em" }}>{w}</span>
               ))}
-              <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
+              <span className="grad word" style={{ animationDelay: "0.85s" }}>hardened by a senior human eye.</span>
             </h1>
             <div className="hero-rest">
-              <p className="lede">I build for early-stage startups and small businesses — real code, not mockups.</p>
+              <p className="lede">The <b>European Accessibility Act</b> is now enforced (since 28 June 2025) and <b>95.9% of websites still fail WCAG</b>. I'm an ex-Amazon design lead who raised accessibility across a multi-brand org from <b>~80% to ~95%</b>. I audit, fix, and build EAA / WCAG 2.2 AA-compliant sites — without enterprise cost or agency overhead.</p>
               <div className="btns">
-                <a href="#contact" className="btn grad">Start a project →</a>
-                <a href="#process" className="btn link">How it works ↓</a>
+                <a href="#contact" className="btn grad">Book a 30-min compliance call</a>
+                <a href="#services" className="btn link">For agencies →</a>
               </div>
             </div>
           </div>
@@ -879,8 +879,8 @@ function AuroraLandingInner() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">15 years</div><div className="l">ex Amazon lead</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">95%</div><div className="l">a11y coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">80→95%</div><div className="l">a11y raised at Amazon</div></div>
+            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">EAA</div><div className="l">enforced since Jun 2025</div></div>
           </div>
         </div>
       </header>
