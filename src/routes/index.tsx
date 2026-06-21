@@ -25,7 +25,7 @@ const FAQS: [string, string][] = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alexa C. — Apps & landing pages, live in 5–10 days." },
+      { title: "Alexa C. — Accessible, EAA-compliant websites & apps" },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: "Alexa C. — Accessible, EAA-compliant websites & apps" },
       { property: "og:description", content: DESCRIPTION },
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Alexa C.",
-          jobTitle: "Senior Designer & App Developer",
+          jobTitle: "Senior Designer & Accessibility Specialist",
           description: DESCRIPTION,
           url: "https://alexa-c.lovable.app/",
         }),
@@ -68,15 +68,17 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Service",
           provider: { "@type": "Person", name: "Alexa C." },
-          name: "Landing pages & apps, shipped in 5–10 days",
+          name: "Accessible websites & apps — EAA / WCAG 2.2 AA",
           areaServed: "Worldwide",
           description: DESCRIPTION,
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: "Offers",
             itemListElement: [
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apps" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "WCAG 2.2 AA / EAA Audit + Fix Plan" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accessible Landing Page" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accessible MVP / App" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accessibility & Care retainer" } },
             ],
           },
         }),
