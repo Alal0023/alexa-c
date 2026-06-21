@@ -560,12 +560,16 @@ const CSS = `
 .aurora-root.light .pricing-note a,
 .aurora-root.light .quote .q em,
 .aurora-root.light .platforms a{ font-weight:800; }
-.aurora-root.light .btn.grad,.aurora-root.light .proof-grid .proof-card .visit{ color:#FFFFFF; }
+.aurora-root.light .btn.grad,.aurora-root.light .proof-grid .proof-card .visit,.aurora-root.light .proof-portfolio .visit{ color:#FFFFFF !important; }
 .aurora-root.light nav{ background:rgba(255,255,255,.85); }
 .aurora-root.light .drawer{ background:rgba(250,250,252,.96); }
 .aurora-root.light .cta-card{ background:linear-gradient(160deg,#FFFFFF,#F3F1FA); }
-.aurora-root.light .hero .ring{ border-color:#D6CFEB; }
-.aurora-root.light .hero .portrait{ border-color:#D6CFEB; }
+.aurora-root.light .hero .ring{ border-color:#7C5BC9; border-width:2px; }
+.aurora-root.light .hero .portrait{ border-color:#7C5BC9; }
+.aurora-root.light .hero .badge .l,
+.aurora-root.light .trust .item,
+.aurora-root.light .proof-portfolio .l span{ font-weight:700; color:#2B2640; }
+.aurora-root.light .trust .item b{ font-weight:800; }
 .aurora-root.light .aura{ opacity:.22; }
 .aurora-root.light .hero .aura.a3{ opacity:.14; }
 .aurora-root.light .stats .aura{ opacity:.10; }
@@ -1037,7 +1041,7 @@ function AuroraLandingInner() {
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
                         <span className="url">🔒 {p.urlLabel}</span>
                       </div>
-                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500)` }} aria-hidden="true" />
                     </>
                   )}
                   <div className="meta">
@@ -1070,7 +1074,7 @@ function AuroraLandingInner() {
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
                         <span className="url">🔒 {p.urlLabel}</span>
                       </div>
-                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900)` }} aria-hidden="true" />
+                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500)` }} aria-hidden="true" />
                     </>
                   )}
                   <div className="meta">
