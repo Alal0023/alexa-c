@@ -5,7 +5,6 @@ import wideAsset from "../assets/alexa-wide.png.asset.json";
 import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
-import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
@@ -531,7 +530,36 @@ const CSS = `
   --line:#E4E1EE; --line-soft:#EEEBF5;
   --shadow:0 24px 60px -30px rgba(80,55,150,.22);
   --glow:0 0 70px rgba(155,92,255,.18);
+  /* Accessible (AA on light bg) gradient overrides */
+  --grad:linear-gradient(100deg,#B81C7E,#5A2DD6 38%,#0E7C70 70%,#8A5A00);
+  --grad-tight:linear-gradient(100deg,#B81C7E 0%,#7A2BB8 50%,#5A2DD6 100%);
+  --grad-pv:linear-gradient(100deg,#B81C7E 0%,#5A2DD6 100%);
+  --grad-vt:linear-gradient(100deg,#5A2DD6 0%,#0E7C70 100%);
+  --grad-ta:linear-gradient(100deg,#0E7C70 0%,#8A5A00 100%);
+  --grad-ap:linear-gradient(100deg,#8A5A00 0%,#B81C7E 100%);
 }
+/* Light theme: stronger contrast for secondary type */
+.aurora-root.light .eyebrow,
+.aurora-root.light footer .fine,
+.aurora-root.light .cta-card .email-line,
+.aurora-root.light footer .links{ color:#3F3A55; font-weight:700; }
+.aurora-root.light .svc .meta .m .ml,
+.aurora-root.light .proc p,
+.aurora-root.light .proof-card .meta .sub,
+.aurora-root.light .proof-portfolio .l span,
+.aurora-root.light .hero .badge .l,
+.aurora-root.light .cta-sub,
+.aurora-root.light .price{ color:#3F3A55; }
+.aurora-root.light .price s{ color:#5F586F; opacity:1; }
+/* Gradient text — keep the AA-safe stops; nudge weight for legibility */
+.aurora-root.light .grad,
+.aurora-root.light .grad-t,
+.aurora-root.light .stat-grad,
+.aurora-root.light .svc .no,
+.aurora-root.light .price em,
+.aurora-root.light .pricing-note a,
+.aurora-root.light .quote .q em,
+.aurora-root.light .platforms a{ font-weight:800; }
 .aurora-root.light nav{ background:rgba(255,255,255,.85); }
 .aurora-root.light .drawer{ background:rgba(250,250,252,.96); }
 .aurora-root.light .cta-card{ background:linear-gradient(160deg,#FFFFFF,#F3F1FA); }
@@ -992,10 +1020,10 @@ function AuroraLandingInner() {
           <div className="proof-car-desktop-mobile">
             <Carousel className="proof-grid" stagger>
               {[
-                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/", frame: "browser" as const, urlLabel: "vellum-family-legacy.lovable.app" },
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
-                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url, frame: "phone" as const, urlLabel: "" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
                 <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
@@ -1025,10 +1053,10 @@ function AuroraLandingInner() {
           <div className="proof-car-tablet tablet-car">
             <Carousel className="proof-grid" stagger>
               {[
-                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: "https://vellum-family-legacy.lovable.app/", frame: "browser" as const, urlLabel: "vellum-family-legacy.lovable.app" },
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
-                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: volleyAdsAsset.url, frame: "phone" as const, urlLabel: "" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
                 <a key={`${p.url}-tablet`} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
