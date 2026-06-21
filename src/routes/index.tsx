@@ -1086,9 +1086,15 @@ function AuroraLandingInner() {
               ].map((p) => (
                 <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
-                    <div className="phone-frame" aria-hidden="true">
-                      <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
-                    </div>
+                    <>
+                      <div className="chrome chrome-spacer" aria-hidden="true">
+                        <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
+                        <span className="url">&nbsp;</span>
+                      </div>
+                      <div className="phone-frame" aria-hidden="true">
+                        <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
+                      </div>
+                    </>
                   ) : (
                     <>
                       <div className="chrome" aria-hidden="true">
@@ -1119,9 +1125,15 @@ function AuroraLandingInner() {
               ].map((p) => (
                 <a key={`${p.url}-tablet`} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
-                    <div className="phone-frame" aria-hidden="true">
-                      <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
-                    </div>
+                    <>
+                      <div className="chrome chrome-spacer" aria-hidden="true">
+                        <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
+                        <span className="url">&nbsp;</span>
+                      </div>
+                      <div className="phone-frame" aria-hidden="true">
+                        <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
+                      </div>
+                    </>
                   ) : (
                     <>
                       <div className="chrome" aria-hidden="true">
