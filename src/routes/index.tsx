@@ -8,7 +8,7 @@ import elodieAsset from "../assets/elodie.png.asset.json";
 import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
-  "Accessible, EAA/WCAG 2.2 AA-compliant websites and apps — built at AI speed, hardened by a senior human eye. Ex-Amazon design lead who raised accessibility from ~80% to ~95%.";
+  "The EU's Accessibility Act is now enforced — and 95.9% of websites still fail WCAG. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.";
 
 const FAQS: [string, string][] = [
   ["How does pricing work?", "Every project is fixed price, agreed before any code is written. We start with a short discovery call to scope your goal, audience, and must-haves; I'll quote a fixed price and timeline by the end of it — no hourly billing, no surprise invoices. As a founding client (first 3 projects), you also get 40% off standard pricing in exchange for a detailed case study and testimonial once we ship."],
@@ -99,6 +99,7 @@ const CSS = `
   --grad:linear-gradient(100deg,#FF6FD8,#9B5CFF 38%,#36E0C8 70%,#FFC24B);
   --grad-tight:linear-gradient(100deg,#FF6FD8 0%,#C66CEA 50%,#9B5CFF 100%);
   --grad-pv:linear-gradient(100deg,#FF6FD8 0%,#9B5CFF 100%);
+  --grad-vb:linear-gradient(100deg,#9B5CFF 0%,#4EA8FF 100%);
   --grad-vt:linear-gradient(100deg,#9B5CFF 0%,#36E0C8 100%);
   --grad-ta:linear-gradient(100deg,#36E0C8 0%,#FFC24B 100%);
   --grad-ap:linear-gradient(100deg,#FFC24B 0%,#FF6FD8 100%);
@@ -641,10 +642,13 @@ const CSS = `
 }
 
 /* ===== Stretched gradients (continuous, not per-word) ===== */
-/* Service cards — only card 2 (WCAG/EAA Audit) gets custom stretched gradients:
-   Manual = pink→purple, EAA = purple→blue. Cards 1, 3, 4 use defaults. */
-.aurora-root .svc-grid .svc:nth-of-type(2) .meta .m:nth-child(1) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
-.aurora-root .svc-grid .svc:nth-of-type(2) .meta .m:nth-child(2) .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#4EA8FF); }
+/* Service card stats — each word gets its segment of the full gradient */
+.aurora-root .svc-grid .svc .meta .m:nth-child(1) .mv.grad{ background-image:var(--grad-pv); }
+.aurora-root .svc-grid .svc .meta .m:nth-child(2) .mv.grad{ background-image:var(--grad-vb); }
+.aurora-root .svc-grid .svc:nth-of-type(3) .meta .m:nth-child(2) .mv.grad,
+.aurora-root .svc-grid .svc:nth-of-type(4) .meta .m:nth-child(2) .mv.grad{ background-image:var(--grad-vt); }
+.aurora-root .svc-grid .svc:nth-of-type(3) .meta .m:nth-child(3) .mv.grad,
+.aurora-root .svc-grid .svc:nth-of-type(4) .meta .m:nth-child(3) .mv.grad{ background-image:var(--grad-ta); }
 .aurora-root .svc .meta .m .mv.grad{ -webkit-background-clip:text; background-clip:text; color:transparent; }
 
 /* Approach cards — split full gradient across the 4 titles */
@@ -895,13 +899,13 @@ function AuroraLandingInner() {
           <div>
             <span className="pill"><span className="dot"></span> EAA · WCAG 2.2 AA · Audits · Builds</span>
             <h1>
-              {"Accessible, compliant websites and apps — built at AI speed,".split(" ").map((w, i) => (
+              {"Accessible, compliant websites and apps — built at AI speed, hardened by a senior".split(" ").map((w, i) => (
                 <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.06}s`, marginRight: "0.28em" }}>{w}</span>
               ))}
-              <span className="grad word" style={{ animationDelay: "0.85s" }}>hardened by a senior human eye.</span>
+              <span className="grad word" style={{ animationDelay: "0.85s" }}>eye.</span>
             </h1>
             <div className="hero-rest">
-              <p className="lede">The <b>European Accessibility Act</b> is now enforced (since 28 June 2025) and <b>95.9% of websites still fail WCAG</b>. I'm an ex-Amazon design lead who raised accessibility across a multi-brand org from <b>~80% to ~95%</b>. I audit, fix, and build EAA / WCAG 2.2 AA-compliant sites — without enterprise cost or agency overhead.</p>
+              <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
               <div className="btns">
                 <a href="#contact" className="btn grad">Book a 30-min compliance call</a>
                 <a href="#services" className="btn link">For agencies →</a>
