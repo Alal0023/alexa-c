@@ -8,34 +8,32 @@ import elodieAsset from "../assets/elodie.png.asset.json";
 import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
-  "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
+  "Accessible, EAA/WCAG 2.2 AA-compliant websites and apps — built at AI speed, hardened by a senior human eye. Ex-Amazon design lead who raised accessibility from ~80% to ~95%.";
 
 const FAQS: [string, string][] = [
+  ["Is this AI-generated?", "I build with AI-native tools — that's how I deliver in days, not months. But AI alone produces inaccessible, brittle code: the February 2026 WebAIM study tied rising web-accessibility failures directly to AI-assisted 'vibe coding,' with 95.9% of top sites now failing WCAG. Every build I ship is reviewed and hardened by hand — keyboard, screen reader, and contrast tested — by a senior designer. You get AI speed with human accountability."],
+  ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope. You can check all of it."],
+  ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
   ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
-  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
-  ["What's included in the price?", "For apps: design, full-stack build (real code, real database), an accessibility review, and handoff docs. For landing pages: design, build, an accessibility review, and a walkthrough so your team can run it after I'm gone."],
-  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. No surprise invoices in between — the price agreed on the discovery call is the price you pay."],
-  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
+  ["What's included in the price?", "Audits include a manual senior WCAG 2.2 AA / EAA review, a prioritised fix plan, and your accessibility statement. Builds include design, full-stack code (real database where needed), accessibility built in from the first line, and handoff docs plus a walkthrough."],
+  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. The price agreed on the discovery call is the price you pay."],
   ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
-  ["You mention AI tools (Lovable, Claude Code, UX Pilot) — is this AI-generated work?", "I use AI tools to build faster, the way any senior engineer uses modern tooling — but nothing ships without me checking it line by line. Accessibility, code quality, and structure are all manually verified, not just generated and handed over."],
-  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
-  ["What happens after handoff?", "You get the code, documentation, and a walkthrough call. The product is yours — no lock-in, no required ongoing retainer (though I'm available if you want continued support)."],
+  ["What happens after handoff?", "You get the code, documentation, an accessibility statement, and a walkthrough call. The product is yours — no lock-in. The Accessibility & Care retainer is available if you want ongoing monitoring."],
   ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
-  ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same fixed-price approach, same accessibility standard either way."],
 ];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alexa C. — Apps & landing pages, live in 5–10 days." },
+      { title: "Alexa C. — Accessible, EAA-compliant websites & apps" },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
+      { property: "og:title", content: "Alexa C. — Accessible, EAA-compliant websites & apps" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://alexa-c.lovable.app/" },
       { property: "og:image", content: studioAsset.url },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Alexa C. — Apps & landing pages, shipped in 5–10 days" },
+      { name: "twitter:title", content: "Alexa C. — Accessible, EAA-compliant websites & apps" },
       { name: "twitter:description", content: DESCRIPTION },
       { name: "twitter:image", content: studioAsset.url },
     ],
@@ -47,7 +45,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Alexa C.",
-          jobTitle: "Senior Designer & App Developer",
+          jobTitle: "Senior Designer & Accessibility Specialist",
           description: DESCRIPTION,
           url: "https://alexa-c.lovable.app/",
         }),
@@ -70,15 +68,17 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Service",
           provider: { "@type": "Person", name: "Alexa C." },
-          name: "Landing pages & apps, shipped in 5–10 days",
+          name: "Accessible websites & apps — EAA / WCAG 2.2 AA",
           areaServed: "Worldwide",
           description: DESCRIPTION,
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: "Offers",
             itemListElement: [
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing Pages" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apps" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "WCAG 2.2 AA / EAA Audit + Fix Plan" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accessible Landing Page" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accessible MVP / App" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accessibility & Care retainer" } },
             ],
           },
         }),
@@ -860,18 +860,18 @@ function AuroraLandingInner() {
         <div className="aura a1"></div><div className="aura a2"></div><div className="aura a3"></div>
         <div className="wrap grid">
           <div>
-            <span className="pill"><span className="dot"></span> Apps · Landing pages · Accessibility</span>
+            <span className="pill"><span className="dot"></span> EAA · WCAG 2.2 AA · Audits · Builds</span>
             <h1>
-              {"A working app or landing page, live on your domain in".split(" ").map((w, i) => (
+              {"Accessible, compliant websites and apps — built at AI speed,".split(" ").map((w, i) => (
                 <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.06}s`, marginRight: "0.28em" }}>{w}</span>
               ))}
-              <span className="grad word" style={{ animationDelay: "0.85s" }}>5–10 days.</span>
+              <span className="grad word" style={{ animationDelay: "0.85s" }}>hardened by a senior human eye.</span>
             </h1>
             <div className="hero-rest">
-              <p className="lede">I build for early-stage startups and small businesses — real code, not mockups.</p>
+              <p className="lede">The <b>European Accessibility Act</b> is now enforced (since 28 June 2025) and <b>95.9% of websites still fail WCAG</b>. I'm an ex-Amazon design lead who raised accessibility across a multi-brand org from <b>~80% to ~95%</b>. I audit, fix, and build EAA / WCAG 2.2 AA-compliant sites — without enterprise cost or agency overhead.</p>
               <div className="btns">
-                <a href="#contact" className="btn grad">Start a project →</a>
-                <a href="#process" className="btn link">How it works ↓</a>
+                <a href="#contact" className="btn grad">Book a 30-min compliance call</a>
+                <a href="#services" className="btn link">For agencies →</a>
               </div>
             </div>
           </div>
@@ -879,8 +879,8 @@ function AuroraLandingInner() {
             <div className="ring" style={{ width: 440, height: 440 }}></div>
             <div className="ring" style={{ width: 560, height: 560 }}></div>
             <img className="portrait" src={studioAsset.url} alt="Alexa C., senior product designer" />
-            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">15 years</div><div className="l">ex Amazon lead</div></div>
-            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">95%</div><div className="l">a11y coverage</div></div>
+            <div className="badge" style={{ bottom: "9%", left: "-2%" }}><div className="v grad-t">80→95%</div><div className="l">a11y raised at Amazon</div></div>
+            <div className="badge" style={{ top: "6%", right: "-4%" }}><div className="v grad-t">EAA</div><div className="l">enforced since Jun 2025</div></div>
           </div>
         </div>
       </header>
@@ -908,13 +908,13 @@ function AuroraLandingInner() {
           <div className="portrait" data-reveal="left"><img src={wideAsset.url} alt="Alexa C. in studio" /></div>
           <div data-reveal="right">
             <span className="eyebrow">Who I am</span>
-            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>A design lead who ships systems, not screenshots.</h2>
-            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>Fifteen years in design leadership — nearly a decade scaling design and accessibility across global teams at Amazon — taught me the work matters less than whether people trust you to finish it. I now design and build apps and landing pages myself, end to end, using AI-native tools hardened by a senior eye. I answer messages, flag problems early, and don't take on more than I can deliver well.</p>
+            <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>I raised accessibility from 80% to 95% at Amazon. Now I do it for you.</h2>
+            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>I spent nearly a decade as a design lead at Amazon, where I led accessibility across a multi-brand organisation and raised compliance from roughly <b style={{ color: "var(--ink)", fontWeight: 800 }}>80% to 95%</b>. Accessibility isn't a checkbox I add at the end — it's how I've worked for years. Now I bring that senior, regulator-ready eye to founders and small teams, building fast with AI-native tools and testing by hand the way a screen-reader user actually experiences your site.</p>
             <Carousel className="grid-2x2" stagger>
-              <div className="cell"><h3 className="grad-t">Accessibility Process</h3><p>Every build manually checked against WCAG 2.1/2.2 AA — by me, not a scanner. Raised coverage 80% → 95% across a multi-brand organisation.</p></div>
-              <div className="cell"><h3 className="grad-t">Build Process</h3><p>AI-native tools, reviewed and hardened by a senior eye before anything ships.</p></div>
-              <div className="cell"><h3 className="grad-t">Tools &amp; Stack</h3><p>Real code, real database (React + production stack) — fully yours to keep, move, or extend.</p></div>
-              <div className="cell"><h3 className="grad-t">Handoff Standards</h3><p>Documentation and a walkthrough call included — your team can run it long after I'm gone.</p></div>
+              <div className="cell"><h3 className="grad-t">Accessibility, by hand</h3><p>Manual WCAG 2.2 AA review on every build — keyboard, screen reader, and contrast tested by a senior designer.</p></div>
+              <div className="cell"><h3 className="grad-t">Regulator-ready</h3><p>EAA-aware from the first line of code. You get a clear accessibility statement at handoff, not a scanner report.</p></div>
+              <div className="cell"><h3 className="grad-t">AI speed, human eye</h3><p>AI-native tools for delivery in days — every line reviewed and hardened before anything ships.</p></div>
+              <div className="cell"><h3 className="grad-t">No lock-in</h3><p>Real code, real database, documentation and a walkthrough call. Your team can run it long after I'm gone.</p></div>
             </Carousel>
           </div>
         </div>
@@ -951,23 +951,37 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">What I build</span>
-            <h2>Two offers, fixed price.</h2>
-            <p>Real code, accessibility built in, shipped in days — not months.</p>
+            <h2>Four ways to work, fixed price.</h2>
+            <p>Audit, fix, build, or maintain — accessibility is the default, not the add-on.</p>
           </div>
           <Carousel className="svc-grid pop-sync" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
             <div className="svc">
-              <div className="no grad-t">01 · LANDING PAGES</div>
-              <h3>Landing Pages</h3>
-              <p>A single conversion-focused landing page — designed, built in real code, and shipped to your domain. Accessibility review included.</p>
-              <div className="price"><s>$750</s> <em>$450</em> <b>· founding client pricing</b></div>
+              <div className="no grad-t">01 · AUDIT + FIX PLAN</div>
+              <h3>WCAG 2.2 AA / EAA Audit</h3>
+              <p>Manual senior audit of your live site or app, a prioritised fix plan, and your accessibility statement. The front door for compliance buyers.</p>
+              <div className="price"><em>from £1,500</em> <b>· fixed price</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">Manual</div><div className="ml">Senior review</div></div><div className="m"><div className="mv grad">EAA</div><div className="ml">Regulator-ready</div></div></div>
+            </div>
+            <div className="svc">
+              <div className="no grad-t">02 · LANDING PAGE</div>
+              <h3>Accessible Landing Page</h3>
+              <p>A conversion-focused landing page, built compliant from the first line of code and shipped to your domain.</p>
+              <div className="price"><s>£750</s> <em>£450</em> <b>· founding price</b></div>
               <div className="meta"><div className="m"><div className="mv grad">5 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">A11y</div><div className="ml">WCAG 2.2 AA</div></div></div>
             </div>
             <div className="svc">
-              <div className="no grad-t">02 · APPS</div>
-              <h3>Apps</h3>
-              <p>A full-stack app — up to 5 core screens and one integration. Real code, real database, accessibility built in, handoff docs included.</p>
-              <div className="price"><s>$1,500</s> <em>$900</em> <b>· founding client pricing</b></div>
+              <div className="no grad-t">03 · MVP / APP</div>
+              <h3>Accessible MVP / App</h3>
+              <p>A full-stack app — real code, real database, accessibility built in, handoff docs and a walkthrough call included.</p>
+              <div className="price"><s>£1,500</s> <em>£900</em> <b>· founding price</b></div>
               <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div><div className="m"><div className="mv grad">A11y</div><div className="ml">WCAG 2.2 AA</div></div></div>
+            </div>
+            <div className="svc">
+              <div className="no grad-t">04 · RETAINER</div>
+              <h3>Accessibility &amp; Care</h3>
+              <p>Monthly monitoring, fixes as the site changes, and accessibility statement upkeep so you stay EAA-compliant after launch.</p>
+              <div className="price"><em>from £P.O.A</em> <b>· monthly</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">Monthly</div><div className="ml">Monitoring</div></div><div className="m"><div className="mv grad">EAA</div><div className="ml">Statement upkeep</div></div></div>
             </div>
           </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
@@ -999,10 +1013,10 @@ function AuroraLandingInner() {
           </div>
           <p className="pullquote" data-reveal>I won't hand you an AI-generated export and disappear. Every build is mine — senior-reviewed, tested, and hardened before it ships. If I wouldn't put it in front of my own users, I won't put it in front of yours.</p>
           <Carousel className="grid-2x2" stagger>
-            <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
-            <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
-            <div className="cell"><h3 className="grad-t">Handoff</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
-            <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
+            <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked. Accessibility statement included at handoff.</p></div>
+            <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build → manual review against the original brief, not AI output accepted as-is.</p></div>
+            <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, UX Pilot, and React for build speed — every line senior-reviewed before it ships.</p></div>
+            <div className="cell"><h3 className="grad-t">Handoff &amp; no lock-in</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
           </Carousel>
         </div>
       </section>
@@ -1029,8 +1043,8 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">Proof of work</span>
-            <h2>Don't take my word for it — open the build yourself.</h2>
-            <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
+            <h2>Real, inspectable work — open the build yourself.</h2>
+            <p>No client case studies yet — so here's real, inspectable work: a GOV.UK-pattern "Having a Baby" accessibility prototype, a privacy-first family platform (Vellum), and the Volley landing page + ad-testing framework. Live links, real components, not mockups.</p>
           </div>
           <div className="proof-car-desktop-mobile">
             <Carousel className="proof-grid" stagger>
@@ -1119,11 +1133,11 @@ function AuroraLandingInner() {
         <div className="aura a1"></div>
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
-            <span className="eyebrow">FOUNDING CLIENT SLOTS OPEN</span>
-            <h2>Let's build something that ships.</h2>
-            <p>One 30 min call, a fixed price by the end of it, and a clear yes/no — no chasing, no pressure.</p>
+            <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
+            <h2>Find out if your site is EAA-ready.</h2>
+            <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad">Start a project →</a>
+              <a href="mailto:hello@alexac.studio" className="btn grad">Book a compliance call →</a>
             </div>
             <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
