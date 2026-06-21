@@ -899,10 +899,10 @@ function AuroraLandingInner() {
           <div>
             <span className="pill"><span className="dot"></span> EAA · WCAG 2.2 AA · Audits · Builds</span>
             <h1>
-              {"Accessible, compliant websites and apps — built at AI speed, hardened by a senior".split(" ").map((w, i) => (
+              {"Accessible, compliant websites and apps —built at AI speed,".split(" ").map((w, i) => (
                 <span key={i} className="word" style={{ animationDelay: `${0.05 + i * 0.06}s`, marginRight: "0.28em" }}>{w}</span>
               ))}
-              <span className="grad word" style={{ animationDelay: "0.85s" }}>eye.</span>
+              <span className="grad word" style={{ animationDelay: "0.85s", marginRight: "0.28em" }}>refined by a senior eye.</span>
             </h1>
             <div className="hero-rest">
               <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
