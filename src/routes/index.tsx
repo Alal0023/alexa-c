@@ -951,23 +951,37 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">What I build</span>
-            <h2>Two offers, fixed price.</h2>
-            <p>Real code, accessibility built in, shipped in days — not months.</p>
+            <h2>Four ways to work, fixed price.</h2>
+            <p>Audit, fix, build, or maintain — accessibility is the default, not the add-on.</p>
           </div>
           <Carousel className="svc-grid pop-sync" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
             <div className="svc">
-              <div className="no grad-t">01 · LANDING PAGES</div>
-              <h3>Landing Pages</h3>
-              <p>A single conversion-focused landing page — designed, built in real code, and shipped to your domain. Accessibility review included.</p>
-              <div className="price"><s>$750</s> <em>$450</em> <b>· founding client pricing</b></div>
+              <div className="no grad-t">01 · AUDIT + FIX PLAN</div>
+              <h3>WCAG 2.2 AA / EAA Audit</h3>
+              <p>Manual senior audit of your live site or app, a prioritised fix plan, and your accessibility statement. The front door for compliance buyers.</p>
+              <div className="price"><em>from £1,500</em> <b>· fixed price</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">Manual</div><div className="ml">Senior review</div></div><div className="m"><div className="mv grad">EAA</div><div className="ml">Regulator-ready</div></div></div>
+            </div>
+            <div className="svc">
+              <div className="no grad-t">02 · LANDING PAGE</div>
+              <h3>Accessible Landing Page</h3>
+              <p>A conversion-focused landing page, built compliant from the first line of code and shipped to your domain.</p>
+              <div className="price"><s>£750</s> <em>£450</em> <b>· founding price</b></div>
               <div className="meta"><div className="m"><div className="mv grad">5 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">A11y</div><div className="ml">WCAG 2.2 AA</div></div></div>
             </div>
             <div className="svc">
-              <div className="no grad-t">02 · APPS</div>
-              <h3>Apps</h3>
-              <p>A full-stack app — up to 5 core screens and one integration. Real code, real database, accessibility built in, handoff docs included.</p>
-              <div className="price"><s>$1,500</s> <em>$900</em> <b>· founding client pricing</b></div>
+              <div className="no grad-t">03 · MVP / APP</div>
+              <h3>Accessible MVP / App</h3>
+              <p>A full-stack app — real code, real database, accessibility built in, handoff docs and a walkthrough call included.</p>
+              <div className="price"><s>£1,500</s> <em>£900</em> <b>· founding price</b></div>
               <div className="meta"><div className="m"><div className="mv grad">10 days</div><div className="ml">Typical build</div></div><div className="m"><div className="mv grad">React · DB</div><div className="ml">Real stack</div></div><div className="m"><div className="mv grad">A11y</div><div className="ml">WCAG 2.2 AA</div></div></div>
+            </div>
+            <div className="svc">
+              <div className="no grad-t">04 · RETAINER</div>
+              <h3>Accessibility &amp; Care</h3>
+              <p>Monthly monitoring, fixes as the site changes, and accessibility statement upkeep so you stay EAA-compliant after launch.</p>
+              <div className="price"><em>from £P.O.A</em> <b>· monthly</b></div>
+              <div className="meta"><div className="m"><div className="mv grad">Monthly</div><div className="ml">Monitoring</div></div><div className="m"><div className="mv grad">EAA</div><div className="ml">Statement upkeep</div></div></div>
             </div>
           </Carousel>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq">see how pricing works →</a></p>
