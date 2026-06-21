@@ -264,6 +264,14 @@ const CSS = `
 @keyframes auroraFadeOnly{ from{ opacity:0;} to{ opacity:1;} }
 
 .aurora-root .word{ display:inline-block; opacity:0; animation: auroraWordIn .9s cubic-bezier(.2,.7,.2,1) both; will-change:transform,opacity,filter; }
+.aurora-root .hero h1 .word{ display:inline; }
+.aurora-root .hero h1 .word.grad{ display:inline; line-height:1.12; padding-bottom:.06em; }
+.br-d{ display:none; }
+.br-m{ display:block; }
+@media (min-width:981px){
+  .br-d{ display:block; }
+  .br-m{ display:none; }
+}
 .aurora-root .hero .pill{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
 .aurora-root .hero .hero-rest{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) .85s both; }
 .aurora-root .shead h2,.aurora-root .cta-card h2{ animation: auroraFadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
