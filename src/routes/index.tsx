@@ -5,6 +5,7 @@ import wideAsset from "../assets/alexa-wide.png.asset.json";
 import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
+import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
@@ -108,6 +109,9 @@ const CSS = `
 .aurora-root .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .grad-t{ background:var(--grad-tight); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .aurora-root .stat-grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block; }
+.aurora-root .stats .s:nth-child(1) .stat-grad{ background-image:var(--grad-pv); -webkit-background-clip:text; background-clip:text; }
+.aurora-root .stats .s:nth-child(2) .stat-grad{ background-image:var(--grad-vt); -webkit-background-clip:text; background-clip:text; }
+.aurora-root .stats .s:nth-child(3) .stat-grad{ background-image:var(--grad-ta); -webkit-background-clip:text; background-clip:text; }
 .aurora-root .wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
 .aurora-root .eyebrow{ font-family:var(--mono); font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 .aurora-root .aura{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.34; z-index:0; pointer-events:none; }
@@ -561,6 +565,7 @@ const CSS = `
 .aurora-root.light .quote .q em,
 .aurora-root.light .platforms a{ font-weight:800; }
 .aurora-root.light .btn.grad,.aurora-root.light .proof-grid .proof-card .visit,.aurora-root.light .proof-portfolio .visit{ color:#FFFFFF !important; }
+.aurora-root.light nav .cta{ color:#FFFFFF; }
 .aurora-root.light nav{ background:rgba(255,255,255,.85); }
 .aurora-root.light .drawer{ background:rgba(250,250,252,.96); }
 .aurora-root.light .cta-card{ background:linear-gradient(160deg,#FFFFFF,#F3F1FA); }
@@ -568,8 +573,9 @@ const CSS = `
 .aurora-root.light .hero .portrait{ border-color:#7C5BC9; }
 .aurora-root.light .hero .badge .l,
 .aurora-root.light .trust .item,
-.aurora-root.light .proof-portfolio .l span{ font-weight:700; color:#2B2640; }
-.aurora-root.light .trust .item b{ font-weight:800; }
+.aurora-root.light .proof-portfolio .l span{ font-weight:600; color:#5F587A; }
+.aurora-root.light .trust .item{ color:#7A7290; font-weight:500; }
+.aurora-root.light .trust .item b{ color:#15122A; font-weight:800; }
 .aurora-root.light .aura{ opacity:.22; }
 .aurora-root.light .hero .aura.a3{ opacity:.14; }
 .aurora-root.light .stats .aura{ opacity:.10; }
@@ -1028,7 +1034,7 @@ function AuroraLandingInner() {
                 { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
-                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
                 <a key={p.url} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
@@ -1041,7 +1047,7 @@ function AuroraLandingInner() {
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
                         <span className="url">🔒 {p.urlLabel}</span>
                       </div>
-                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500)` }} aria-hidden="true" />
+                      <span className="thumb with-chrome" style={{ backgroundImage: `url(${(p as { staticShot?: string }).staticShot ?? `https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500`})` }} aria-hidden="true" />
                     </>
                   )}
                   <div className="meta">
@@ -1061,7 +1067,7 @@ function AuroraLandingInner() {
                 { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
-                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
+                { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
                 <a key={`${p.url}-tablet`} className="proof-card" href={p.url} target="_blank" rel="noopener">
                   {p.frame === "phone" ? (
@@ -1074,7 +1080,7 @@ function AuroraLandingInner() {
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
                         <span className="url">🔒 {p.urlLabel}</span>
                       </div>
-                      <span className="thumb with-chrome" style={{ backgroundImage: `url(https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500)` }} aria-hidden="true" />
+                      <span className="thumb with-chrome" style={{ backgroundImage: `url(${(p as { staticShot?: string }).staticShot ?? `https://api.microlink.io/?url=${encodeURIComponent(p.shot)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=900&waitForTimeout=2500`})` }} aria-hidden="true" />
                     </>
                   )}
                   <div className="meta">
