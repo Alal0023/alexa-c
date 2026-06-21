@@ -1043,8 +1043,8 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">Proof of work</span>
-            <h2>Don't take my word for it — open the build yourself.</h2>
-            <p>No client case studies yet — here's what I build when no one's watching. Vellum is a privacy-first family platform I'm designing and building end-to-end. The GOV.UK "Having a Baby" prototype and the Volley.ai landing page and ad creative were built the same way I'd build for you — real components, not mockups.</p>
+            <h2>Real, inspectable work — open the build yourself.</h2>
+            <p>No client case studies yet — so here's real, inspectable work: a GOV.UK-pattern "Having a Baby" accessibility prototype, a privacy-first family platform (Vellum), and the Volley landing page + ad-testing framework. Live links, real components, not mockups.</p>
           </div>
           <div className="proof-car-desktop-mobile">
             <Carousel className="proof-grid" stagger>
