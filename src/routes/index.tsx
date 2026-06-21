@@ -5,6 +5,7 @@ import wideAsset from "../assets/alexa-wide.png.asset.json";
 import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
+import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
 
 const DESCRIPTION =
   "Production-ready apps and landing pages for early-stage startups — real code, accessible by default, shipped in 5–10 days by an ex-Amazon senior designer.";
