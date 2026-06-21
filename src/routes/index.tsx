@@ -1013,10 +1013,10 @@ function AuroraLandingInner() {
           </div>
           <p className="pullquote" data-reveal>I won't hand you an AI-generated export and disappear. Every build is mine — senior-reviewed, tested, and hardened before it ships. If I wouldn't put it in front of my own users, I won't put it in front of yours.</p>
           <Carousel className="grid-2x2" stagger>
-            <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build in Lovable, Claude Code, and React → manual review against the original brief, not AI output accepted as-is.</p></div>
-            <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.1/2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked.</p></div>
-            <div className="cell"><h3 className="grad-t">Handoff</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
-            <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, and UX Pilot for build speed — senior manual review on everything before it ships.</p></div>
+            <div className="cell"><h3 className="grad-t">Accessibility &amp; Quality</h3><p>Manual WCAG 2.2 AA review on every build — not an automated scanner pass. Keyboard navigation tested. Screen-reader spot-checked. Accessibility statement included at handoff.</p></div>
+            <div className="cell"><h3 className="grad-t">Build Process</h3><p>Discovery call → component-level build → manual review against the original brief, not AI output accepted as-is.</p></div>
+            <div className="cell"><h3 className="grad-t">Tooling, named honestly</h3><p>Lovable, Claude Code, UX Pilot, and React for build speed — every line senior-reviewed before it ships.</p></div>
+            <div className="cell"><h3 className="grad-t">Handoff &amp; no lock-in</h3><p>You own the repo, not a black box. Full documentation plus a walkthrough call. No platform lock-in.</p></div>
           </Carousel>
         </div>
       </section>
