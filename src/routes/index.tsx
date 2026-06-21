@@ -682,6 +682,22 @@ function Carousel({
 function AuroraLandingInner() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("aurora-theme");
+      if (saved === "light" || saved === "dark") setTheme(saved);
+    } catch {}
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme((t) => {
+      const n = t === "dark" ? "light" : "dark";
+      try { localStorage.setItem("aurora-theme", n); } catch {}
+      return n;
+    });
+  };
 
   useEffect(() => {
     const root = rootRef.current;
@@ -761,7 +777,7 @@ function AuroraLandingInner() {
   }, []);
 
   return (
-    <div className="aurora-root" ref={rootRef}>
+    <div className={`aurora-root ${theme === "light" ? "light" : ""}`} ref={rootRef}>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       <nav>
@@ -772,6 +788,9 @@ function AuroraLandingInner() {
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
+          <button className="theme-tog" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} onClick={toggleTheme}>
+            {theme === "dark" ? "☀" : "☾"}
+          </button>
           <a href="#contact" className="cta">Start a project →</a>
           <button className="hamb" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
