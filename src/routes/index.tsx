@@ -11,16 +11,13 @@ const DESCRIPTION =
   "Accessible, EAA/WCAG 2.2 AA-compliant websites and apps — built at AI speed, hardened by a senior human eye. Ex-Amazon design lead who raised accessibility from ~80% to ~95%.";
 
 const FAQS: [string, string][] = [
+  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
+  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
+  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
+  ["I found you on Fiverr or LinkedIn — does anything change if I book directly?", "No — same process, same fixed-price approach, same accessibility standard either way."],
   ["Is this AI-generated?", "I build with AI-native tools — that's how I deliver in days, not months. But AI alone produces inaccessible, brittle code: the February 2026 WebAIM study tied rising web-accessibility failures directly to AI-assisted 'vibe coding,' with 95.9% of top sites now failing WCAG. Every build I ship is reviewed and hardened by hand — keyboard, screen reader, and contrast tested — by a senior designer. You get AI speed with human accountability."],
-  ["Do you write the code yourself?", "I direct and review every build using AI-native tools (Claude Code, Lovable) — testing it by hand for accessibility, functionality, and UX before delivery. You get real, production React code, not a black box."],
   ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope. You can check all of it."],
   ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
-  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
-  ["What's included in the price?", "Audits include a manual senior WCAG 2.2 AA / EAA review, a prioritised fix plan, and your accessibility statement. Builds include design, full-stack code (real database where needed), accessibility built in from the first line, and handoff docs plus a walkthrough."],
-  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. The price agreed on the discovery call is the price you pay."],
-  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
-  ["What happens after handoff?", "You get the code, documentation, an accessibility statement, and a walkthrough call. The product is yours — no lock-in. The Accessibility & Care retainer is available if you want ongoing monitoring."],
-  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
 ];
 
 export const Route = createFileRoute("/")({
@@ -504,10 +501,10 @@ const CSS = `
 
 /* Proof links */
 .aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
-.aurora-root .proof-card{ display:block; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.aurora-root .proof-card{ display:flex; flex-direction:column; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .aurora-root .proof-card:hover{ border-color:#9B5CFF; transform:translateY(-4px); box-shadow:0 24px 50px -28px rgba(155,92,255,.45); }
 .aurora-root .proof-card .thumb{ aspect-ratio:4/3; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
-.aurora-root .proof-card .meta{ display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; }
+.aurora-root .proof-card .meta{ flex:1; display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; }
 .aurora-root .proof-card .meta .top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
 .aurora-root .proof-card .meta .ttl{ font-weight:800; font-size:15px; letter-spacing:-.01em; line-height:1.2; }
 .aurora-root .proof-card .meta .sub{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; }
@@ -1044,8 +1041,8 @@ function AuroraLandingInner() {
           <div className="proof-car-desktop-mobile">
             <Carousel className="proof-grid" stagger>
               {[
-                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
                 { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
@@ -1077,8 +1074,8 @@ function AuroraLandingInner() {
           <div className="proof-car-tablet tablet-car">
             <Carousel className="proof-grid" stagger>
               {[
-                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
                 { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
