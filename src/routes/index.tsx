@@ -641,15 +641,10 @@ const CSS = `
 }
 
 /* ===== Stretched gradients (continuous, not per-word) ===== */
-/* Service cards — one stretched gradient segment per card, continuing across the 4 cards */
-.aurora-root .svc-grid .svc:nth-of-type(1) .mv.grad,
-.aurora-root .svc-grid .svc:nth-of-type(1) h3.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
-.aurora-root .svc-grid .svc:nth-of-type(2) .mv.grad,
-.aurora-root .svc-grid .svc:nth-of-type(2) h3.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8); }
-.aurora-root .svc-grid .svc:nth-of-type(3) .mv.grad,
-.aurora-root .svc-grid .svc:nth-of-type(3) h3.grad-t{ background-image:linear-gradient(100deg,#36E0C8,#FFC24B); }
-.aurora-root .svc-grid .svc:nth-of-type(4) .mv.grad,
-.aurora-root .svc-grid .svc:nth-of-type(4) h3.grad-t{ background-image:linear-gradient(100deg,#FFC24B,#FF6FD8); }
+/* Service cards — only card 2 (WCAG/EAA Audit) gets custom stretched gradients:
+   Manual = pink→purple, EAA = purple→blue. Cards 1, 3, 4 use defaults. */
+.aurora-root .svc-grid .svc:nth-of-type(2) .meta .m:nth-child(1) .mv.grad{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
+.aurora-root .svc-grid .svc:nth-of-type(2) .meta .m:nth-child(2) .mv.grad{ background-image:linear-gradient(100deg,#9B5CFF,#4EA8FF); }
 .aurora-root .svc .meta .m .mv.grad{ -webkit-background-clip:text; background-clip:text; color:transparent; }
 
 /* Approach cards — split full gradient across the 4 titles */
@@ -662,9 +657,9 @@ const CSS = `
 .aurora-root .hero .vis .badge.b-one .v.grad-t{ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF) !important; }
 .aurora-root .hero .vis .badge.b-two .v.grad-t{ background-image:linear-gradient(100deg,#9B5CFF,#36E0C8) !important; }
 
-/* Final CTA platforms (Fiverr / LinkedIn) — stretched gradient across the pair */
+/* Final CTA platforms (Fiverr / LinkedIn) — Fiverr pink→purple, LinkedIn purple→blue */
 .aurora-root .platforms a:nth-of-type(1){ background-image:linear-gradient(100deg,#FF6FD8,#9B5CFF); }
-.aurora-root .platforms a:nth-of-type(2){ background-image:linear-gradient(100deg,#9B5CFF,#FFC24B); }
+.aurora-root .platforms a:nth-of-type(2){ background-image:linear-gradient(100deg,#9B5CFF,#4EA8FF); }
 
 /* Header + bottom CTA buttons — use the full 4-stop gradient for a visible sweep */
 .aurora-root nav .cta{ background-image:var(--grad); background-size:200% 100%; background-position:0% 50%; transition:background-position .6s ease, transform .25s ease, box-shadow .25s ease; }
