@@ -11,16 +11,13 @@ const DESCRIPTION =
   "Accessible, EAA/WCAG 2.2 AA-compliant websites and apps — built at AI speed, hardened by a senior human eye. Ex-Amazon design lead who raised accessibility from ~80% to ~95%.";
 
 const FAQS: [string, string][] = [
+  ["Can I see examples of your work before booking?", "Yes — this page and the linked live build are both real, working examples of the code and accessibility standard you'd be getting."],
+  ["What if I don't like the result?", "Every project includes 2 rounds of revisions as standard, built into the fixed price — no extra charge. If you want changes beyond that, we'll agree a quick add-on price before I start, same as any other scope change."],
+  ["Can I get just a landing page, or just an app?", "Both are separate offers — see the two options above. Landing pages typically take 5 days, full apps typically take 10."],
+  ["I found you on Fiverr or LinkedIn — does anything change if I book directly?", "No — same process, same fixed-price approach, same accessibility standard either way."],
   ["Is this AI-generated?", "I build with AI-native tools — that's how I deliver in days, not months. But AI alone produces inaccessible, brittle code: the February 2026 WebAIM study tied rising web-accessibility failures directly to AI-assisted 'vibe coding,' with 95.9% of top sites now failing WCAG. Every build I ship is reviewed and hardened by hand — keyboard, screen reader, and contrast tested — by a senior designer. You get AI speed with human accountability."],
-  ["Do you write the code yourself?", "I direct and review every build using AI-native tools (Claude Code, Lovable) — testing it by hand for accessibility, functionality, and UX before delivery. You get real, production React code, not a black box."],
   ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope. You can check all of it."],
   ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
-  ["How does pricing work?", "Every project starts with a short call to scope the work. I send a fixed price before anything begins — no hourly billing, no surprise invoices, no creeping scope."],
-  ["What's included in the price?", "Audits include a manual senior WCAG 2.2 AA / EAA review, a prioritised fix plan, and your accessibility statement. Builds include design, full-stack code (real database where needed), accessibility built in from the first line, and handoff docs plus a walkthrough."],
-  ["How and when do I pay?", "50% upfront to secure your slot and kick off work, 50% on handoff once everything's signed off. The price agreed on the discovery call is the price you pay."],
-  ["What if my project ends up bigger than expected?", "If something genuinely changes scope mid-build, I'll flag it and requote before doing any extra work — you'll never get a bill you didn't agree to first."],
-  ["What happens after handoff?", "You get the code, documentation, an accessibility statement, and a walkthrough call. The product is yours — no lock-in. The Accessibility & Care retainer is available if you want ongoing monitoring."],
-  ["Where are you based?", "UK-based, working UK hours (GMT/BST)."],
 ];
 
 export const Route = createFileRoute("/")({
