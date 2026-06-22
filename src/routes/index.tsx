@@ -1133,7 +1133,7 @@ function AuroraLandingInner() {
                     <>
                       <div className="chrome chrome-spacer" aria-hidden="true">
                         <span className="cd r"></span><span className="cd y"></span><span className="cd g"></span>
-                        <span className="url">&nbsp;</span>
+                        <span className="url">🔒 {p.urlLabel}</span>
                       </div>
                       <div className="phone-frame" aria-hidden="true">
                         <div className="phone"><span className="pscreen" style={{ backgroundImage: `url(${p.shot})` }} /></div>
