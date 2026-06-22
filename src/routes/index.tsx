@@ -1085,6 +1085,7 @@ function AuroraLandingInner() {
             <Carousel className="proof-grid" stagger>
               {[
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "vellum-family-legacy.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
                 { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
@@ -1123,7 +1124,7 @@ function AuroraLandingInner() {
             <Carousel className="proof-grid" stagger>
               {[
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
-                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "" },
+                { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "vellum-family-legacy.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
                 { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
