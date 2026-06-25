@@ -223,6 +223,10 @@ const CSS = `
 .aurora-root .quote .who .nm{ min-width:0; }
 .aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
 .aurora-root .quote .who .nm span{ display:block; font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.04em; margin-top:2px; }
+.aurora-root .quote .who .nm span.name{ font-family:inherit; font-size:16px; color:var(--ink); font-weight:700; letter-spacing:0; margin-top:0; }
+.aurora-root .quote .who .nm span.li{ margin-top:4px; }
+.aurora-root .quote .who .nm span.li a{ color:var(--accent, #7c5cff); text-decoration:none; border-bottom:1px solid color-mix(in oklab, var(--accent, #7c5cff) 40%, transparent); padding-bottom:1px; }
+.aurora-root .quote .who .nm span.li a:hover{ border-bottom-color:var(--accent, #7c5cff); }
 
 .aurora-root .stats{ padding:84px 0; position:relative; overflow:hidden; }
 .aurora-root .stats .aura.a1{ width:600px; height:600px; background:#36E0C8; bottom:-300px; left:10%; opacity:.16; }
@@ -966,16 +970,16 @@ function AuroraLandingInner() {
             <Carousel className="grid" stagger>
               <div className="quote">
                 <div className="q">“She handled each request with impressive clarity and ownership, and the quality of her work consistently made our collaboration smooth and reliable.”</div>
-                <div className="who"><div className="ava"><img className="ava-sidney" src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm"><a href="https://www.linkedin.com/in/sidneylevy/" target="_blank" rel="noopener noreferrer">Sidney Levy</a><span>Design &amp; Product Leader, ex-Amazon</span></div></div>
+                <div className="who"><div className="ava"><img className="ava-sidney" src={sidneyAsset.url} alt="Sidney Levy" /></div><div className="nm"><span className="name">Sidney Levy</span><span>Design &amp; Product Leader, ex-Amazon</span><span className="li"><a href="https://www.linkedin.com/in/sidneylevy/" target="_blank" rel="noopener noreferrer">Posted on LinkedIn ↗</a></span></div></div>
               </div>
               <div className="quote">
                 <div className="q">“She expertly navigates both meticulously planned projects and high-pressure, quick-turn challenges with equal skill.”</div>
-                <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm"><a href="https://www.linkedin.com/in/rrrryan/" target="_blank" rel="noopener noreferrer">Ryan Schmidt</a><span>Creative Director, Amazon Prime</span></div></div>
+                <div className="who"><div className="ava"><img className="ava-ryan" src={ryanAsset.url} alt="Ryan Schmidt" /></div><div className="nm"><span className="name">Ryan Schmidt</span><span>Creative Director, Amazon Prime</span><span className="li"><a href="https://www.linkedin.com/in/rrrryan/" target="_blank" rel="noopener noreferrer">Posted on LinkedIn ↗</a></span></div></div>
               </div>
               <div className="quote">
                 
                 <div className="q">“Not only did she meet our ambitious 95% compliance target, she exceeded it, setting new standards of excellence.”</div>
-                <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm"><a href="https://www.linkedin.com/in/elodiefichet/" target="_blank" rel="noopener noreferrer">Elodie Fichet, Ph.D.</a><span>Head of Brand Accessibility, Amazon</span></div></div>
+                <div className="who"><div className="ava"><img className="ava-elodie" src={elodieAsset.url} alt="Elodie Fichet" /></div><div className="nm"><span className="name">Elodie Fichet, Ph.D.</span><span>Head of Brand Accessibility, Amazon</span><span className="li"><a href="https://www.linkedin.com/in/elodiefichet/" target="_blank" rel="noopener noreferrer">Posted on LinkedIn ↗</a></span></div></div>
               </div>
             </Carousel>
           </div>
