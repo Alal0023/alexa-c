@@ -223,6 +223,10 @@ const CSS = `
 .aurora-root .quote .who .nm{ min-width:0; }
 .aurora-root .quote .who .nm{ font-weight:700; font-size:16px; }
 .aurora-root .quote .who .nm span{ display:block; font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.04em; margin-top:2px; }
+.aurora-root .quote .who .nm span.name{ font-family:inherit; font-size:16px; color:var(--ink); font-weight:700; letter-spacing:0; margin-top:0; }
+.aurora-root .quote .who .nm span.li{ margin-top:4px; }
+.aurora-root .quote .who .nm span.li a{ color:var(--accent, #7c5cff); text-decoration:none; border-bottom:1px solid color-mix(in oklab, var(--accent, #7c5cff) 40%, transparent); padding-bottom:1px; }
+.aurora-root .quote .who .nm span.li a:hover{ border-bottom-color:var(--accent, #7c5cff); }
 
 .aurora-root .stats{ padding:84px 0; position:relative; overflow:hidden; }
 .aurora-root .stats .aura.a1{ width:600px; height:600px; background:#36E0C8; bottom:-300px; left:10%; opacity:.16; }
