@@ -901,7 +901,7 @@ function AuroraLandingInner() {
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
-        <a href="mailto:hello@alexandra-ciobanu.com" className="cta" onClick={() => setMenuOpen(false)}>Book a call</a>
+        <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="cta" onClick={() => setMenuOpen(false)}>Book a call</a>
       </div>
 
       <header className="hero">
