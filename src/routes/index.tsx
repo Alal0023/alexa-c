@@ -26,6 +26,9 @@ const FAQS: [string, string][] = [
   ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
 ];
 
+const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
+const EMAIL_MAILTO = `mailto:hello@alexandra-ciobanu.com?subject=${encodeURIComponent("Inquiry: Discovery Call - App, Web & Accessibility")}&body=${encodeURIComponent("Hi Alexandra,\n\nI'd like to book a 30-minute discovery call to discuss a potential project.\n\nMy main focus is:\n\n[ ] Web Design / Redesign\n\n[ ] App Design & Product Development\n\n[ ] Accessibility (EAA/WCAG) Compliance\n\n[ ] Other: __________\n\nLet me know your availability for the coming week, or feel free to share a link to your calendar. Looking forward to connecting!\n\nBest,")}`;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
