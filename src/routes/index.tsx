@@ -1191,7 +1191,7 @@ function AuroraLandingInner() {
             <h2>Find out if your site is EAA-ready.</h2>
             <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
             <div className="btns">
-              <a href="mailto:hello@alexandra-ciobanu.com" className="btn grad">Book a free 30-min compliance call →</a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30-min compliance call →</a>
             </div>
             <span className="email-line">or email <a href="mailto:hello@alexandra-ciobanu.com">hello@alexandra-ciobanu.com</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
