@@ -1193,7 +1193,7 @@ function AuroraLandingInner() {
             <div className="btns">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30-min compliance call →</a>
             </div>
-            <span className="email-line">or email <a href="mailto:hello@alexandra-ciobanu.com">hello@alexandra-ciobanu.com</a> directly</span>
+            <span className="email-line">or email <a href={EMAIL_MAILTO}>hello@alexandra-ciobanu.com</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
           </div>
         </div>
