@@ -879,7 +879,7 @@ function AuroraLandingInner() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             )}
           </button>
-          <a href="#contact" className="cta">Book a call</a>
+          <a href="mailto:hello@alexandra-ciobanu.com" className="cta">Book a call</a>
           <button className="hamb" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
@@ -898,7 +898,7 @@ function AuroraLandingInner() {
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
-        <a href="#contact" className="cta" onClick={() => setMenuOpen(false)}>Book a call</a>
+        <a href="mailto:hello@alexandra-ciobanu.com" className="cta" onClick={() => setMenuOpen(false)}>Book a call</a>
       </div>
 
       <header className="hero">
@@ -915,7 +915,7 @@ function AuroraLandingInner() {
             <div className="hero-rest">
               <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
               <div className="btns">
-                <a href="#contact" className="btn grad">Book a 30-min compliance call</a>
+                <a href="mailto:hello@alexandra-ciobanu.com" className="btn grad">Book a 30-min compliance call</a>
                 <a href="#services" className="btn link">For agencies →</a>
               </div>
             </div>
@@ -1018,7 +1018,7 @@ function AuroraLandingInner() {
             <div className="svc">
               <div className="no grad-t">04 · RETAINER</div>
               <h3>Accessibility &amp; Care — Essentials</h3>
-              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href="#contact">Get in touch →</a></p>
+              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href="mailto:hello@alexandra-ciobanu.com">Get in touch →</a></p>
               <div className="price"><em>£95/mo</em> <b>· monthly</b></div>
               <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes incl.</div></div></div>
             </div>
@@ -1188,9 +1188,9 @@ function AuroraLandingInner() {
             <h2>Find out if your site is EAA-ready.</h2>
             <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
             <div className="btns">
-              <a href="mailto:hello@alexac.studio" className="btn grad">Book a free 30-min compliance call →</a>
+              <a href="mailto:hello@alexandra-ciobanu.com" className="btn grad">Book a free 30-min compliance call →</a>
             </div>
-            <span className="email-line">or email <a href="mailto:hello@alexac.studio">hello@alexac.studio</a> directly</span>
+            <span className="email-line">or email <a href="mailto:hello@alexandra-ciobanu.com">hello@alexandra-ciobanu.com</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href="#">Fiverr →</a> or <a href="#">LinkedIn →</a></p>
           </div>
         </div>
