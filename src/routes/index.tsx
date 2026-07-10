@@ -918,7 +918,7 @@ function AuroraLandingInner() {
             <div className="hero-rest">
               <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
               <div className="btns">
-                <a href="mailto:hello@alexandra-ciobanu.com" className="btn grad">Book a 30-min compliance call</a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a 30-min compliance call</a>
                 <a href="#services" className="btn link">For agencies →</a>
               </div>
             </div>
