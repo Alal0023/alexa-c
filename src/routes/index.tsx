@@ -882,7 +882,7 @@ function AuroraLandingInner() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             )}
           </button>
-          <a href="mailto:hello@alexandra-ciobanu.com" className="cta">Book a call</a>
+          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="cta">Book a call</a>
           <button className="hamb" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
