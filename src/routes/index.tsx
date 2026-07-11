@@ -156,9 +156,10 @@ const CSS = `
 .aurora-root .btn.grad.alt-pa{ background-image:var(--grad-pa); }
 .aurora-root .btn.grad.alt-ta{ background-image:var(--grad-ta); }
 .aurora-root .proof-grid .proof-card .visit{ background:var(--grad-pv); }
-.aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-vt); }
-.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-ta); }
-.aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-ap); }
+.aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-vb); }
+.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-vt); }
+.aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-ta); }
+.aurora-root .proof-grid .proof-card:nth-child(5) .visit{ background:var(--grad-ap); }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
 .aurora-root .hero .vis{ position:relative; display:flex; align-items:center; justify-content:center; min-height:480px; }
 .aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1.5px solid #37225C; box-shadow:inset 0 0 0 0 transparent; }
