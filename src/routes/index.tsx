@@ -521,7 +521,7 @@ const CSS = `
 }
 
 /* Proof links */
-.aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
+.aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:8px; }
 .aurora-root .proof-card{ display:flex; flex-direction:column; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .aurora-root .proof-card:hover{ border-color:#9B5CFF; transform:translateY(-4px); box-shadow:0 24px 50px -28px rgba(155,92,255,.45); }
 .aurora-root .proof-card .thumb{ aspect-ratio:4/3; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
