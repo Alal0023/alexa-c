@@ -156,9 +156,10 @@ const CSS = `
 .aurora-root .btn.grad.alt-pa{ background-image:var(--grad-pa); }
 .aurora-root .btn.grad.alt-ta{ background-image:var(--grad-ta); }
 .aurora-root .proof-grid .proof-card .visit{ background:var(--grad-pv); }
-.aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-vt); }
-.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-ta); }
-.aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-ap); }
+.aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-vb); }
+.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-vt); }
+.aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-ta); }
+.aurora-root .proof-grid .proof-card:nth-child(5) .visit{ background:var(--grad-ap); }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
 .aurora-root .hero .vis{ position:relative; display:flex; align-items:center; justify-content:center; min-height:480px; }
 .aurora-root .hero .ring{ position:absolute; border-radius:50%; border:1.5px solid #37225C; box-shadow:inset 0 0 0 0 transparent; }
@@ -520,7 +521,7 @@ const CSS = `
 }
 
 /* Proof links */
-.aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
+.aurora-root .proof-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:8px; }
 .aurora-root .proof-card{ display:flex; flex-direction:column; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .aurora-root .proof-card:hover{ border-color:#9B5CFF; transform:translateY(-4px); box-shadow:0 24px 50px -28px rgba(155,92,255,.45); }
 .aurora-root .proof-card .thumb{ aspect-ratio:4/3; width:100%; background:#0c0a18 center/cover no-repeat; border-bottom:1px solid var(--line); display:block; }
@@ -1095,6 +1096,7 @@ function AuroraLandingInner() {
               {[
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "vellum-family-legacy.lovable.app" },
+                { url: "https://quireapp.lovable.app/", title: "Quire", sub: "Private family archive", shot: "https://quireapp.lovable.app/", frame: "browser" as const, urlLabel: "quireapp.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
                 { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
@@ -1134,6 +1136,7 @@ function AuroraLandingInner() {
               {[
                 { url: "https://govuk-design-journey.lovable.app/", title: "GOV.UK Prototype", sub: "“Having a Baby” journey", shot: "https://govuk-design-journey.lovable.app/", frame: "browser" as const, urlLabel: "govuk-design-journey.lovable.app" },
                 { url: "https://vellum-family-legacy.lovable.app/", title: "Vellum", sub: "Privacy-first family platform", shot: `https://api.microlink.io/?url=${encodeURIComponent("https://vellum-family-legacy.lovable.app/")}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=390&viewport.height=844`, frame: "phone" as const, urlLabel: "vellum-family-legacy.lovable.app" },
+                { url: "https://quireapp.lovable.app/", title: "Quire", sub: "Private family archive", shot: "https://quireapp.lovable.app/", frame: "browser" as const, urlLabel: "quireapp.lovable.app" },
                 { url: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", title: "Volley — Landing Page", sub: "Marketing site", shot: "https://uxpilot.ai/s/93ee147163cf16136095a4f1e807b678", frame: "browser" as const, urlLabel: "uxpilot.ai/s/volley" },
                 { url: "https://volley-add-testing-framework.lovable.app/", title: "Volley — Ads", sub: "Ad testing framework", shot: "https://volley-add-testing-framework.lovable.app/", staticShot: volleyAdsAsset.url, frame: "browser" as const, urlLabel: "volley-add-testing-framework.lovable.app" },
               ].map((p) => (
