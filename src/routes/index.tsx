@@ -106,6 +106,7 @@ const CSS = `
   --grad-pv:linear-gradient(100deg,#FF6FD8 0%,#9B5CFF 100%);
   --grad-vb:linear-gradient(100deg,#9B5CFF 0%,#4EA8FF 100%);
   --grad-vt:linear-gradient(100deg,#9B5CFF 0%,#36E0C8 100%);
+  --grad-bg:linear-gradient(100deg,#4EA8FF 0%,#7CE756 100%);
   --grad-ta:linear-gradient(100deg,#36E0C8 0%,#FFC24B 100%);
   --grad-ap:linear-gradient(100deg,#FFC24B 0%,#FF6FD8 100%);
   --jakarta:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'Space Mono',monospace;
@@ -157,7 +158,7 @@ const CSS = `
 .aurora-root .btn.grad.alt-ta{ background-image:var(--grad-ta); }
 .aurora-root .proof-grid .proof-card .visit{ background:var(--grad-pv); }
 .aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-vb); }
-.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-vt); }
+.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-bg); }
 .aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-ta); }
 .aurora-root .proof-grid .proof-card:nth-child(5) .visit{ background:var(--grad-ap); }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
