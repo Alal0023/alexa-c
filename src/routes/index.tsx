@@ -1208,6 +1208,8 @@ function AuroraLandingInner() {
             <a href="#proof">Work</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
+            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer">Fiverr ↗</a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
         </div>
