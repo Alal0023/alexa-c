@@ -106,6 +106,7 @@ const CSS = `
   --grad-pv:linear-gradient(100deg,#FF6FD8 0%,#9B5CFF 100%);
   --grad-vb:linear-gradient(100deg,#9B5CFF 0%,#4EA8FF 100%);
   --grad-vt:linear-gradient(100deg,#9B5CFF 0%,#36E0C8 100%);
+  --grad-bg:linear-gradient(100deg,#4EA8FF 0%,#7CE756 100%);
   --grad-ta:linear-gradient(100deg,#36E0C8 0%,#FFC24B 100%);
   --grad-ap:linear-gradient(100deg,#FFC24B 0%,#FF6FD8 100%);
   --jakarta:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'Space Mono',monospace;
