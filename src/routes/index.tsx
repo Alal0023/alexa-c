@@ -158,7 +158,7 @@ const CSS = `
 .aurora-root .btn.grad.alt-ta{ background-image:var(--grad-ta); }
 .aurora-root .proof-grid .proof-card .visit{ background:var(--grad-pv); }
 .aurora-root .proof-grid .proof-card:nth-child(2) .visit{ background:var(--grad-vb); }
-.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-vt); }
+.aurora-root .proof-grid .proof-card:nth-child(3) .visit{ background:var(--grad-bg); }
 .aurora-root .proof-grid .proof-card:nth-child(4) .visit{ background:var(--grad-ta); }
 .aurora-root .proof-grid .proof-card:nth-child(5) .visit{ background:var(--grad-ap); }
 .aurora-root .btn.ghost{ background:var(--surface); color:var(--ink); border:1px solid var(--line); }
