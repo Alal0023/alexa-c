@@ -29,6 +29,7 @@ const FAQS: [string, string][] = [
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code?context_referrer=tailored_homepage_perseus&source=recently_viewed_gigs&ref_ctx_id=59524cbf63cf4e5997a59e5a060d0bcd&context=recommendation&pckg_id=1&pos=2&context_alg=recently_viewed&seller_online=true&imp_id=1d12f3dc-f86d-47f2-b3ef-c2d59b3c4cb7";
 const LINKEDIN_URL = "https://www.linkedin.com/in/alexa-ciobanu/";
+const SUBSTACK_URL = "https://substack.com/home/post/p-206289599";
 const EMAIL_MAILTO = `mailto:hello@alexandra-ciobanu.co.uk?subject=${encodeURIComponent("Inquiry: Discovery Call - App, Web & Accessibility")}&body=${encodeURIComponent("Hi Alexandra,\n\nI'd like to book a 30-minute discovery call to discuss a potential project.\n\nMy main focus is:\n\n[ ] Web Design / Redesign\n\n[ ] App Design & Product Development\n\n[ ] Accessibility (EAA/WCAG) Compliance\n\n[ ] Other: __________\n\nLet me know your availability for the coming week, or feel free to share a link to your calendar. Looking forward to connecting!")}`;
 
 export const Route = createFileRoute("/")({
