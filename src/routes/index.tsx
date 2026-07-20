@@ -1230,6 +1230,9 @@ function AuroraLandingInner() {
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.338V9.883H5.667v8.455h2.672zM7.003 8.721a1.548 1.548 0 1 0 0-3.096 1.548 1.548 0 0 0 0 3.096zm11.335 9.617v-4.63c0-2.417-1.29-3.541-3.011-3.541-1.389 0-2.011.764-2.358 1.3v-1.115h-2.672c.035.755 0 8.455 0 8.455h2.672v-4.72c0-.24.017-.48.088-.652.194-.48.633-.977 1.372-.977.968 0 1.355.738 1.355 1.82v4.53h2.554z"/></svg>
             </a>
+            <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="Substack">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
+            </a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
         </div>
