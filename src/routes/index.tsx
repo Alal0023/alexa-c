@@ -1203,12 +1203,7 @@ function AuroraLandingInner() {
           <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
             <h2>Let's talk.</h2>
-            <ul className="cta-bullets">
-              <li>Receive a clear project scope, timeline, and fixed-price proposal before any work begins.</li>
-              <li>Accessibility review, website, or app—receive a clear scope, timeline, and fixed-price proposal.</li>
-              <li>Define the scope, accessibility requirements, and next steps before committing to a project.</li>
-              <li>Get a clear assessment of the project, accessibility requirements, and fixed pricing—no jargon, no surprises.</li>
-            </ul>
+            <p className="lede">Use this time to discuss your goals, accessibility needs, and technical requirements for a landing page, web app, or accessibility review—then receive a clear scope and fixed quote.</p>
             <div className="btns">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30 minute consultation</a>
             </div>
