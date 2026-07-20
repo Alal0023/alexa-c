@@ -12,7 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as NewsletterBasicGoodGreatRouteImport } from './routes/newsletter.basic-good-great'
+import { Route as NewsletterBasicGoodGreatRouteImport } from './routes/newsletter_.basic-good-great'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -31,29 +31,29 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const NewsletterBasicGoodGreatRoute =
   NewsletterBasicGoodGreatRouteImport.update({
-    id: '/basic-good-great',
-    path: '/basic-good-great',
-    getParentRoute: () => NewsletterRoute,
+    id: '/newsletter_/basic-good-great',
+    path: '/newsletter/basic-good-great',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/newsletter': typeof NewsletterRouteWithChildren
+  '/newsletter': typeof NewsletterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/newsletter/basic-good-great': typeof NewsletterBasicGoodGreatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/newsletter': typeof NewsletterRouteWithChildren
+  '/newsletter': typeof NewsletterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/newsletter/basic-good-great': typeof NewsletterBasicGoodGreatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/newsletter': typeof NewsletterRouteWithChildren
+  '/newsletter': typeof NewsletterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/newsletter/basic-good-great': typeof NewsletterBasicGoodGreatRoute
+  '/newsletter_/basic-good-great': typeof NewsletterBasicGoodGreatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -69,13 +69,14 @@ export interface FileRouteTypes {
     | '/'
     | '/newsletter'
     | '/sitemap.xml'
-    | '/newsletter/basic-good-great'
+    | '/newsletter_/basic-good-great'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  NewsletterRoute: typeof NewsletterRouteWithChildren
+  NewsletterRoute: typeof NewsletterRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  NewsletterBasicGoodGreatRoute: typeof NewsletterBasicGoodGreatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -101,32 +102,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/newsletter/basic-good-great': {
-      id: '/newsletter/basic-good-great'
-      path: '/basic-good-great'
+    '/newsletter_/basic-good-great': {
+      id: '/newsletter_/basic-good-great'
+      path: '/newsletter/basic-good-great'
       fullPath: '/newsletter/basic-good-great'
       preLoaderRoute: typeof NewsletterBasicGoodGreatRouteImport
-      parentRoute: typeof NewsletterRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface NewsletterRouteChildren {
-  NewsletterBasicGoodGreatRoute: typeof NewsletterBasicGoodGreatRoute
-}
-
-const NewsletterRouteChildren: NewsletterRouteChildren = {
-  NewsletterBasicGoodGreatRoute: NewsletterBasicGoodGreatRoute,
-}
-
-const NewsletterRouteWithChildren = NewsletterRoute._addFileChildren(
-  NewsletterRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  NewsletterRoute: NewsletterRouteWithChildren,
+  NewsletterRoute: NewsletterRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  NewsletterBasicGoodGreatRoute: NewsletterBasicGoodGreatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
