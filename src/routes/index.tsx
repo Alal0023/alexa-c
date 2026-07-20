@@ -254,6 +254,7 @@ export const CSS = `
 .aurora-root footer .row{ display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
 .aurora-root footer .logo{ font-weight:800; font-size:22px; }
 .aurora-root footer .links{ display:flex; gap:28px; font-size:15px; color:var(--muted); font-weight:600; }
+.aurora-root footer .links{ align-items:center; }
 .aurora-root footer .links a:hover{ color:var(--ink); }
 .aurora-root footer .fine{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em; }
 
