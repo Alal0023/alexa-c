@@ -97,7 +97,7 @@ export const Route = createFileRoute("/")({
   component: AuroraLanding,
 });
 
-const CSS = `
+export const CSS = `
 .aurora-root{
   --bg:#0C0A18; --surface:#15122A; --surface-2:#120F24; --ink:#F3EEFF; --muted:#A99FC4;
   --line:#271F44; --line-soft:#1E1838; --radius:22px;
@@ -614,6 +614,8 @@ const CSS = `
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
 .aurora-root footer .links a.ext{ white-space:nowrap; }
+.aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--muted); transition:color .2s, border-color .2s, transform .2s; }
+.aurora-root footer .links a.ext.icon:hover{ color:var(--ink); border-color:var(--ink); transform:translateY(-2px); }
 
 /* Final CTA platform line */
 .aurora-root .platforms{ margin-top:28px; font-size:15px; color:var(--muted); }
@@ -881,6 +883,7 @@ function AuroraLandingInner() {
           <div className="menu">
             <a href="#proof">Work</a>
             <a href="#about">About</a>
+            <a href="/newsletter">Newsletter</a>
             <a href="#contact">Contact</a>
           </div>
           <button className="theme-tog" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} onClick={toggleTheme}>
@@ -907,6 +910,7 @@ function AuroraLandingInner() {
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="/newsletter" onClick={() => setMenuOpen(false)}>Newsletter</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
         <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="cta" onClick={() => setMenuOpen(false)}>Book a call</a>
@@ -1198,7 +1202,6 @@ function AuroraLandingInner() {
         <div className="aura a1"></div>
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
-            <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
             <h2>Let's talk.</h2>
             <p className="lede">Use this time to discuss your goals, accessibility needs, and technical requirements for a landing page, web app, or accessibility review—then receive a clear scope and fixed quote.</p>
             <div className="btns">
@@ -1216,9 +1219,14 @@ function AuroraLandingInner() {
           <div className="links">
             <a href="#proof">Work</a>
             <a href="#about">About</a>
+            <a href="/newsletter">Newsletter</a>
             <a href="#contact">Contact</a>
-            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer" className="ext">Fiverr<span className="arr"> ↗</span></a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext">LinkedIn<span className="arr"> ↗</span></a>
+            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="Fiverr">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 15.762a1.238 1.238 0 1 0 0-2.476 1.238 1.238 0 0 0 0 2.476zm-6.19-6.19h-2.303c-.874 0-1.35.667-1.35 1.556v.35h2.144v4.284h-2.144v2.428h6.905v-2.428h-2.111v-6.19zm-9.052 0v.397c-.54-.318-1.191-.508-1.937-.508-2.365 0-3.81 1.556-3.81 4.031 0 2.476 1.445 4.032 3.81 4.032.746 0 1.397-.19 1.937-.508v.397h2.588v-7.841h-2.588zm-1.635 5.428c-1.049 0-1.683-.635-1.683-1.635 0-1 .634-1.635 1.683-1.635.842 0 1.635.492 1.635 1.635 0 1.143-.793 1.635-1.635 1.635z"/></svg>
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.338V9.883H5.667v8.455h2.672zM7.003 8.721a1.548 1.548 0 1 0 0-3.096 1.548 1.548 0 0 0 0 3.096zm11.335 9.617v-4.63c0-2.417-1.29-3.541-3.011-3.541-1.389 0-2.011.764-2.358 1.3v-1.115h-2.672c.035.755 0 8.455 0 8.455h2.672v-4.72c0-.24.017-.48.088-.652.194-.48.633-.977 1.372-.977.968 0 1.355.738 1.355 1.82v4.53h2.554z"/></svg>
+            </a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
         </div>
