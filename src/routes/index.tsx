@@ -620,6 +620,7 @@ export const CSS = `
 .aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; padding:8px; border-radius:8px; background:transparent; border:0; color:var(--muted); transition:color .2s, transform .2s; }
 .aurora-root footer .links a.ext.icon:hover{ color:var(--ink); transform:translateY(-2px); }
 .aurora-root footer .links a.ext.icon svg{ width:22px; height:22px; display:block; }
+.aurora-root footer .links a.ext.icon .mask{ width:22px; height:22px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
 
 /* Final CTA platform line */
 .aurora-root .platforms{ margin-top:28px; font-size:15px; color:var(--muted); }
