@@ -39,11 +39,6 @@ type Issue = {
 
 const ISSUES: Issue[] = [
   { n: "№ 01", date: "THU 9 JUL", title: "Basic, Good, Great", blurb: "Everything I make, I make three times. The framework that moved accessibility from 80% to 95% at Amazon.", status: "published", statusLabel: "PUBLISHED" },
-  { n: "№ 02", date: "MON 13 JUL", title: "The volunteer years", blurb: "Curiosity is unpaid right up until it isn't.", status: "published", statusLabel: "PUBLISHED" },
-  { n: "№ 03", date: "THU 16 JUL", title: "The 8th of March hackathon", blurb: "Went to socialise. Left with a completely different way of building.", status: "published", statusLabel: "THIS THURSDAY" },
-  { n: "№ 04", date: "MON 20 JUL", title: "Interviews without leads", blurb: "Getting interviews and getting offers are two different funnels.", status: "coming", statusLabel: "COMING" },
-  { n: "№ 05", date: "THU 23 JUL", title: "Start here: the basics", blurb: "The on-ramp to the whole series, from your first line of alt text.", status: "coming", statusLabel: "COMING" },
-  { n: "LAUNCH", date: "THU 30 JUL · 9:00", title: "Issue 1 — the first email", blurb: "The build diary begins. Subscribe to get it the morning it lands.", status: "launch", statusLabel: "SUBSCRIBER FIRST" },
 ];
 
 const EXTRA_CSS = `
@@ -85,9 +80,18 @@ const EXTRA_CSS = `
 .aurora-root .nl-elsewhere{ padding:0 0 80px; }
 .aurora-root .nl-elsewhere .wrap{ max-width:900px; text-align:center; }
 .aurora-root .nl-elsewhere .eyebrow{ display:block; margin-bottom:18px; }
-.aurora-root .nl-elsewhere .platforms{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-.aurora-root .nl-elsewhere .platforms a{ display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:100px; background:var(--surface); border:1px solid var(--line); font-weight:700; font-size:15px; transition:border-color .2s, transform .2s; }
-.aurora-root .nl-elsewhere .platforms a:hover{ border-color:#9B5CFF; transform:translateY(-2px); }
+.aurora-root .nl-elsewhere .platforms{ display:flex; gap:22px; justify-content:center; flex-wrap:wrap; }
+.aurora-root .nl-elsewhere .platforms a{ width:56px; height:56px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:var(--surface); border:1px solid var(--line); color:var(--muted); transition:color .2s, border-color .2s, transform .2s, background .2s; }
+.aurora-root .nl-elsewhere .platforms a:hover{ color:var(--ink); border-color:#9B5CFF; transform:translateY(-2px); }
+.aurora-root .nl-elsewhere .platforms a svg{ width:22px; height:22px; }
+
+/* Light-mode overrides for the newsletter page */
+.aurora-root.light .nl-hero .eyebrow{ color:#6D3AE6; }
+.aurora-root.light .nl-form button{ color:#FFFFFF !important; }
+.aurora-root.light .nl-item[data-status="published"] .status{ color:#0F8A6E; }
+.aurora-root.light .nl-item[data-status="launch"] .status{ color:#B02A85; }
+.aurora-root.light .nl-elsewhere .platforms a{ color:#3F3A55; }
+.aurora-root.light .nl-elsewhere .platforms a:hover{ color:#15122A; }
 
 @media (max-width:720px){
   .aurora-root .nl-hero{ padding:56px 0 32px; }
@@ -182,25 +186,21 @@ function NewsletterPage() {
 
       <section className="nl-list">
         <div className="wrap">
-          {ISSUES.map((it) => {
-            const href = it.status === "published" ? SUBSTACK_URL : SUBSTACK_URL;
-            const isLink = it.status === "published";
-            const inner = (
-              <>
-                <div className="head">
-                  <span className="meta">{it.n} · {it.date}</span>
-                  <span className="status">{it.statusLabel}</span>
-                </div>
-                <h3>{it.title}</h3>
-                <p>{it.blurb}</p>
-              </>
-            );
-            return isLink ? (
-              <a key={it.n + it.title} href={href} target="_blank" rel="noopener noreferrer" className="nl-item" data-status={it.status}>{inner}</a>
-            ) : (
-              <div key={it.n + it.title} className="nl-item" data-status={it.status}>{inner}</div>
-            );
-          })}
+          {ISSUES.map((it) => (
+            <a
+              key={it.n + it.title}
+              href="/newsletter/basic-good-great"
+              className="nl-item"
+              data-status={it.status}
+            >
+              <div className="head">
+                <span className="meta">{it.n} · {it.date}</span>
+                <span className="status">{it.statusLabel}</span>
+              </div>
+              <h3>{it.title}</h3>
+              <p>{it.blurb}</p>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -208,9 +208,15 @@ function NewsletterPage() {
         <div className="wrap">
           <span className="eyebrow">Also find me on</span>
           <div className="platforms">
-            <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer">Substack ↗</a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer">Fiverr ↗</a>
+            <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" aria-label="Substack">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.338V9.883H5.667v8.455h2.672zM7.003 8.721a1.548 1.548 0 1 0 0-3.096 1.548 1.548 0 0 0 0 3.096zm11.335 9.617v-4.63c0-2.417-1.29-3.541-3.011-3.541-1.389 0-2.011.764-2.358 1.3v-1.115h-2.672c.035.755 0 8.455 0 8.455h2.672v-4.72c0-.24.017-.48.088-.652.194-.48.633-.977 1.372-.977.968 0 1.355.738 1.355 1.82v4.53h2.554z"/></svg>
+            </a>
+            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer" aria-label="Fiverr">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 15.762a1.238 1.238 0 1 0 0-2.476 1.238 1.238 0 0 0 0 2.476zm-6.19-6.19h-2.303c-.874 0-1.35.667-1.35 1.556v.35h2.144v4.284h-2.144v2.428h6.905v-2.428h-2.111v-6.19zm-9.052 0v.397c-.54-.318-1.191-.508-1.937-.508-2.365 0-3.81 1.556-3.81 4.031 0 2.476 1.445 4.032 3.81 4.032.746 0 1.397-.19 1.937-.508v.397h2.588v-7.841h-2.588zm-1.635 5.428c-1.049 0-1.683-.635-1.683-1.635 0-1 .634-1.635 1.683-1.635.842 0 1.635.492 1.635 1.635 0 1.143-.793 1.635-1.635 1.635z"/></svg>
+            </a>
           </div>
         </div>
       </section>
