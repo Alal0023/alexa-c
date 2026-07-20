@@ -613,9 +613,6 @@ const CSS = `
 @media (max-width:560px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
-.aurora-root .cta-bullets{ list-style:none; padding:0; margin:22px auto 0; max-width:640px; text-align:left; display:flex; flex-direction:column; gap:10px; }
-.aurora-root .cta-bullets li{ position:relative; padding-left:22px; font-size:17px; line-height:1.5; color:var(--muted); font-weight:500; }
-.aurora-root .cta-bullets li::before{ content:""; position:absolute; left:0; top:.65em; width:8px; height:8px; border-radius:50%; background:var(--grad-tight); }
 .aurora-root footer .links a.ext{ white-space:nowrap; }
 
 /* Final CTA platform line */
@@ -1203,12 +1200,7 @@ function AuroraLandingInner() {
           <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
             <h2>Let's talk.</h2>
-            <ul className="cta-bullets">
-              <li>Receive a clear project scope, timeline, and fixed-price proposal before any work begins.</li>
-              <li>Accessibility review, website, or app—receive a clear scope, timeline, and fixed-price proposal.</li>
-              <li>Define the scope, accessibility requirements, and next steps before committing to a project.</li>
-              <li>Get a clear assessment of the project, accessibility requirements, and fixed pricing—no jargon, no surprises.</li>
-            </ul>
+            <p className="lede">Use this time to discuss your goals, accessibility needs, and technical requirements for a landing page, web app, or accessibility review—then receive a clear scope and fixed quote.</p>
             <div className="btns">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30 minute consultation</a>
             </div>
