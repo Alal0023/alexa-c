@@ -138,46 +138,92 @@ function ArticlePage() {
         <div className="aura" aria-hidden="true"></div>
         <div className="wrap">
           <a href="/newsletter" className="back">← All issues</a>
-          <span className="kicker">Issue № 01 · Thu 9 July</span>
-          <h1>Basic, Good, Great</h1>
-          <p className="meta">By Alexandra Ciobanu · 5 min read</p>
+          <span className="kicker">Issue № 01 · Published 9 July 2026</span>
+          <h1>Basic, Good, <span className="grad-t">Great.</span></h1>
+          <p className="meta">Everything I make, I make three times.</p>
         </div>
       </header>
 
       <article className="art-body">
         <div className="wrap">
-          <p className="lede">Everything I make, I make three times. Once to be correct, once to be usable, once to be worth remembering. It sounds slow. It's the only reason accessibility at Amazon moved from 80% to 95% in a year.</p>
+          <p className="lede">Everything I make, I make three times.</p>
 
-          <p>When I joined the accessibility team, the number on the wall was 80%. Not bad in isolation, terrible in context: one in five interactions still failed a screen-reader user, a keyboard-only user, someone who couldn't see the colour we'd chosen. "80% accessible" is like "80% waterproof."</p>
+          <figure>
+            <img src={fig1.url} alt="Three stacked bars labelled Basic, Good, Great — each one taller than the last, with a dashed 'one step better' arrow." />
+            <figcaption>Fig. 1 — Three levels · Basic → Good → Great · one step better each time</figcaption>
+          </figure>
 
-          <p>The tempting fix is to hire more auditors and file more tickets. We tried that. It moved the number a point or two, then stalled. Auditors find bugs; they don't change how the next component is built. So we stopped auditing our way out and started building in three passes.</p>
+          <p>Not three drafts of the same thing. Three deliberate states. The basic version exists so the thing is real. The good version exists so the thing is right. The great version is the one I aim at knowing I will not always land it, and knowing that the aiming improves the other two.</p>
 
-          <h2>1. Basic — the floor</h2>
-          <p>Basic is non-negotiable and boring. Semantic HTML. Labels on inputs. Alt text on images that carry meaning, empty alt on the ones that don't. Focus states you can actually see. Contrast that clears 4.5:1 without squinting. Basic is the audit checklist — WCAG 2.2 AA, nothing more.</p>
-          <p>Every component ships with Basic or it doesn't ship. There is no "we'll fix accessibility later" ticket. Later never comes; the ticket just ages into a stat on someone's slide.</p>
+          <p>I have applied this to design systems, to my CV, to my portfolio, to learning to draw, and to the newsletter you are reading now. The order is the whole method. Basic first, always, even when I can already see the great version in my head. Especially then. The great version in my head has never met a user, a deadline, or a rendering bug. The basic version has met all three by Friday.</p>
 
-          <h2>2. Good — craft</h2>
-          <p>Good is where most teams stop pretending. A screen-reader user can complete the flow, but it takes them 40 seconds and three wrong turns. Technically compliant. Practically hostile.</p>
-          <p>Good means we actually run the flow with a screen reader on. We listen to how the labels read out loud. We check that error messages appear near the field, in text, not just as a red border. We make sure the keyboard tab order matches the visual order — because when it doesn't, nobody complains, they just leave.</p>
-          <blockquote>Compliance is what the auditor sees. Craft is what the user feels.</blockquote>
+          <h2>Where it became a framework</h2>
 
-          <h2>3. Great — the champions</h2>
-          <p>Great is the pass most people never do, and it's the one that moved the number. Great means: a person with a disability uses this feature in their real life, on their real device, and tells us what actually happened. Not a proxy, not a heuristic — the actual human.</p>
-          <p>We built a small panel of paid participants — blind, low-vision, motor-impaired, deaf, cognitively different — and any launch that touched a core flow ran past them first. Fifteen minutes of a real user is worth a week of an auditor.</p>
+          <p>Amazon, 2023. I was a design lead who had just started learning about accessibility. I honestly cannot tell you how I stumbled onto it, but it has served me well ever since, including in ways I did not expect, into motherhood, which is a thread for another issue.</p>
+
+          <p>What I found was an army of designers producing inaccessible work, and a VP-level goal handed to me: move accessibility from 80% to 95% across three organisations producing roughly 500,000 visuals a month. I had one exceptional woman beside me who could run the numbers and the spreadsheets, because this was 2023 and there was, as yet, no AI to do it for us.</p>
+
+          <p>The designers were not careless. They simply could not see it. A visual designer could pick the correct typeface and the correct background colour straight from the styleguide and still ship something that failed, and if the styleguide itself was wrong, then everything produced from it was wrong, at scale, every single month. Accessibility was invisible to the very people most responsible for it.</p>
+
+          <p>So, with allies around me, two exceptional women in two other organisations, I built a visual guide. And here I genuinely do not know whether to write I or we, which tells you something true about how this kind of work actually gets done. The guide ran every kind of work a designer touches, text, logos, product images, illustration, UX screens, against three levels: Basic, Good, Great.</p>
 
           <div className="callout">
-            <p><b>The rep for this week.</b> Take one screen you shipped this month. Run it three times:</p>
-            <p>1) Basic — does it pass axe or Lighthouse with zero critical issues?<br/>2) Good — can you complete the primary flow with your eyes closed and a screen reader on?<br/>3) Great — send it to one person with a disability and ask them to try. Not for feedback, for observation.</p>
-            <p>You will find something. That's the point.</p>
+            <p><b>Basic</b> — the floor: the non-negotiable standard, WCAG for text, and a decided-upon internal minimum for everything the standard did not cover.</p>
+            <p><b>Good</b> — craft: for the designers who already knew the standard and wanted to do a little more.</p>
+            <p><b>Great</b> — for champions: the work almost nobody shipped, and for real reasons, the marketing copy that ran too long, the colour that did not exist in the styleguide, the minimum text size someone had set too small years ago and no one had touched since.</p>
           </div>
 
-          <h2>Why three, not one</h2>
-          <p>Because a single pass optimises for a single lens. Basic optimises for the auditor. Good optimises for the craftsperson. Great optimises for the user. Any one alone is a partial answer; three together is the only pattern that survived a year of shipping.</p>
-          <p>80 → 95 didn't come from working harder. It came from stopping the pretence that one review was enough.</p>
+          <p>The guide was only half of it. The other half was persuasion. Monthly audits and audit banners run by people who volunteered their time, internal talks to socialise the guide, monthly reports for VPs, numbers crunched by hand, and slowly a team built around the processes so they would outlast any one of us. I am still grateful to those people. The framework was mine; the movement was ours.</p>
 
-          <hr/>
+          <p>We measured 80% at the start. Across a year, we reached 95%.</p>
 
-          <p>Next issue lands Thursday. If Basic-Good-Great is a framework you want to run on your own product, that's what the rest of this newsletter is for — one true story from practice, one lesson, one rep you can run the same day.</p>
+          <figure>
+            <img src={fig2.url} alt="A line chart rising from 80% in month 1 to 95% in month 12, with a dashed continuation beyond marked 'beyond great'." />
+            <figcaption>Fig. 2 — Coverage across one year · 80% → 95% · the last 5% is a place you visit</figcaption>
+          </figure>
+
+          <p>You may be wondering why not 100%. Because the last 5% is the hardest to chase, and a goal you can actually reach beats a goal that only sounds noble. Pure perfection does not exist; it is the thing beyond great, and beyond great is a place you visit, not a place you ship from.</p>
+
+          <p>And because I had a little time left and a little creativity, I went to visit it anyway. I started a side study to build accessibility checkers into automated marketing production. I had the idea, I made the proof, I built the Figma mock, and then I did not manage to implement it the way I wanted. It stalled somewhere between its second and third version. That is the honest ending, and I am keeping it in: sometimes the great version is a thing you prove is possible and then set down, because insisting on something that has already stopped moving is its own kind of failure. You learn to leave it and go build elsewhere.</p>
+
+          <p>But here is the part I only understood later, and it is the reason the guide worked at all. It never handed anyone a verdict. At any moment, every designer who used it knew exactly two things: where their work stood, and what one step better looked like.</p>
+
+          <h2>A direction, not a verdict</h2>
+
+          <figure>
+            <img src={fig3.url} alt="Side-by-side diagram: A – Verdict, an arrow that stops at a wall with a red X. B – Direction, a staircase with dashed arrows pointing to the next step." />
+            <figcaption>Fig. 3 — Verdict vs. direction · one arrives at the end, the other names the next step</figcaption>
+          </figure>
+
+          <p>That is the entire difference. A pass/fail standard gives you two possible states: you passed, or you are demoralised. It arrives at the end, usually as a list of everything wrong, and it offers no next move. Basic, Good, Great gives you a place to stand and a direction to walk, and the only question it ever asks is: what would one step better look like?</p>
+
+          <p>People do not skip accessibility, or craft, or care, because they lack it. They skip it because "not good enough" is a door with no handle. Name the next step, and the guilt turns into work.</p>
+
+          <p>I have found the same shape everywhere since.</p>
+
+          <p>When I rebuilt my CV after nine years inside one company, the first version was basic, and it needed to be, because a basic CV that exists collects feedback and a great CV that lives in your head collects nothing. It got good when I asked friends for feedback. It got great when Jason Greene, a mentor from ADP List, talked me out of rewriting it for every single role, advice I should have taken sooner, and let one sharp version do the work instead. It gets invitations now.</p>
+
+          <p>My portfolio ran the same three states, in order. Version one was basic: I was only just learning to vibe-code, and it showed. It got good when I took it to former Amazon colleagues in my network and learned, from their feedback, to push my own taste and personality back into what the AI generated instead of shipping its defaults. It got great when I filled it with the real thing: project pieces, images, the evidence rather than the promise.</p>
+
+          <p>Basic first. Then good. Then, sometimes, great.</p>
+
+          <h2>What this newsletter does with it</h2>
+
+          <p>Every issue here is one true story from practice, one lesson, and one rep you can run the same day. The stories will not be about perfect work. They will be about which level the work was really on, how I knew, and what moving up one level actually cost, in hours and in pride.</p>
+
+          <p>Accessibility runs through all of it, from your first line of alt text to expert-level auditing, because that is the discipline that taught me the method in the first place, and because it is where the distance between basic and great decides whether a real person can use the thing at all.</p>
+
+          <p>And I will say this plainly now, so you never have to catch me at it: most weeks, the great version does not ship. I would rather tell you that in the first post than let you find it out by counting.</p>
+
+          <h2>This week's rep</h2>
+
+          <div className="callout">
+            <p>Not homework. A rep, the kind you do at the gym: small, repeated, compounding. There will be one at the end of every issue.</p>
+            <p>Take one thing you shipped this week. Anything. Write three lines: what its basic version required, what would have made it good, what great would have looked like. Do not fix anything yet. If you cannot name the basic version, that is the finding, and it is worth more than the fix.</p>
+            <p><b>Basic is not a smaller word than great. It is only the earlier one.</b> So the question is not whether your work is basic. It is whether you can stand in front of it and say so.</p>
+          </div>
+
+          <p className="sig">— Alexandra</p>
         </div>
       </article>
 
