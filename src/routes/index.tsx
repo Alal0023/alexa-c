@@ -23,7 +23,7 @@ const FAQS: [string, string][] = [
   ["Where are you based?", "East London, UK — working GMT/BST hours. I work with clients across the UK and EU, in English, French, or German."],
   ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same pricing, same person. Booking directly just means no marketplace fees on my end, which I can sometimes pass on as a small discount. If you'd rather use Fiverr's buyer protection for your first project, that's completely fine too."],
   ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope before any work starts. You can check all of it yourself."],
-  ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
+  ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 4 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
 ];
 
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
