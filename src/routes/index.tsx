@@ -6,6 +6,7 @@ import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
 import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
+import fiverrLogoAsset from "../assets/fiverr-logo.png.asset.json";
 
 const DESCRIPTION =
   "The EU's Accessibility Act is now enforced — and 95.9% of websites still fail WCAG. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.";
