@@ -9,12 +9,12 @@ import fig3 from "../assets/fig-03-verdict-vs-direction.png.asset.json";
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code";
 const LINKEDIN_URL = "https://www.linkedin.com/in/alexa-ciobanu/";
-const SUBSTACK_URL = "https://substack.com/home/post/p-206289599";
+const SUBSTACK_URL = "https://substack.com/@alexaci";
 
 const DESC =
   "Everything I make, I make three times. The Basic-Good-Great framework that moved accessibility from 80% to 95% at Amazon.";
 
-export const Route = createFileRoute("/newsletter/basic-good-great")({
+export const Route = createFileRoute("/newsletter_/basic-good-great")({
   head: () => ({
     meta: [
       { title: "Basic, Good, Great — Issue № 01 · Alexa C." },
@@ -77,7 +77,8 @@ const EXTRA_CSS = `
 .aurora-root .art-body figure img{ width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
 .aurora-root .art-body figure figcaption{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:12px; text-align:center; }
 .aurora-root .art-body .sig{ font-family:var(--mono); font-size:14px; letter-spacing:.06em; color:var(--muted); margin-top:36px; }
-.aurora-root footer .links a.ext.icon .mask{ width:22px; height:22px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
+.aurora-root footer .links a.ext.icon .mask{ width:28px; height:28px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
+.aurora-root footer .links a.ext.icon[aria-label="Substack"] svg{ width:18px; height:18px; }
 `;
 
 function ArticlePage() {

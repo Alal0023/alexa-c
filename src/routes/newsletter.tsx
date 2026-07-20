@@ -8,7 +8,7 @@ import fiverrLogoAsset from "../assets/fiverr-logo.png.asset.json";
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code";
 const LINKEDIN_URL = "https://www.linkedin.com/in/alexa-ciobanu/";
-const SUBSTACK_URL = "https://substack.com/home/post/p-206289599";
+const SUBSTACK_URL = "https://substack.com/@alexaci";
 
 const DESC =
   "Basic-Good-Great — one true story from practice, one lesson, one rep you can run the same day. Weekly, Thursday mornings, five minutes.";
@@ -88,7 +88,8 @@ const EXTRA_CSS = `
 .aurora-root .nl-elsewhere .platforms a:hover{ color:var(--ink); border-color:#9B5CFF; transform:translateY(-2px); }
 .aurora-root .nl-elsewhere .platforms a svg{ width:22px; height:22px; }
 
-.aurora-root footer .links a.ext.icon .mask{ width:22px; height:22px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
+.aurora-root footer .links a.ext.icon .mask{ width:28px; height:28px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
+.aurora-root footer .links a.ext.icon[aria-label="Substack"] svg{ width:18px; height:18px; }
 
 .aurora-root .nl-status{ margin-top:16px; font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; position:relative; z-index:2; }
 .aurora-root .nl-status.ok{ color:#36E0C8; }
