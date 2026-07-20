@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CSS } from "./index";
+import { subscribeToNewsletter } from "@/lib/newsletter.functions";
 
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code";
@@ -85,6 +87,12 @@ const EXTRA_CSS = `
 .aurora-root .nl-elsewhere .platforms a:hover{ color:var(--ink); border-color:#9B5CFF; transform:translateY(-2px); }
 .aurora-root .nl-elsewhere .platforms a svg{ width:22px; height:22px; }
 
+.aurora-root .nl-status{ margin-top:16px; font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; position:relative; z-index:2; }
+.aurora-root .nl-status.ok{ color:#36E0C8; }
+.aurora-root .nl-status.err{ color:#FF6FD8; }
+.aurora-root.light .nl-status.ok{ color:#0F8A6E; }
+.aurora-root.light .nl-status.err{ color:#B02A85; }
+
 /* Light-mode overrides for the newsletter page */
 .aurora-root.light .nl-hero .eyebrow{ color:#6D3AE6; }
 .aurora-root.light .nl-form button{ color:#FFFFFF !important; }
@@ -105,6 +113,8 @@ const EXTRA_CSS = `
 function NewsletterPage() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [status, setStatus] = useState<null | { kind: "ok" | "err"; msg: string }>(null);
+  const [submitting, setSubmitting] = useState(false);
   useEffect(() => {
     const saved = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
     if (saved) setTheme(saved);
@@ -167,17 +177,33 @@ function NewsletterPage() {
           <span className="eyebrow">The newsletter</span>
           <h1>Basic-Good-Great</h1>
           <p className="lede">One true story from practice, one lesson, one rep you can run the same day. Weekly, Thursday mornings, five minutes.</p>
-          <form className="nl-form" onSubmit={(e) => {
+          <form className="nl-form" onSubmit={async (e) => {
             e.preventDefault();
-            const email = new FormData(e.currentTarget).get("email");
-            if (typeof email === "string" && email) {
-              window.open(`${SUBSTACK_URL}?utm_source=alexa-c&email=${encodeURIComponent(email)}`, "_blank", "noopener,noreferrer");
+            const form = e.currentTarget;
+            const email = new FormData(form).get("email");
+            if (typeof email !== "string" || !email) return;
+            setSubmitting(true);
+            setStatus(null);
+            try {
+              const res = await subscribeToNewsletter({ data: { email, source: "newsletter-page" } });
+              setStatus({
+                kind: "ok",
+                msg: res.alreadySubscribed ? "You're already on the list — thank you." : "Subscribed. Check your inbox on Thursday.",
+              });
+              form.reset();
+            } catch (err) {
+              setStatus({ kind: "err", msg: err instanceof Error ? err.message : "Something went wrong. Please try again." });
+            } finally {
+              setSubmitting(false);
             }
           }}>
             <label htmlFor="nl-email" className="sr-only" style={{ position: "absolute", left: -9999 }}>Email</label>
             <input id="nl-email" name="email" type="email" placeholder="you@company.com" required />
-            <button type="submit">Subscribe free</button>
+            <button type="submit" disabled={submitting}>{submitting ? "Subscribing…" : "Subscribe free"}</button>
           </form>
+          {status && (
+            <p className={`nl-status ${status.kind}`} role="status">{status.msg}</p>
+          )}
           <p className="nl-meta">
             By Alexandra Ciobanu · Unsubscribe any time · <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer">Read on Substack ↗</a>
           </p>
@@ -187,9 +213,9 @@ function NewsletterPage() {
       <section className="nl-list">
         <div className="wrap">
           {ISSUES.map((it) => (
-            <a
+            <Link
               key={it.n + it.title}
-              href="/newsletter/basic-good-great"
+              to="/newsletter/basic-good-great"
               className="nl-item"
               data-status={it.status}
             >
@@ -199,7 +225,7 @@ function NewsletterPage() {
               </div>
               <h3>{it.title}</h3>
               <p>{it.blurb}</p>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
