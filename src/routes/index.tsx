@@ -615,8 +615,9 @@ export const CSS = `
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
 .aurora-root footer .links a.ext{ white-space:nowrap; }
-.aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--muted); transition:color .2s, border-color .2s, transform .2s; }
-.aurora-root footer .links a.ext.icon:hover{ color:var(--ink); border-color:var(--ink); transform:translateY(-2px); }
+.aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; padding:8px; border-radius:8px; background:transparent; border:0; color:var(--muted); transition:color .2s, transform .2s; }
+.aurora-root footer .links a.ext.icon:hover{ color:var(--ink); transform:translateY(-2px); }
+.aurora-root footer .links a.ext.icon svg{ width:22px; height:22px; display:block; }
 
 /* Final CTA platform line */
 .aurora-root .platforms{ margin-top:28px; font-size:15px; color:var(--muted); }
