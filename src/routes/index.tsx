@@ -922,7 +922,7 @@ function AuroraLandingInner() {
             <div className="hero-rest">
               <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
               <div className="btns">
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a 30-min compliance call</a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30-minute call</a>
                 <a href="#services" className="btn link">For agencies →</a>
               </div>
             </div>
@@ -962,6 +962,7 @@ function AuroraLandingInner() {
             <span className="eyebrow">Who I am</span>
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>I raised accessibility from 80% to 95% at Amazon. Now I do it for you.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>I spent nearly a decade as a design lead at Amazon, where I led accessibility across a multi-brand organisation and raised compliance from roughly <b style={{ color: "var(--ink)", fontWeight: 800 }}>80% to 95%</b>. Accessibility isn't a checkbox I add at the end — it's how I've worked for years. Now I bring that senior, regulator-ready eye to founders and small teams, building fast with AI-native tools and testing by hand the way a screen-reader user actually experiences your site.</p>
+            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>And accessibility isn't only about avoiding fines. <b style={{ color: "var(--ink)", fontWeight: 800 }}>One in four EU adults lives with a disability</b> — accessible sites reach more people, rank better, and convert better. Compliance is the floor; the market is the point.</p>
           </div>
         </div>
       </section>
@@ -971,7 +972,7 @@ function AuroraLandingInner() {
           <div className="shead" data-reveal>
             <span className="eyebrow">Backed by people who'd know</span>
             <h2>Endorsed by design leaders at Amazon.</h2>
-            <p>Professional recommendations, not client reviews — public, named, and checkable, since a new freelance profile doesn't have those yet.</p>
+            <p>Featuring public, named, and checkable professional recommendations from former colleagues to speak for my work while this new profile establishes its first client reviews.</p>
           </div>
           <div className="tablet-car">
             <Carousel className="grid" stagger>
@@ -997,7 +998,7 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">What I build</span>
-            <h2>Four ways to work, fixed price.</h2>
+            <h2>Four ways to work. One standard.</h2>
             <p>Audit, fix, build, or maintain — accessibility is the default, not the add-on.</p>
           </div>
           <Carousel className="svc-grid pop-sync" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
@@ -1025,11 +1026,12 @@ function AuroraLandingInner() {
             <div className="svc">
               <div className="no grad-t">04 · RETAINER</div>
               <h3>Accessibility &amp; Care — Essentials</h3>
-              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Get in touch →</a></p>
+              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Get in touch.</a></p>
               <div className="price"><em>£95/mo</em> <b>· monthly</b></div>
               <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes incl.</div></div></div>
             </div>
           </Carousel>
+          <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq-pricing">see how pricing works →</a></p>
         </div>
       </section>
