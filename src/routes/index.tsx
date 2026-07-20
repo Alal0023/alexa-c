@@ -23,7 +23,7 @@ const FAQS: [string, string][] = [
   ["Where are you based?", "East London, UK — working GMT/BST hours. I work with clients across the UK and EU, in English, French, or German."],
   ["I found you on Fiverr or LinkedIn — does anything change if I book directly instead?", "No — same process, same pricing, same person. Booking directly just means no marketplace fees on my end, which I can sometimes pass on as a small discount. If you'd rather use Fiverr's buyer protection for your first project, that's completely fine too."],
   ["Why should I trust a new freelance profile?", "Fair question. I don't have client case studies yet, so I show you what I can verify: named, public recommendations from design leaders at Amazon (linked to their LinkedIn), my own site built and tested to WCAG 2.2 AA, and a fixed price with a clear scope before any work starts. You can check all of it yourself."],
-  ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 6 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
+  ["What does accessibility actually get me?", "Three things: you stop excluding roughly 1 in 4 people, you reduce EAA legal exposure (enforced since June 2025; fines reach €100,000 in Germany and up to €900,000 in the Netherlands), and accessible sites are usually faster and rank better. It's risk reduction and reach, not a checkbox."],
 ];
 
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
@@ -376,8 +376,11 @@ const CSS = `
   .aurora-root nav .menu{ display:none; }
   .aurora-root nav .cta{ display:none; }
   .aurora-root nav .hamb{ display:flex !important; }
-  .aurora-root .hero h1{ font-size:52px; }
+  .aurora-root .hero h1{ font-size:36px; letter-spacing:-.03em; }
+  .aurora-root .hero p.lede{ font-size:15px; margin-top:14px; }
+  .aurora-root .hero .pill{ font-size:11px; padding:9px 16px; }
   .aurora-root .hero .portrait{ width:300px; height:300px; }
+  .aurora-root footer .links a.ext .arr{ display:none; }
 }
 
 /* ============ Mobile hamburger + drawer ============ */
@@ -610,6 +613,10 @@ const CSS = `
 @media (max-width:560px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
+.aurora-root .cta-bullets{ list-style:none; padding:0; margin:22px auto 0; max-width:640px; text-align:left; display:flex; flex-direction:column; gap:10px; }
+.aurora-root .cta-bullets li{ position:relative; padding-left:22px; font-size:17px; line-height:1.5; color:var(--muted); font-weight:500; }
+.aurora-root .cta-bullets li::before{ content:""; position:absolute; left:0; top:.65em; width:8px; height:8px; border-radius:50%; background:var(--grad-tight); }
+.aurora-root footer .links a.ext{ white-space:nowrap; }
 
 /* Final CTA platform line */
 .aurora-root .platforms{ margin-top:28px; font-size:15px; color:var(--muted); }
@@ -922,7 +929,7 @@ function AuroraLandingInner() {
             <div className="hero-rest">
               <p className="lede">The EU's Accessibility Act is now enforced — and <b>95.9% of websites still fail WCAG</b>. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.</p>
               <div className="btns">
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a 30-min compliance call</a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30-minute call</a>
                 <a href="#services" className="btn link">For agencies →</a>
               </div>
             </div>
@@ -962,6 +969,7 @@ function AuroraLandingInner() {
             <span className="eyebrow">Who I am</span>
             <h2 style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.02, letterSpacing: "-.03em", margin: "14px 0 0" }}>I raised accessibility from 80% to 95% at Amazon. Now I do it for you.</h2>
             <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>I spent nearly a decade as a design lead at Amazon, where I led accessibility across a multi-brand organisation and raised compliance from roughly <b style={{ color: "var(--ink)", fontWeight: 800 }}>80% to 95%</b>. Accessibility isn't a checkbox I add at the end — it's how I've worked for years. Now I bring that senior, regulator-ready eye to founders and small teams, building fast with AI-native tools and testing by hand the way a screen-reader user actually experiences your site.</p>
+            <p style={{ fontSize: 21, lineHeight: 1.5, color: "var(--muted)", margin: "18px 0 0", fontWeight: 500 }}>And accessibility isn't only about avoiding fines. <b style={{ color: "var(--ink)", fontWeight: 800 }}>One in four EU adults lives with a disability</b> — accessible sites reach more people, rank better, and convert better. Compliance is the floor; the market is the point.</p>
           </div>
         </div>
       </section>
@@ -971,7 +979,7 @@ function AuroraLandingInner() {
           <div className="shead" data-reveal>
             <span className="eyebrow">Backed by people who'd know</span>
             <h2>Endorsed by design leaders at Amazon.</h2>
-            <p>Professional recommendations, not client reviews — public, named, and checkable, since a new freelance profile doesn't have those yet.</p>
+            <p>Featuring public, named, and checkable professional recommendations from former colleagues to speak for my work while this new profile establishes its first client reviews.</p>
           </div>
           <div className="tablet-car">
             <Carousel className="grid" stagger>
@@ -997,7 +1005,7 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="shead" data-reveal>
             <span className="eyebrow">What I build</span>
-            <h2>Four ways to work, fixed price.</h2>
+            <h2>Four ways to work. One standard.</h2>
             <p>Audit, fix, build, or maintain — accessibility is the default, not the add-on.</p>
           </div>
           <Carousel className="svc-grid pop-sync" stagger style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
@@ -1025,11 +1033,12 @@ function AuroraLandingInner() {
             <div className="svc">
               <div className="no grad-t">04 · RETAINER</div>
               <h3>Accessibility &amp; Care — Essentials</h3>
-              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Get in touch →</a></p>
+              <p>For founders and small sites that just shipped. Quarterly manual WCAG 2.2 AA check, monthly automated scan, performance check, up to 1 hour of fixes included, email support. Need this for an agency or multiple sites? <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Get in touch.</a></p>
               <div className="price"><em>£95/mo</em> <b>· monthly</b></div>
               <div className="meta"><div className="m"><div className="mv grad">Quarterly</div><div className="ml">Manual WCAG check</div></div><div className="m"><div className="mv grad">Monthly</div><div className="ml">Automated scan</div></div><div className="m"><div className="mv grad">1 hr</div><div className="ml">Fixes incl.</div></div></div>
             </div>
           </Carousel>
+          <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
           <p className="pricing-note">Fixed price, agreed before any code ships — <a href="#faq-pricing">see how pricing works →</a></p>
         </div>
       </section>
@@ -1076,10 +1085,10 @@ function AuroraLandingInner() {
           </div>
           <div className="proc-line">
             <Carousel className="steps" stagger>
-              <div className="step"><div className="circle">01</div><h3>Discover</h3><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
-              <div className="step"><div className="circle">02</div><h3>Design</h3><p>Systemised, accessible design in real tokens and components.</p></div>
+              <div className="step"><div className="circle">01</div><h3>Discover</h3><p>30-minute scoping call. Project brief, fixed quote, and timeline for approval before we begin.</p></div>
+              <div className="step"><div className="circle">02</div><h3>Design</h3><p>Structure and wireframes agreed before a line of code is written. You approve before I build.</p></div>
               <div className="step"><div className="circle">03</div><h3>Build</h3><p>Production-ready code, accessibility verified before handoff.</p></div>
-              <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
+              <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Live build, compliance statement, and full codebase. Two revision rounds included.</p></div>
             </Carousel>
           </div>
         </div>
@@ -1176,7 +1185,6 @@ function AuroraLandingInner() {
             <span className="l"><b>Full portfolio — alexandra-ciobanu.com</b><span>Case studies, writing &amp; long-form work</span></span>
             <span className="visit" style={{ fontFamily: "var(--mono)", fontSize: 12, letterSpacing: ".08em", textTransform: "uppercase", color: "#0C0A18", background: "var(--grad-ap)", padding: "10px 20px", borderRadius: 100, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0 }}>Visit →</span>
           </a>
-          <div className="founding"><b>Founding client terms:</b> the first 3 projects get 40% off standard pricing, in exchange for a detailed case study and testimonial as the project ships.</div>
         </div>
       </section>
 
@@ -1194,10 +1202,15 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
-            <h2>Find out if your site is EAA-ready.</h2>
-            <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
+            <h2>Let's talk.</h2>
+            <ul className="cta-bullets">
+              <li>Receive a clear project scope, timeline, and fixed-price proposal before any work begins.</li>
+              <li>Accessibility review, website, or app—receive a clear scope, timeline, and fixed-price proposal.</li>
+              <li>Define the scope, accessibility requirements, and next steps before committing to a project.</li>
+              <li>Get a clear assessment of the project, accessibility requirements, and fixed pricing—no jargon, no surprises.</li>
+            </ul>
             <div className="btns">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30-min compliance call →</a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30 minute consultation</a>
             </div>
             <span className="email-line">or email <a href={EMAIL_MAILTO}>hello@alexandra-ciobanu.co.uk</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer">Fiverr →</a> or <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn →</a></p>
@@ -1212,8 +1225,8 @@ function AuroraLandingInner() {
             <a href="#proof">Work</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer">Fiverr ↗</a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer" className="ext">Fiverr<span className="arr"> ↗</span></a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext">LinkedIn<span className="arr"> ↗</span></a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
         </div>
