@@ -29,6 +29,7 @@ const FAQS: [string, string][] = [
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code?context_referrer=tailored_homepage_perseus&source=recently_viewed_gigs&ref_ctx_id=59524cbf63cf4e5997a59e5a060d0bcd&context=recommendation&pckg_id=1&pos=2&context_alg=recently_viewed&seller_online=true&imp_id=1d12f3dc-f86d-47f2-b3ef-c2d59b3c4cb7";
 const LINKEDIN_URL = "https://www.linkedin.com/in/alexa-ciobanu/";
+const SUBSTACK_URL = "https://substack.com/home/post/p-206289599";
 const EMAIL_MAILTO = `mailto:hello@alexandra-ciobanu.co.uk?subject=${encodeURIComponent("Inquiry: Discovery Call - App, Web & Accessibility")}&body=${encodeURIComponent("Hi Alexandra,\n\nI'd like to book a 30-minute discovery call to discuss a potential project.\n\nMy main focus is:\n\n[ ] Web Design / Redesign\n\n[ ] App Design & Product Development\n\n[ ] Accessibility (EAA/WCAG) Compliance\n\n[ ] Other: __________\n\nLet me know your availability for the coming week, or feel free to share a link to your calendar. Looking forward to connecting!")}`;
 
 export const Route = createFileRoute("/")({
@@ -254,6 +255,7 @@ export const CSS = `
 .aurora-root footer .row{ display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
 .aurora-root footer .logo{ font-weight:800; font-size:22px; }
 .aurora-root footer .links{ display:flex; gap:28px; font-size:15px; color:var(--muted); font-weight:600; }
+.aurora-root footer .links{ align-items:center; }
 .aurora-root footer .links a:hover{ color:var(--ink); }
 .aurora-root footer .fine{ font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em; }
 
@@ -614,8 +616,9 @@ export const CSS = `
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
 .aurora-root footer .links a.ext{ white-space:nowrap; }
-.aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--muted); transition:color .2s, border-color .2s, transform .2s; }
-.aurora-root footer .links a.ext.icon:hover{ color:var(--ink); border-color:var(--ink); transform:translateY(-2px); }
+.aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; padding:8px; border-radius:8px; background:transparent; border:0; color:var(--muted); transition:color .2s, transform .2s; }
+.aurora-root footer .links a.ext.icon:hover{ color:var(--ink); transform:translateY(-2px); }
+.aurora-root footer .links a.ext.icon svg{ width:22px; height:22px; display:block; }
 
 /* Final CTA platform line */
 .aurora-root .platforms{ margin-top:28px; font-size:15px; color:var(--muted); }
@@ -1226,6 +1229,9 @@ function AuroraLandingInner() {
             </a>
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.338V9.883H5.667v8.455h2.672zM7.003 8.721a1.548 1.548 0 1 0 0-3.096 1.548 1.548 0 0 0 0 3.096zm11.335 9.617v-4.63c0-2.417-1.29-3.541-3.011-3.541-1.389 0-2.011.764-2.358 1.3v-1.115h-2.672c.035.755 0 8.455 0 8.455h2.672v-4.72c0-.24.017-.48.088-.652.194-.48.633-.977 1.372-.977.968 0 1.355.738 1.355 1.82v4.53h2.554z"/></svg>
+            </a>
+            <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="Substack">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
             </a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>

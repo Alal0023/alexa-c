@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CSS } from "./index";
+import { subscribeToNewsletter } from "@/lib/newsletter.functions";
 
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code";
@@ -85,6 +87,12 @@ const EXTRA_CSS = `
 .aurora-root .nl-elsewhere .platforms a:hover{ color:var(--ink); border-color:#9B5CFF; transform:translateY(-2px); }
 .aurora-root .nl-elsewhere .platforms a svg{ width:22px; height:22px; }
 
+.aurora-root .nl-status{ margin-top:16px; font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; position:relative; z-index:2; }
+.aurora-root .nl-status.ok{ color:#36E0C8; }
+.aurora-root .nl-status.err{ color:#FF6FD8; }
+.aurora-root.light .nl-status.ok{ color:#0F8A6E; }
+.aurora-root.light .nl-status.err{ color:#B02A85; }
+
 /* Light-mode overrides for the newsletter page */
 .aurora-root.light .nl-hero .eyebrow{ color:#6D3AE6; }
 .aurora-root.light .nl-form button{ color:#FFFFFF !important; }
@@ -105,6 +113,8 @@ const EXTRA_CSS = `
 function NewsletterPage() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [status, setStatus] = useState<null | { kind: "ok" | "err"; msg: string }>(null);
+  const [submitting, setSubmitting] = useState(false);
   useEffect(() => {
     const saved = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
     if (saved) setTheme(saved);
@@ -167,17 +177,33 @@ function NewsletterPage() {
           <span className="eyebrow">The newsletter</span>
           <h1>Basic-Good-Great</h1>
           <p className="lede">One true story from practice, one lesson, one rep you can run the same day. Weekly, Thursday mornings, five minutes.</p>
-          <form className="nl-form" onSubmit={(e) => {
+          <form className="nl-form" onSubmit={async (e) => {
             e.preventDefault();
-            const email = new FormData(e.currentTarget).get("email");
-            if (typeof email === "string" && email) {
-              window.open(`${SUBSTACK_URL}?utm_source=alexa-c&email=${encodeURIComponent(email)}`, "_blank", "noopener,noreferrer");
+            const form = e.currentTarget;
+            const email = new FormData(form).get("email");
+            if (typeof email !== "string" || !email) return;
+            setSubmitting(true);
+            setStatus(null);
+            try {
+              const res = await subscribeToNewsletter({ data: { email, source: "newsletter-page" } });
+              setStatus({
+                kind: "ok",
+                msg: res.alreadySubscribed ? "You're already on the list — thank you." : "Subscribed. Check your inbox on Thursday.",
+              });
+              form.reset();
+            } catch (err) {
+              setStatus({ kind: "err", msg: err instanceof Error ? err.message : "Something went wrong. Please try again." });
+            } finally {
+              setSubmitting(false);
             }
           }}>
             <label htmlFor="nl-email" className="sr-only" style={{ position: "absolute", left: -9999 }}>Email</label>
             <input id="nl-email" name="email" type="email" placeholder="you@company.com" required />
-            <button type="submit">Subscribe free</button>
+            <button type="submit" disabled={submitting}>{submitting ? "Subscribing…" : "Subscribe free"}</button>
           </form>
+          {status && (
+            <p className={`nl-status ${status.kind}`} role="status">{status.msg}</p>
+          )}
           <p className="nl-meta">
             By Alexandra Ciobanu · Unsubscribe any time · <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer">Read on Substack ↗</a>
           </p>
@@ -187,9 +213,9 @@ function NewsletterPage() {
       <section className="nl-list">
         <div className="wrap">
           {ISSUES.map((it) => (
-            <a
+            <Link
               key={it.n + it.title}
-              href="/newsletter/basic-good-great"
+              to="/newsletter/basic-good-great"
               className="nl-item"
               data-status={it.status}
             >
@@ -199,7 +225,7 @@ function NewsletterPage() {
               </div>
               <h3>{it.title}</h3>
               <p>{it.blurb}</p>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -234,6 +260,9 @@ function NewsletterPage() {
             </a>
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.338V9.883H5.667v8.455h2.672zM7.003 8.721a1.548 1.548 0 1 0 0-3.096 1.548 1.548 0 0 0 0 3.096zm11.335 9.617v-4.63c0-2.417-1.29-3.541-3.011-3.541-1.389 0-2.011.764-2.358 1.3v-1.115h-2.672c.035.755 0 8.455 0 8.455h2.672v-4.72c0-.24.017-.48.088-.652.194-.48.633-.977 1.372-.977.968 0 1.355.738 1.355 1.82v4.53h2.554z"/></svg>
+            </a>
+            <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="Substack">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg>
             </a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
