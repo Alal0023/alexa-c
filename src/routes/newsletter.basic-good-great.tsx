@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CSS } from "./index";
+import fiverrLogoAsset from "../assets/fiverr-logo.png.asset.json";
+import fig1 from "../assets/fig-01-basic-good-great.png.asset.json";
+import fig2 from "../assets/fig-02-coverage-one-year.png.asset.json";
+import fig3 from "../assets/fig-03-verdict-vs-direction.png.asset.json";
 
 const CALENDLY_URL = "https://calendly.com/alexandra-ciobanu-3pgd/30min";
 const FIVERR_URL = "https://www.fiverr.com/alexaci_/design-and-build-your-landing-page-with-senior-ux-and-real-code";
@@ -68,6 +72,12 @@ const EXTRA_CSS = `
 }
 
 .aurora-root.light .art-hero .kicker{ color:#6D3AE6; }
+
+.aurora-root .art-body figure{ margin:36px 0; }
+.aurora-root .art-body figure img{ width:100%; height:auto; display:block; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
+.aurora-root .art-body figure figcaption{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:12px; text-align:center; }
+.aurora-root .art-body .sig{ font-family:var(--mono); font-size:14px; letter-spacing:.06em; color:var(--muted); margin-top:36px; }
+.aurora-root footer .links a.ext.icon .mask{ width:22px; height:22px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
 `;
 
 function ArticlePage() {
