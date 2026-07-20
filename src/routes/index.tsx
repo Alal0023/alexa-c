@@ -97,7 +97,7 @@ export const Route = createFileRoute("/")({
   component: AuroraLanding,
 });
 
-const CSS = `
+export const CSS = `
 .aurora-root{
   --bg:#0C0A18; --surface:#15122A; --surface-2:#120F24; --ink:#F3EEFF; --muted:#A99FC4;
   --line:#271F44; --line-soft:#1E1838; --radius:22px;
