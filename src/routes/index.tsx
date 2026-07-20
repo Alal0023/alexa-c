@@ -1078,10 +1078,10 @@ function AuroraLandingInner() {
           </div>
           <div className="proc-line">
             <Carousel className="steps" stagger>
-              <div className="step"><div className="circle">01</div><h3>Discover</h3><p>Short call to scope goal, audience, metric. Fixed quote and timeline.</p></div>
-              <div className="step"><div className="circle">02</div><h3>Design</h3><p>Systemised, accessible design in real tokens and components.</p></div>
+              <div className="step"><div className="circle">01</div><h3>Discover</h3><p>30-minute scoping call. Project brief, fixed quote, and timeline for approval before we begin.</p></div>
+              <div className="step"><div className="circle">02</div><h3>Design</h3><p>Structure and wireframes agreed before a line of code is written. You approve before I build.</p></div>
               <div className="step"><div className="circle">03</div><h3>Build</h3><p>Production-ready code, accessibility verified before handoff.</p></div>
-              <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Docs, fix list, walkthrough so your team can run with it.</p></div>
+              <div className="step"><div className="circle">04</div><h3>Handoff</h3><p>Live build, compliance statement, and full codebase. Two revision rounds included.</p></div>
             </Carousel>
           </div>
         </div>
