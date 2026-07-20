@@ -1195,10 +1195,15 @@ function AuroraLandingInner() {
         <div className="wrap">
           <div className="cta-card" data-reveal="tilt">
             <span className="eyebrow">EAA ENFORCED — JUNE 2025</span>
-            <h2>Find out if your site is EAA-ready.</h2>
-            <p>Book a free 30-minute compliance call — you'll leave knowing your top three accessibility risks and what they'd cost to fix. Fixed prices, clear yes/no, no jargon.</p>
+            <h2>Let's talk.</h2>
+            <ul className="cta-bullets">
+              <li>Receive a clear project scope, timeline, and fixed-price proposal before any work begins.</li>
+              <li>Accessibility review, website, or app—receive a clear scope, timeline, and fixed-price proposal.</li>
+              <li>Define the scope, accessibility requirements, and next steps before committing to a project.</li>
+              <li>Get a clear assessment of the project, accessibility requirements, and fixed pricing—no jargon, no surprises.</li>
+            </ul>
             <div className="btns">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30-min compliance call →</a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn grad">Book a free 30 minute consultation</a>
             </div>
             <span className="email-line">or email <a href={EMAIL_MAILTO}>hello@alexandra-ciobanu.co.uk</a> directly</span>
             <p className="platforms">Prefer to book through a platform you already use? Find me on <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer">Fiverr →</a> or <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn →</a></p>
@@ -1213,8 +1218,8 @@ function AuroraLandingInner() {
             <a href="#proof">Work</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer">Fiverr ↗</a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer" className="ext">Fiverr<span className="arr"> ↗</span></a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext">LinkedIn<span className="arr"> ↗</span></a>
           </div>
           <div className="fine">© 2026 Alexa C. — UK</div>
         </div>
