@@ -613,9 +613,6 @@ const CSS = `
 @media (max-width:560px){ .aurora-root .proof-grid{ grid-template-columns:1fr; } }
 .aurora-root .founding{ margin-top:28px; padding:20px 24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid; border-image:var(--grad-tight) 1; border-radius:12px; font-size:16px; color:var(--muted); width:100%; }
 .aurora-root .founding b{ color:var(--ink); }
-.aurora-root .cta-bullets{ list-style:none; padding:0; margin:22px auto 0; max-width:640px; text-align:left; display:flex; flex-direction:column; gap:10px; }
-.aurora-root .cta-bullets li{ position:relative; padding-left:22px; font-size:17px; line-height:1.5; color:var(--muted); font-weight:500; }
-.aurora-root .cta-bullets li::before{ content:""; position:absolute; left:0; top:.65em; width:8px; height:8px; border-radius:50%; background:var(--grad-tight); }
 .aurora-root footer .links a.ext{ white-space:nowrap; }
 
 /* Final CTA platform line */
