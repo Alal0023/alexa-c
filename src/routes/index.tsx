@@ -376,8 +376,11 @@ const CSS = `
   .aurora-root nav .menu{ display:none; }
   .aurora-root nav .cta{ display:none; }
   .aurora-root nav .hamb{ display:flex !important; }
-  .aurora-root .hero h1{ font-size:52px; }
+  .aurora-root .hero h1{ font-size:36px; letter-spacing:-.03em; }
+  .aurora-root .hero p.lede{ font-size:15px; margin-top:14px; }
+  .aurora-root .hero .pill{ font-size:11px; padding:9px 16px; }
   .aurora-root .hero .portrait{ width:300px; height:300px; }
+  .aurora-root footer .links a.ext .arr{ display:none; }
 }
 
 /* ============ Mobile hamburger + drawer ============ */
