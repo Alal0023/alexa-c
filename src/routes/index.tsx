@@ -6,6 +6,7 @@ import sidneyAsset from "../assets/sidney.png.asset.json";
 import ryanAsset from "../assets/ryan.png.asset.json";
 import elodieAsset from "../assets/elodie.png.asset.json";
 import volleyAdsAsset from "../assets/volley-ads.png.asset.json";
+import fiverrLogoAsset from "../assets/fiverr-logo.png.asset.json";
 
 const DESCRIPTION =
   "The EU's Accessibility Act is now enforced — and 95.9% of websites still fail WCAG. I audit, fix, and build EAA/WCAG 2.2 AA-compliant sites, fast, without enterprise cost.";
@@ -619,6 +620,7 @@ export const CSS = `
 .aurora-root footer .links a.ext.icon{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; padding:8px; border-radius:8px; background:transparent; border:0; color:var(--muted); transition:color .2s, transform .2s; }
 .aurora-root footer .links a.ext.icon:hover{ color:var(--ink); transform:translateY(-2px); }
 .aurora-root footer .links a.ext.icon svg{ width:22px; height:22px; display:block; }
+.aurora-root footer .links a.ext.icon .mask{ width:22px; height:22px; display:block; background-color:currentColor; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; }
 
 /* Final CTA platform line */
 .aurora-root .platforms{ margin-top:28px; font-size:15px; color:var(--muted); }
@@ -1225,7 +1227,7 @@ function AuroraLandingInner() {
             <a href="/newsletter">Newsletter</a>
             <a href="#contact">Contact</a>
             <a href={FIVERR_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="Fiverr">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 15.762a1.238 1.238 0 1 0 0-2.476 1.238 1.238 0 0 0 0 2.476zm-6.19-6.19h-2.303c-.874 0-1.35.667-1.35 1.556v.35h2.144v4.284h-2.144v2.428h6.905v-2.428h-2.111v-6.19zm-9.052 0v.397c-.54-.318-1.191-.508-1.937-.508-2.365 0-3.81 1.556-3.81 4.031 0 2.476 1.445 4.032 3.81 4.032.746 0 1.397-.19 1.937-.508v.397h2.588v-7.841h-2.588zm-1.635 5.428c-1.049 0-1.683-.635-1.683-1.635 0-1 .634-1.635 1.683-1.635.842 0 1.635.492 1.635 1.635 0 1.143-.793 1.635-1.635 1.635z"/></svg>
+              <span className="mask" style={{ WebkitMaskImage: `url(${fiverrLogoAsset.url})`, maskImage: `url(${fiverrLogoAsset.url})` }} aria-hidden="true" />
             </a>
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="ext icon" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.339 18.338V9.883H5.667v8.455h2.672zM7.003 8.721a1.548 1.548 0 1 0 0-3.096 1.548 1.548 0 0 0 0 3.096zm11.335 9.617v-4.63c0-2.417-1.29-3.541-3.011-3.541-1.389 0-2.011.764-2.358 1.3v-1.115h-2.672c.035.755 0 8.455 0 8.455h2.672v-4.72c0-.24.017-.48.088-.652.194-.48.633-.977 1.372-.977.968 0 1.355.738 1.355 1.82v4.53h2.554z"/></svg>
