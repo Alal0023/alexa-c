@@ -11,6 +11,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import AccessibilityWidget from "../components/accessibility/AccessibilityWidget";
+
+// Pre-paint script: read the same localStorage key the hook uses and set
+// data attributes on <html> before first paint, so persisted a11y settings
+// don't visibly flash off on reload.
+const A11Y_PREPAINT = `(function(){try{var s=localStorage.getItem('alexac-a11y-v1');if(!s)return;var o=JSON.parse(s);if(!o||o.v!==1)return;var r=document.documentElement,m={fontScale:'a11yFontScale',letterSpacing:'a11yLetterSpacing',lineSpacing:'a11yLineSpacing',textAlign:'a11yTextAlign',saturation:'a11ySaturation'},b={dyslexiaFont:'a11yDyslexia',highContrast:'a11yContrast',invert:'a11yInvert',greyscale:'a11yGreyscale',largeCursor:'a11yLargeCursor',highlightLinks:'a11yHighlightLinks',pauseAnimations:'a11yPauseAnimations',readingGuide:'a11yReadingGuide'};for(var k in m)if(o[k]!=null)r.dataset[m[k]]=String(o[k]);for(var k2 in b)r.dataset[b[k2]]=(k2==='highContrast')?(o[k2]?'high':'off'):(o[k2]?'on':'off');}catch(e){}})();`;
 
 function NotFoundComponent() {
   return (
@@ -102,7 +108,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap",
       },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap",
+      },
     ],
+    scripts: [{ children: A11Y_PREPAINT }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -129,8 +140,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      {/* #a11y-scope wraps the entire app tree so widget filters
+          (invert/greyscale/contrast) can be scoped to page content
+          without filtering the widget itself, which portals to body. */}
+      <div id="a11y-scope">
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </div>
+      <AccessibilityWidget />
     </QueryClientProvider>
   );
 }
